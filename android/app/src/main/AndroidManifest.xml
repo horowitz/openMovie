@@ -3,6 +3,7 @@
     package="com.dhorowitz.openmovie">
 
     <application
+        android:name="com.dhorowitz.openmovie.OpenMovieApplication"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
