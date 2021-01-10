@@ -1,6 +1,7 @@
 plugins {
     id 'com.android.application'
     id 'kotlin-android'
+    id 'org.jetbrains.kotlin.plugin.serialization' version '1.4.10'
 }
 
 apply plugin: 'kotlin-kapt'
@@ -57,6 +58,13 @@ dependencies {
     //Coroutines
     implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-core:1.4.2'
     implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-android:1.4.2'
+
+    //Network
+    implementation "com.squareup.retrofit2:retrofit:2.9.0"
+    implementation "com.squareup.okhttp3:okhttp:4.9.0"
+    implementation "com.squareup.okhttp3:logging-interceptor:4.9.0"
+    implementation "org.jetbrains.kotlinx:kotlinx-serialization-json:1.0.1"
+    implementation "com.jakewharton.retrofit:retrofit2-kotlinx-serialization-converter:0.8.0"
 
     // Lifecycle
     implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:2.2.0"
