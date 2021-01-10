@@ -1,2 +1,2 @@
 # openMovie
-Show case Android best practices using OMDb API
+Show case Android practices using the Movie database
