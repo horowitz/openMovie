@@ -10,6 +10,8 @@ data class MovieDTO(
     val title: String,
     @SerialName("vote_average")
     val voteAverage: Double,
+    @SerialName("vote_count")
+    val voteCount: Int,
     @SerialName("poster_path")
     val posterPath: String
 )
