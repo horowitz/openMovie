@@ -1,15 +1,9 @@
 package com.dhorowitz.openmovie.discover.data
 
-import com.dhorowitz.openmovie.di.IoDispatcher
-import kotlinx.coroutines.CoroutineDispatcher
-import kotlinx.coroutines.withContext
 import javax.inject.Inject
 
 class MoviesNetworkDataSource @Inject constructor(
-    private val moviesApi: MoviesApi,
-    @IoDispatcher private val ioDispatcher: CoroutineDispatcher
+    private val moviesApi: MoviesApi
 ) : MoviesDataSource {
-    override suspend fun fetchMovies() = withContext(ioDispatcher) {
-        moviesApi.fetchPopularMovies()
-    }
+    override suspend fun fetchMovies() = moviesApi.fetchPopularMovies()
 }

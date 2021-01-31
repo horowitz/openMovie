@@ -16,9 +16,8 @@ import kotlinx.coroutines.CoroutineDispatcher
 @InstallIn(ApplicationComponent::class)
 class NetworkModule {
     @Provides
-    fun provideDataSource(@IoDispatcher ioDispatcher: CoroutineDispatcher): MoviesDataSource =
+    fun provideDataSource(): MoviesDataSource =
         MoviesNetworkDataSource(
-            RetrofitAdapter.openMovieRetrofit.create(MoviesApi::class.java),
-            ioDispatcher
+            RetrofitAdapter.openMovieRetrofit.create(MoviesApi::class.java)
         )
 }

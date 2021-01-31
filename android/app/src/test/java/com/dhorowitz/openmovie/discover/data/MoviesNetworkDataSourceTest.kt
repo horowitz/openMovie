@@ -20,7 +20,8 @@ import java.util.concurrent.TimeUnit
 @ExperimentalSerializationApi
 class MoviesNetworkDataSourceTest {
     private val mockWebServer = MockWebServer()
-    private var client = OkHttpClient.Builder()
+
+    private val client = OkHttpClient.Builder()
         .connectTimeout(1, TimeUnit.SECONDS)
         .readTimeout(1, TimeUnit.SECONDS)
         .writeTimeout(1, TimeUnit.SECONDS)
@@ -33,9 +34,7 @@ class MoviesNetworkDataSourceTest {
         .build()
         .create(MoviesApi::class.java)
 
-    private val testCoroutineDispatcher = TestCoroutineDispatcher()
-
-    private val sut = MoviesNetworkDataSource(api, testCoroutineDispatcher)
+    private val sut = MoviesNetworkDataSource(api)
 
     @After
     fun tearDown() {
