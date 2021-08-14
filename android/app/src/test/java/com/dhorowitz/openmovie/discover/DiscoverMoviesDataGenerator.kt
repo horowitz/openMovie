@@ -18,5 +18,5 @@ internal fun movie(
     title: String = "id",
     voteAverage: Double = 0.0,
     voteCount: Int = 0,
-    image: String = "image"
+    image: String = "https://image.tmdb.org/t/p/w500posterPath"
 ) = Movie(id, title, overview, image, voteCount, voteAverage)
