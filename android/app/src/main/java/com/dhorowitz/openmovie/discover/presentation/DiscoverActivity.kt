@@ -4,6 +4,7 @@ import android.os.Bundle
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import com.dhorowitz.openmovie.R
+import com.dhorowitz.openmovie.discover.presentation.model.DiscoverAction
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -14,5 +15,7 @@ class DiscoverActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_discover)
+
+        viewModel.handle(DiscoverAction.Load)
     }
 }

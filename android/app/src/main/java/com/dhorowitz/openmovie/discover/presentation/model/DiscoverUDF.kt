@@ -5,7 +5,7 @@ sealed class DiscoverState() {
 }
 
 sealed class DiscoverAction() {
-
+    object Load : DiscoverAction()
 }
 
 sealed class DiscoverEvent() {

@@ -1,0 +1,356 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AndroidLayouts">
+    <shared>
+      <config />
+    </shared>
+  </component>
+  <component name="BranchesTreeState">
+    <expand>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="LOCAL_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="GROUP_NODE:origin" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+    </expand>
+    <select />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="51535ddb-2a1c-44d4-83bf-1133eb34e9ac" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/dhorowitz/openmovie/discover/presentation/DiscoverActivity.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/dhorowitz/openmovie/discover/presentation/DiscoverActivity.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/dhorowitz/openmovie/discover/presentation/DiscoverViewModel.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/dhorowitz/openmovie/discover/presentation/DiscoverViewModel.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/dhorowitz/openmovie/discover/presentation/model/DiscoverUDF.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/dhorowitz/openmovie/discover/presentation/model/DiscoverUDF.kt" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ExecutionTargetManager" SELECTED_TARGET="device_and_snapshot_combo_box_target[8AMY0N4MK]" />
+  <component name="ExternalProjectsData">
+    <projectState path="$PROJECT_DIR$">
+      <ProjectState />
+    </projectState>
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Kotlin Interface" />
+        <option value="layoutResourceFile" />
+        <option value="Kotlin Class" />
+        <option value="Kotlin Data Class" />
+        <option value="JUnit4 Test Class" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
+  <component name="ProjectId" id="1msYU0IkOuOgI6xjB3jeXx9mR4Y" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="1" id="Add" />
+  </component>
+  <component name="ProjectViewState">
+    <option name="autoscrollFromSource" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="ASKED_SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="android.sdk.path" value="$USER_HOME$/Library/Android/sdk" />
+    <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary" value="JUnit4" />
+    <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit4" value="" />
+    <property name="last_directory_selection" value="$PROJECT_DIR$/app/src/test/java/com/dhorowitz/openmovie/discover" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/app/src/main/java/com/dhorowitz/openmovie/discover" />
+    <property name="project.structure.last.edited" value="Dependencies" />
+    <property name="project.structure.proportion" value="0.17" />
+    <property name="project.structure.side.proportion" value="0.2" />
+    <property name="settings.editor.selected.configurable" value="AndroidSdkUpdater" />
+  </component>
+  <component name="RecentsManager">
+    <key name="MoveKotlinTopLevelDeclarationsDialog.RECENTS_KEY">
+      <recent name="com.dhorowitz.openmovie.discover.data" />
+    </key>
+    <key name="CreateTestDialog.RecentsKey">
+      <recent name="com.dhorowitz.openmovie.discover.domain" />
+      <recent name="com.dhorowitz.openmovie.discover.data" />
+    </key>
+    <key name="CopyKotlinDeclarationDialog.RECENTS_KEY">
+      <recent name="com.dhorowitz.openmovie.network.di" />
+    </key>
+    <key name="CreateTestDialog.Recents.Supers">
+      <recent name="" />
+    </key>
+    <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
+      <recent name="com.dhorowitz.openmovie.discover.data" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/app/src/main/java/com/dhorowitz/openmovie/discover" />
+      <recent name="$PROJECT_DIR$/app/src/main/java/com/dhorowitz/openmovie/network/serializer" />
+      <recent name="$PROJECT_DIR$/app/src/test" />
+    </key>
+  </component>
+  <component name="RunManager" selected="Android JUnit.MoviesToDomainMapperKtTest.map dto into movie correctly">
+    <configuration name="MoviesNetworkDataSourceTest" type="AndroidJUnit" factoryName="Android JUnit" temporary="true" nameIsGenerated="true">
+      <module name="Open_Movie.app" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.dhorowitz.openmovie.discover.data.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.dhorowitz.openmovie.discover.data" />
+      <option name="MAIN_CLASS_NAME" value="com.dhorowitz.openmovie.discover.data.MoviesNetworkDataSourceTest" />
+      <option name="TEST_OBJECT" value="class" />
+      <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
+      <method v="2">
+        <option name="Android.Gradle.BeforeRunTask" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="MoviesNetworkDataSourceTest.should fetch movies correctly given 200 response" type="AndroidJUnit" factoryName="Android JUnit" temporary="true" nameIsGenerated="true">
+      <module name="Open_Movie.app" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.dhorowitz.openmovie.discover.data.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.dhorowitz.openmovie.discover.data" />
+      <option name="MAIN_CLASS_NAME" value="com.dhorowitz.openmovie.discover.data.MoviesNetworkDataSourceTest" />
+      <option name="METHOD_NAME" value="should fetch movies correctly given 200 response" />
+      <option name="TEST_OBJECT" value="method" />
+      <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
+      <method v="2">
+        <option name="Android.Gradle.BeforeRunTask" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="MoviesToDomainMapperKtTest.map dto into movie correctly" type="AndroidJUnit" factoryName="Android JUnit" temporary="true" nameIsGenerated="true">
+      <module name="Open_Movie.app" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.dhorowitz.openmovie.discover.domain.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.dhorowitz.openmovie.discover.domain" />
+      <option name="MAIN_CLASS_NAME" value="com.dhorowitz.openmovie.discover.domain.MoviesToDomainMapperKtTest" />
+      <option name="METHOD_NAME" value="map dto into movie correctly" />
+      <option name="TEST_OBJECT" value="method" />
+      <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
+      <method v="2">
+        <option name="Android.Gradle.BeforeRunTask" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="AndroidJUnit" factoryName="Android JUnit">
+      <option name="TEST_OBJECT" value="class" />
+      <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
+      <method v="2">
+        <option name="Android.Gradle.BeforeRunTask" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="app" type="AndroidRunConfigurationType" factoryName="Android App">
+      <module name="Open_Movie.app" />
+      <option name="DEPLOY" value="true" />
+      <option name="DEPLOY_APK_FROM_BUNDLE" value="false" />
+      <option name="DEPLOY_AS_INSTANT" value="false" />
+      <option name="ARTIFACT_NAME" value="" />
+      <option name="PM_INSTALL_OPTIONS" value="" />
+      <option name="ALL_USERS" value="false" />
+      <option name="DYNAMIC_FEATURES_DISABLED_LIST" value="" />
+      <option name="ACTIVITY_EXTRA_FLAGS" value="" />
+      <option name="MODE" value="default_activity" />
+      <option name="CLEAR_LOGCAT" value="false" />
+      <option name="SHOW_LOGCAT_AUTOMATICALLY" value="false" />
+      <option name="SKIP_NOOP_APK_INSTALLATIONS" value="true" />
+      <option name="FORCE_STOP_RUNNING_APP" value="true" />
+      <option name="TARGET_SELECTION_MODE" value="DEVICE_AND_SNAPSHOT_COMBO_BOX" />
+      <option name="SELECTED_CLOUD_MATRIX_CONFIGURATION_ID" value="-1" />
+      <option name="SELECTED_CLOUD_MATRIX_PROJECT_ID" value="" />
+      <option name="DEBUGGER_TYPE" value="Auto" />
+      <Auto>
+        <option name="USE_JAVA_AWARE_DEBUGGER" value="false" />
+        <option name="SHOW_STATIC_VARS" value="true" />
+        <option name="WORKING_DIR" value="" />
+        <option name="TARGET_LOGGING_CHANNELS" value="lldb process:gdb-remote packets" />
+        <option name="SHOW_OPTIMIZED_WARNING" value="true" />
+      </Auto>
+      <Hybrid>
+        <option name="USE_JAVA_AWARE_DEBUGGER" value="false" />
+        <option name="SHOW_STATIC_VARS" value="true" />
+        <option name="WORKING_DIR" value="" />
+        <option name="TARGET_LOGGING_CHANNELS" value="lldb process:gdb-remote packets" />
+        <option name="SHOW_OPTIMIZED_WARNING" value="true" />
+      </Hybrid>
+      <Java />
+      <Native>
+        <option name="USE_JAVA_AWARE_DEBUGGER" value="false" />
+        <option name="SHOW_STATIC_VARS" value="true" />
+        <option name="WORKING_DIR" value="" />
+        <option name="TARGET_LOGGING_CHANNELS" value="lldb process:gdb-remote packets" />
+        <option name="SHOW_OPTIMIZED_WARNING" value="true" />
+      </Native>
+      <Profilers>
+        <option name="ADVANCED_PROFILING_ENABLED" value="false" />
+        <option name="STARTUP_PROFILING_ENABLED" value="false" />
+        <option name="STARTUP_CPU_PROFILING_ENABLED" value="false" />
+        <option name="STARTUP_CPU_PROFILING_CONFIGURATION_NAME" value="Sample Java Methods" />
+        <option name="STARTUP_NATIVE_MEMORY_PROFILING_ENABLED" value="false" />
+        <option name="NATIVE_MEMORY_SAMPLE_RATE_BYTES" value="2048" />
+      </Profilers>
+      <option name="DEEP_LINK" value="" />
+      <option name="ACTIVITY_CLASS" value="" />
+      <option name="SEARCH_ACTIVITY_IN_GLOBAL_SCOPE" value="false" />
+      <option name="SKIP_ACTIVITY_VALIDATION" value="false" />
+      <method v="2">
+        <option name="Android.Gradle.BeforeRunTask" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="MoviesNetworkDataSourceTest.should fetch movies correctly given 200 response" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="Open_Movie.app" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.dhorowitz.openmovie.discover.data.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.dhorowitz.openmovie.discover.data" />
+      <option name="MAIN_CLASS_NAME" value="com.dhorowitz.openmovie.discover.data.MoviesNetworkDataSourceTest" />
+      <option name="METHOD_NAME" value="should fetch movies correctly given 200 response" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Android JUnit.MoviesToDomainMapperKtTest.map dto into movie correctly" />
+        <item itemvalue="Android JUnit.MoviesNetworkDataSourceTest" />
+        <item itemvalue="Android JUnit.MoviesNetworkDataSourceTest.should fetch movies correctly given 200 response" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="51535ddb-2a1c-44d4-83bf-1133eb34e9ac" name="Default Changelist" comment="" />
+      <created>1610283777882</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1610283777882</updated>
+    </task>
+    <servers />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="1">
+          <value>
+            <State>
+              <option name="SHOW_ONLY_AFFECTED_CHANGES" value="true" />
+              <option name="FILTERS">
+                <map>
+                  <entry key="branch">
+                    <value>
+                      <list>
+                        <option value="HEAD" />
+                      </list>
+                    </value>
+                  </entry>
+                  <entry key="structure">
+                    <value>
+                      <list>
+                        <option value="dir:/Users/danielhorowitz/Documents/DH/openMovie/android/app/src/main/java/com/dhorowitz/openmovie" />
+                      </list>
+                    </value>
+                  </entry>
+                </map>
+              </option>
+            </State>
+          </value>
+        </entry>
+      </map>
+    </option>
+    <option name="OPEN_GENERIC_TABS">
+      <map>
+        <entry key="1" value="TOOL_WINDOW" />
+      </map>
+    </option>
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="485" y="290" key="#PSD" timestamp="1612096768079">
+      <screen x="0" y="23" width="1920" height="1057" />
+    </state>
+    <state x="485" y="290" key="#PSD/0.23.1920.1057/1920.23.1680.1027@0.23.1920.1057" timestamp="1612096768079" />
+    <state x="748" y="274" key="#com.intellij.ide.util.MemberChooser" timestamp="1610294177646">
+      <screen x="0" y="23" width="1920" height="1057" />
+    </state>
+    <state x="748" y="274" key="#com.intellij.ide.util.MemberChooser/0.23.1920.1057/1920.23.1680.1027@0.23.1920.1057" timestamp="1610294177646" />
+    <state x="406" y="483" key="#com.intellij.refactoring.move.MoveHandler.SelectRefactoringDialog" timestamp="1610295799499">
+      <screen x="0" y="23" width="1920" height="1057" />
+    </state>
+    <state x="406" y="483" key="#com.intellij.refactoring.move.MoveHandler.SelectRefactoringDialog/0.23.1920.1057/1920.23.1680.1027@0.23.1920.1057" timestamp="1610295799499" />
+    <state x="635" y="440" key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.packages" timestamp="1610295801213">
+      <screen x="0" y="23" width="1920" height="1057" />
+    </state>
+    <state x="635" y="440" key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.packages/0.23.1920.1057/1920.23.1680.1027@0.23.1920.1057" timestamp="1610295801213" />
+    <state x="698" y="305" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1612095165486">
+      <screen x="0" y="23" width="1920" height="1057" />
+    </state>
+    <state x="698" y="305" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.23.1920.1057/1920.23.1680.1027@0.23.1920.1057" timestamp="1612095165486" />
+    <state x="610" y="350" key="#org.jetbrains.kotlin.idea.refactoring.move.moveDeclarations.ui.MoveKotlinTopLevelDeclarationsDialog" timestamp="1610293272050">
+      <screen x="0" y="23" width="1920" height="1057" />
+    </state>
+    <state x="610" y="350" key="#org.jetbrains.kotlin.idea.refactoring.move.moveDeclarations.ui.MoveKotlinTopLevelDeclarationsDialog/0.23.1920.1057/1920.23.1680.1027@0.23.1920.1057" timestamp="1610293272050" />
+    <state x="548" y="313" key="AndroidCreateResourceFileDialog" timestamp="1612095128817">
+      <screen x="0" y="23" width="1920" height="1057" />
+    </state>
+    <state x="548" y="313" key="AndroidCreateResourceFileDialog/0.23.1920.1057/1920.23.1680.1027@0.23.1920.1057" timestamp="1612095128817" />
+    <state x="100" y="123" width="1720" height="857" key="DiffContextDialog" timestamp="1612096069502">
+      <screen x="0" y="23" width="1920" height="1057" />
+    </state>
+    <state x="100" y="123" width="1720" height="857" key="DiffContextDialog/0.23.1920.1057/1920.23.1680.1027@0.23.1920.1057" timestamp="1612096069502" />
+    <state width="1876" height="290" key="GridCell.Tab.0.bottom" timestamp="1612168406882">
+      <screen x="0" y="23" width="1920" height="1057" />
+    </state>
+    <state width="1876" height="290" key="GridCell.Tab.0.bottom/0.23.1920.1057/1920.23.1680.1027@0.23.1920.1057" timestamp="1612168406882" />
+    <state width="1876" height="290" key="GridCell.Tab.0.center" timestamp="1612168406882">
+      <screen x="0" y="23" width="1920" height="1057" />
+    </state>
+    <state width="1876" height="290" key="GridCell.Tab.0.center/0.23.1920.1057/1920.23.1680.1027@0.23.1920.1057" timestamp="1612168406882" />
+    <state width="1876" height="290" key="GridCell.Tab.0.left" timestamp="1612168406881">
+      <screen x="0" y="23" width="1920" height="1057" />
+    </state>
+    <state width="1876" height="290" key="GridCell.Tab.0.left/0.23.1920.1057/1920.23.1680.1027@0.23.1920.1057" timestamp="1612168406881" />
+    <state width="1876" height="290" key="GridCell.Tab.0.right" timestamp="1612168406882">
+      <screen x="0" y="23" width="1920" height="1057" />
+    </state>
+    <state width="1876" height="290" key="GridCell.Tab.0.right/0.23.1920.1057/1920.23.1680.1027@0.23.1920.1057" timestamp="1612168406882" />
+    <state x="741" y="338" width="913" height="420" key="chooseDestDirectoryDialog" timestamp="1612099768862">
+      <screen x="0" y="23" width="1920" height="1057" />
+    </state>
+    <state x="741" y="338" width="913" height="420" key="chooseDestDirectoryDialog/0.23.1920.1057/1920.23.1680.1027@0.23.1920.1057" timestamp="1612099768862" />
+    <state x="661" y="277" width="769" height="548" key="find.popup" timestamp="1612096503481">
+      <screen x="0" y="23" width="1920" height="1057" />
+    </state>
+    <state x="661" y="277" width="769" height="548" key="find.popup/0.23.1920.1057/1920.23.1680.1027@0.23.1920.1057" timestamp="1612096503481" />
+    <state x="681" y="380" width="577" height="346" key="org.jetbrains.kotlin.idea.testIntegration.KotlinCreateTestDialog" timestamp="1612099768923">
+      <screen x="0" y="23" width="1920" height="1057" />
+    </state>
+    <state x="681" y="380" width="577" height="346" key="org.jetbrains.kotlin.idea.testIntegration.KotlinCreateTestDialog/0.23.1920.1057/1920.23.1680.1027@0.23.1920.1057" timestamp="1612099768923" />
+    <state x="625" y="258" width="670" height="676" key="search.everywhere.popup" timestamp="1612099555831">
+      <screen x="0" y="23" width="1920" height="1057" />
+    </state>
+    <state x="625" y="258" width="670" height="676" key="search.everywhere.popup/0.23.1920.1057/1920.23.1680.1027@0.23.1920.1057" timestamp="1612099555831" />
+  </component>
+</project>
