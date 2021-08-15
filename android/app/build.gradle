@@ -88,6 +88,7 @@ dependencies {
 
     //Unit tests
     testImplementation 'junit:junit:4.13.2'
+    testImplementation 'android.arch.core:core-testing:1.1.1'
 
     //Mockito
     testImplementation 'org.mockito:mockito-core:3.11.0'

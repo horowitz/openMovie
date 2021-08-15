@@ -1,10 +1,12 @@
 package com.dhorowitz.openmovie.discover.presentation.model
 
-sealed class DiscoverState() {
+import com.dhorowitz.openmovie.discover.domain.model.Movie
 
+sealed class DiscoverState {
+    data class Content(val items: List<Movie>) : DiscoverState()
 }
 
-sealed class DiscoverAction() {
+sealed class DiscoverAction {
     object Load : DiscoverAction()
 }
 
