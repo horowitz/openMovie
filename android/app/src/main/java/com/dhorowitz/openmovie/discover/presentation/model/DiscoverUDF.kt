@@ -3,7 +3,7 @@ package com.dhorowitz.openmovie.discover.presentation.model
 import com.dhorowitz.openmovie.discover.domain.model.Movie
 
 sealed class DiscoverState {
-    data class Content(val items: List<Movie>) : DiscoverState()
+    data class Content(val items: List<DiscoverViewEntity>) : DiscoverState()
 }
 
 sealed class DiscoverAction {

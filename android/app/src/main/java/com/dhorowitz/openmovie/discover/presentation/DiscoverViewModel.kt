@@ -6,6 +6,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.dhorowitz.openmovie.livedata.SingleLiveEvent
 import com.dhorowitz.openmovie.discover.domain.GetPopularMovies
+import com.dhorowitz.openmovie.discover.presentation.mapper.toDiscoverViewEntity
 import com.dhorowitz.openmovie.discover.presentation.model.DiscoverAction
 import com.dhorowitz.openmovie.discover.presentation.model.DiscoverAction.Load
 import com.dhorowitz.openmovie.discover.presentation.model.DiscoverEvent
@@ -33,7 +34,10 @@ class DiscoverViewModel @Inject constructor(
 
     private fun fetchPopularMovies() {
         viewModelScope.launch {
-            runCatching { getPopularMovies() }
+            runCatching {
+                val movies = getPopularMovies()
+                movies.map { it.toDiscoverViewEntity() }
+            }
                 .onSuccess { stateLiveData.value = Content(it) }
                 .onFailure { Timber.e(it) }
         }
