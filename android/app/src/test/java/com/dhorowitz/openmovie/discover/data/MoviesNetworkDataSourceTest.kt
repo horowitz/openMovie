@@ -2,11 +2,10 @@ package com.dhorowitz.openmovie.discover.data
 
 import com.dhorowitz.openmovie.discover.movieDTO
 import com.dhorowitz.openmovie.enqueueResponse
-import com.dhorowitz.openmovie.network.serializer.defaultConverter
+import com.n26.network.serializer.defaultConverter
 import com.dhorowitz.openmovie.toPaginatedResponse
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.runBlocking
-import kotlinx.coroutines.test.TestCoroutineDispatcher
 import kotlinx.serialization.ExperimentalSerializationApi
 import okhttp3.OkHttpClient
 import okhttp3.mockwebserver.MockWebServer
@@ -30,7 +29,7 @@ class MoviesNetworkDataSourceTest {
     private val api = Retrofit.Builder()
         .baseUrl(mockWebServer.url("/"))
         .client(client)
-        .addConverterFactory(defaultConverter(isLenient = true))
+        .addConverterFactory(com.n26.network.serializer.defaultConverter(isLenient = true))
         .build()
         .create(MoviesApi::class.java)
 

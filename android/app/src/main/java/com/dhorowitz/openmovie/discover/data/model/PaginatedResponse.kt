@@ -1,4 +1,4 @@
-package com.dhorowitz.openmovie.network.model
+package com.dhorowitz.openmovie.discover.data.model
 
 import kotlinx.serialization.Serializable
 

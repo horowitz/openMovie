@@ -1,6 +1,6 @@
-package com.dhorowitz.openmovie.network
+package com.n26.network
 
-import com.dhorowitz.openmovie.network.serializer.defaultConverter
+import com.n26.network.serializer.defaultConverter
 import kotlinx.serialization.ExperimentalSerializationApi
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
@@ -23,7 +23,7 @@ object RetrofitAdapter {
             .connectTimeout(15, SECONDS)
             .build()
 
-        this.openMovieRetrofit = Retrofit.Builder()
+        openMovieRetrofit = Retrofit.Builder()
             .baseUrl(NetworkConfig.BASE_URL)
             .client(client)
             .addConverterFactory(defaultConverter(isLenient = true))

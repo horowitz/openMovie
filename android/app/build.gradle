@@ -47,6 +47,7 @@ kapt {
 }
 
 dependencies {
+    implementation project(path: ':network')
 
     // Basic
     implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"

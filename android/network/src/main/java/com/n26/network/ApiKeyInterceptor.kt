@@ -1,11 +1,10 @@
-package com.dhorowitz.openmovie.network
+package com.n26.network
 
-import com.dhorowitz.openmovie.BuildConfig
+import Open_Movie.network.BuildConfig
 import okhttp3.Interceptor
 import okhttp3.Response
 import okhttp3.HttpUrl
 import okhttp3.Request
-
 
 class ApiKeyInterceptor: Interceptor {
 

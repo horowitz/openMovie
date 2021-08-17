@@ -1,7 +1,7 @@
 package com.dhorowitz.openmovie.discover.data
 
 import com.dhorowitz.openmovie.discover.data.model.MovieDTO
-import com.dhorowitz.openmovie.network.model.PaginatedResponse
+import com.dhorowitz.openmovie.discover.data.model.PaginatedResponse
 import javax.inject.Inject
 import javax.inject.Singleton
 

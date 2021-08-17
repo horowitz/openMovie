@@ -1,4 +1,4 @@
-package com.dhorowitz.openmovie.network.serializer
+package com.n26.network.serializer
 
 import com.jakewharton.retrofit2.converter.kotlinx.serialization.asConverterFactory
 import kotlinx.serialization.ExperimentalSerializationApi
