@@ -1,6 +1,6 @@
 plugins {
-    id 'com.android.application'
-    id 'kotlin-android'
+    id "com.android.library"
+    id "kotlin-android"
     id 'org.jetbrains.kotlin.plugin.serialization' version '1.5.21'
 }
 
@@ -9,22 +9,17 @@ apply plugin: 'dagger.hilt.android.plugin'
 
 android {
     buildFeatures {
-        buildConfig true
         viewBinding true
     }
-    compileSdkVersion 30
-    buildToolsVersion "30.0.3"
+    compileSdk 30
 
     defaultConfig {
-        applicationId "com.dhorowitz.openmovie"
-        minSdkVersion 27
-        targetSdkVersion 30
+        minSdk 21
+        targetSdk 30
         versionCode 1
         versionName "1.0"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
-
-        buildConfigField "String", "MOVIE_DB_KEY", "\"${System.getenv("MOVIE_DB_KEY")}\""
     }
 
     buildTypes {
@@ -47,8 +42,8 @@ kapt {
 }
 
 dependencies {
-    implementation project(path: ':network')
-    implementation project(path: ':discover')
+    implementation project(path: ":common")
+    implementation project(path: ":network")
 
     // Basic
     implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"

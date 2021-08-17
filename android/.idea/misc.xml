@@ -5,6 +5,8 @@
       <map>
         <entry key="app/src/main/res/layout/activity_discover.xml" value="0.12635869565217392" />
         <entry key="app/src/main/res/layout/discover_list_item.xml" value="0.22282608695652173" />
+        <entry key="discover/src/main/res/layout/activity_discover.xml" value="0.15052083333333333" />
+        <entry key="discover/src/main/res/layout/discover_list_item.xml" value="0.15052083333333333" />
       </map>
     </option>
   </component>

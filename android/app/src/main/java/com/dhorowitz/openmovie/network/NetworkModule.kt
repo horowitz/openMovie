@@ -3,7 +3,7 @@ package com.dhorowitz.openmovie.network
 import com.dhorowitz.openmovie.discover.data.MoviesApi
 import com.dhorowitz.openmovie.discover.data.MoviesDataSource
 import com.dhorowitz.openmovie.discover.data.MoviesNetworkDataSource
-import com.n26.network.RetrofitAdapter
+import com.dhorowitz.network.RetrofitAdapter
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn

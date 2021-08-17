@@ -1,3 +1,5 @@
 include ':app'
 rootProject.name = "Open Movie"
 include ':network'
+include ':discover'
+include ':common'

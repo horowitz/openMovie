@@ -3,6 +3,9 @@
   <component name="CompilerConfiguration">
     <bytecodeTargetLevel target="1.8">
       <module name="Open_Movie.app" target="11" />
+      <module name="Open_Movie.common" target="11" />
+      <module name="Open_Movie.discover" target="11" />
+      <module name="Open_Movie.discover2" target="11" />
     </bytecodeTargetLevel>
   </component>
 </project>
