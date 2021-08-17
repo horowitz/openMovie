@@ -28,4 +28,5 @@ class GetPopularMoviesTest {
 
 class FakeDataSource(private val items: List<MovieDTO>) : MoviesDataSource {
     override suspend fun fetchMovies(): PaginatedResponse<MovieDTO> = PaginatedResponse(1, items)
+    override suspend fun fetchNextPage(): PaginatedResponse<MovieDTO> = PaginatedResponse(1, items)
 }

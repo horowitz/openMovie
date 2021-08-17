@@ -8,5 +8,5 @@ class GetPopularMovies @Inject constructor(
     private val dataSource: MoviesDataSource
 ) {
     suspend operator fun invoke(): List<Movie> =
-        dataSource.fetchMovies().results.map { it.toMovie() }
+        dataSource.fetchNextPage().results.map { it.toMovie() }
 }

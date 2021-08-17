@@ -54,7 +54,8 @@ class MoviesNetworkDataSourceTest {
                     overview = "Wonder Woman comes into...",
                     title = "Wonder Woman 1984",
                     voteAverage = 7.2,
-                    posterPath = "/8UlWHLMpgZm9bx6QYh0NFoq67TZ.jpg"
+                    posterPath = "/8UlWHLMpgZm9bx6QYh0NFoq67TZ.jpg",
+                    voteCount = 2385
                 )
             ).toPaginatedResponse()
 

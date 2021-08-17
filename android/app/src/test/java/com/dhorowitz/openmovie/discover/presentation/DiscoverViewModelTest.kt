@@ -2,6 +2,7 @@ package com.dhorowitz.openmovie.discover.presentation
 
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import com.dhorowitz.openmovie.MainCoroutineRule
+import com.dhorowitz.openmovie.discover.discoverViewEntity
 import com.dhorowitz.openmovie.discover.domain.GetPopularMovies
 import com.dhorowitz.openmovie.discover.domain.model.Movie
 import com.dhorowitz.openmovie.discover.movie
@@ -40,7 +41,7 @@ class DiscoverViewModelTest {
 
             viewModel.handle(Load)
 
-            observer.assertValues(Content(movies))
+            observer.assertValues(Content(listOf(discoverViewEntity())))
         }
     }
 
