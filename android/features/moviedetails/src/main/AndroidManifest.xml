@@ -2,6 +2,6 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.dhorowitz.openmovie.moviedetails">
     <application>
-        <activity android:name="com.dhorowitz.openmovie.moviedetails.MovieDetailsActivity"/>
+        <activity android:name="com.dhorowitz.openmovie.moviedetails.presentation.MovieDetailsActivity"/>
     </application>
 </manifest>

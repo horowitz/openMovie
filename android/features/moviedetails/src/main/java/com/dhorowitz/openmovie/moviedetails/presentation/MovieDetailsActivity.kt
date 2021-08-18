@@ -1,4 +1,4 @@
-package com.dhorowitz.openmovie.moviedetails
+package com.dhorowitz.openmovie.moviedetails.presentation
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity

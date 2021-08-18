@@ -10,6 +10,7 @@ rootProject.name = "Open Movie"
 include ':libraries:navigation'
 include ':libraries:common'
 include ':libraries:network'
+include ':libraries:test'
 
 include ':features:moviedetails'
 include ':features:discover'

@@ -10,8 +10,10 @@
       <module name="Open_Movie.features.moviedetails" target="11" />
       <module name="Open_Movie.libraries.common" target="11" />
       <module name="Open_Movie.libraries.navigation" target="11" />
+      <module name="Open_Movie.libraries.test" target="11" />
       <module name="Open_Movie.moviedetails" target="11" />
       <module name="Open_Movie.navigation" target="11" />
+      <module name="Open_Movie.test" target="11" />
     </bytecodeTargetLevel>
   </component>
 </project>

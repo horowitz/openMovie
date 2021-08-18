@@ -19,6 +19,7 @@
             <option value="$PROJECT_DIR$/libraries/common" />
             <option value="$PROJECT_DIR$/libraries/navigation" />
             <option value="$PROJECT_DIR$/libraries/network" />
+            <option value="$PROJECT_DIR$/libraries/test" />
           </set>
         </option>
         <option name="resolveModulePerSourceSet" value="false" />
