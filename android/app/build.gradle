@@ -50,6 +50,7 @@ dependencies {
     implementation project(path: ':libraries:network')
     implementation project(path: ':libraries:navigation')
     implementation project(path: ':features:discover')
+    implementation project(path: ':features:moviedetails')
 
     // Basic
     implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"

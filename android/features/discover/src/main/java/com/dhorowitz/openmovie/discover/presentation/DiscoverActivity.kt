@@ -10,9 +10,11 @@ import com.dhorowitz.openmovie.discover.presentation.grid.GridSpacingItemDecorat
 import com.dhorowitz.openmovie.discover.presentation.grid.OnScrollListener
 import com.dhorowitz.openmovie.discover.presentation.model.DiscoverAction.*
 import com.dhorowitz.openmovie.discover.presentation.model.DiscoverEvent
+import com.dhorowitz.openmovie.discover.presentation.model.DiscoverEvent.*
 import com.dhorowitz.openmovie.discover.presentation.model.DiscoverState
 import com.dhorowitz.openmovie.discover.presentation.model.DiscoverState.*
 import com.dhorowitz.openmovie.discover.presentation.model.DiscoverViewEntity
+import com.dhorowitz.openmovie.navigation.navigateToMovieDetails
 import dagger.hilt.android.AndroidEntryPoint
 
 
@@ -22,7 +24,7 @@ class DiscoverActivity : AppCompatActivity() {
     private lateinit var binding: ActivityDiscoverBinding
 
     private val viewModel: DiscoverViewModel by viewModels()
-    private val adapter = DiscoverAdapter()
+    private val adapter = DiscoverAdapter { viewModel.handle(ItemClicked(it)) }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -44,8 +46,8 @@ class DiscoverActivity : AppCompatActivity() {
         recyclerView.adapter = adapter
     }
 
-    private fun handleEvent(event: DiscoverEvent?) {
-        TODO("Not yet implemented")
+    private fun handleEvent(event: DiscoverEvent) = when (event) {
+        is NavigateToMovieDetails -> navigateToMovieDetails(event.id)
     }
 
     private fun handleState(state: DiscoverState) = when (state) {

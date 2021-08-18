@@ -44,6 +44,7 @@ kapt {
 dependencies {
     implementation project(path: ":libraries:common")
     implementation project(path: ":libraries:network")
+    implementation project(path: ":libraries:navigation")
 
     // Basic
     implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"

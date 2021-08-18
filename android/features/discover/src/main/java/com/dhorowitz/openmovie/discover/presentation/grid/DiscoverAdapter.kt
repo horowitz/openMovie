@@ -11,7 +11,7 @@ import com.dhorowitz.openmovie.discover.R
 import com.dhorowitz.openmovie.discover.presentation.model.DiscoverViewEntity
 import com.squareup.picasso.Picasso
 
-class DiscoverAdapter() :
+class DiscoverAdapter(val onItemClick: (DiscoverViewEntity) -> Unit) :
     ListAdapter<DiscoverViewEntity, RecyclerView.ViewHolder>(ListItemCallback()) {
 
     class ListItemCallback : DiffUtil.ItemCallback<DiscoverViewEntity>() {
@@ -38,6 +38,7 @@ class DiscoverAdapter() :
         private val posterImageView: ImageView by lazy { itemView.findViewById(R.id.posterImageView) }
 
         fun bind(item: DiscoverViewEntity) {
+            itemView.setOnClickListener { onItemClick(item) }
             Picasso.get().load(item.imageUrl).into(posterImageView)
         }
     }

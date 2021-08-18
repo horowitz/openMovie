@@ -8,10 +8,13 @@ import com.dhorowitz.openmovie.common.livedata.SingleLiveEvent
 import com.dhorowitz.openmovie.discover.domain.GetPopularMovies
 import com.dhorowitz.openmovie.discover.presentation.mapper.toDiscoverViewEntity
 import com.dhorowitz.openmovie.discover.presentation.model.DiscoverAction
-import com.dhorowitz.openmovie.discover.presentation.model.DiscoverAction.*
+import com.dhorowitz.openmovie.discover.presentation.model.DiscoverAction.ItemClicked
+import com.dhorowitz.openmovie.discover.presentation.model.DiscoverAction.Load
 import com.dhorowitz.openmovie.discover.presentation.model.DiscoverEvent
 import com.dhorowitz.openmovie.discover.presentation.model.DiscoverState
-import com.dhorowitz.openmovie.discover.presentation.model.DiscoverState.*
+import com.dhorowitz.openmovie.discover.presentation.model.DiscoverState.Content
+import com.dhorowitz.openmovie.discover.presentation.model.DiscoverViewEntity
+import com.gaelmarhic.quadrant.QuadrantConstants.MOVIE_DETAILS_ACTIVITY
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
 import timber.log.Timber
@@ -30,6 +33,11 @@ class DiscoverViewModel @Inject constructor(
 
     fun handle(action: DiscoverAction) = when (action) {
         Load -> fetchPopularMovies()
+        is ItemClicked -> onItemClicked(action.item)
+    }
+
+    private fun onItemClicked(item: DiscoverViewEntity) {
+        eventLiveData.value = DiscoverEvent.NavigateToMovieDetails(item.id, MOVIE_DETAILS_ACTIVITY)
     }
 
     private fun fetchPopularMovies() {
