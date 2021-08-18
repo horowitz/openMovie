@@ -6,8 +6,10 @@ pluginManagement {
 }
 include ':app'
 rootProject.name = "Open Movie"
-include ':network'
-include ':discover'
-include ':common'
-include ':moviedetails'
-include ':navigation'
+
+include ':libraries:navigation'
+include ':libraries:common'
+include ':libraries:network'
+
+include ':features:moviedetails'
+include ':features:discover'

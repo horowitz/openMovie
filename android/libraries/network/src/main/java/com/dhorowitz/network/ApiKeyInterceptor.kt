@@ -1,6 +1,6 @@
 package com.dhorowitz.network
 
-import Open_Movie.network.BuildConfig
+import Open_Movie.libraries.network.BuildConfig
 import okhttp3.Interceptor
 import okhttp3.Response
 import okhttp3.HttpUrl

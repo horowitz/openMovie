@@ -6,7 +6,7 @@ plugins {
 
 apply plugin: 'kotlin-kapt'
 apply plugin: 'dagger.hilt.android.plugin'
-apply from: "$rootDir/common/gradle/feature.gradle"
+apply from: "$rootDir/libraries/common/gradle/feature.gradle"
 
 android {
     compileSdk 30

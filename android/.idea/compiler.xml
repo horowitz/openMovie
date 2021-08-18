@@ -6,6 +6,10 @@
       <module name="Open_Movie.common" target="11" />
       <module name="Open_Movie.discover" target="11" />
       <module name="Open_Movie.discover2" target="11" />
+      <module name="Open_Movie.features.discover" target="11" />
+      <module name="Open_Movie.features.moviedetails" target="11" />
+      <module name="Open_Movie.libraries.common" target="11" />
+      <module name="Open_Movie.libraries.navigation" target="11" />
       <module name="Open_Movie.moviedetails" target="11" />
       <module name="Open_Movie.navigation" target="11" />
     </bytecodeTargetLevel>
