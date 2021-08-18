@@ -31,7 +31,7 @@ class MoviesNetworkDataSourceTest {
         .client(client)
         .addConverterFactory(defaultConverter(isLenient = true))
         .build()
-        .create(MoviesApi::class.java)
+        .create(DiscoverApi::class.java)
 
     private val sut = MoviesNetworkDataSource(api)
 

@@ -5,7 +5,7 @@ import com.dhorowitz.openmovie.discover.data.model.PaginatedResponse
 import retrofit2.http.GET
 import retrofit2.http.Query
 
-interface MoviesApi {
+interface DiscoverApi {
     @GET("discover/movie")
     suspend fun fetchPopularMovies(
         @Query("language") language: String = "en-US",

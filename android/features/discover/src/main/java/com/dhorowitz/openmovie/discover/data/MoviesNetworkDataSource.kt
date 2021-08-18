@@ -7,7 +7,7 @@ import javax.inject.Singleton
 
 @Singleton
 class MoviesNetworkDataSource @Inject constructor(
-    private val moviesApi: MoviesApi
+    private val discoverApi: DiscoverApi
 ) : MoviesDataSource {
     var page = 0
 
@@ -22,5 +22,5 @@ class MoviesNetworkDataSource @Inject constructor(
     }
 
     private suspend fun fetchPopularMovies() =
-        moviesApi.fetchPopularMovies(page = page)
+        discoverApi.fetchPopularMovies(page = page)
 }

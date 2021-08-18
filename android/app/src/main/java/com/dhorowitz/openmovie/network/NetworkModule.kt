@@ -1,6 +1,6 @@
 package com.dhorowitz.openmovie.network
 
-import com.dhorowitz.openmovie.discover.data.MoviesApi
+import com.dhorowitz.openmovie.discover.data.DiscoverApi
 import com.dhorowitz.openmovie.discover.data.MoviesDataSource
 import com.dhorowitz.openmovie.discover.data.MoviesNetworkDataSource
 import com.dhorowitz.network.RetrofitAdapter
@@ -15,6 +15,6 @@ class NetworkModule {
     @Provides
     fun provideDataSource(): MoviesDataSource =
         MoviesNetworkDataSource(
-            RetrofitAdapter.openMovieRetrofit.create(MoviesApi::class.java)
+            RetrofitAdapter.openMovieRetrofit.create(DiscoverApi::class.java)
         )
 }
