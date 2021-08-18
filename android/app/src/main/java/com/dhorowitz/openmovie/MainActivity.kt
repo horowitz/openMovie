@@ -1,13 +1,13 @@
 package com.dhorowitz.openmovie
 
-import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import com.dhorowitz.openmovie.discover.presentation.DiscoverActivity
+import androidx.appcompat.app.AppCompatActivity
+import com.dhorowitz.openmovie.navigation.navigateTo
+import com.gaelmarhic.quadrant.QuadrantConstants
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        startActivity(Intent(this, DiscoverActivity::class.java))
+        navigateTo(QuadrantConstants.DISCOVER_ACTIVITY)
     }
 }

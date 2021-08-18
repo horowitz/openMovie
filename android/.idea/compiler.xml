@@ -7,6 +7,7 @@
       <module name="Open_Movie.discover" target="11" />
       <module name="Open_Movie.discover2" target="11" />
       <module name="Open_Movie.moviedetails" target="11" />
+      <module name="Open_Movie.navigation" target="11" />
     </bytecodeTargetLevel>
   </component>
 </project>

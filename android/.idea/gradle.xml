@@ -15,6 +15,7 @@
             <option value="$PROJECT_DIR$/common" />
             <option value="$PROJECT_DIR$/discover" />
             <option value="$PROJECT_DIR$/moviedetails" />
+            <option value="$PROJECT_DIR$/navigation" />
             <option value="$PROJECT_DIR$/network" />
           </set>
         </option>
