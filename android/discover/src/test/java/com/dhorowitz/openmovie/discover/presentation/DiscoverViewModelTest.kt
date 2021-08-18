@@ -29,9 +29,9 @@ class DiscoverViewModelTest {
     @get:Rule
     var mainCoroutineRule = MainCoroutineRule()
 
-    private val getPopularMovies: com.dhorowitz.openmovie.discover.domain.GetPopularMovies = mock()
+    private val getPopularMovies: GetPopularMovies = mock()
     private val viewModel =
-        com.dhorowitz.openmovie.discover.presentation.DiscoverViewModel(getPopularMovies)
+        DiscoverViewModel(getPopularMovies)
 
     @Test
     fun `should load movies when vm starts`() {

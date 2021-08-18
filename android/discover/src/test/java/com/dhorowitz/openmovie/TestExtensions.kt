@@ -8,7 +8,7 @@ import okio.source
 import java.nio.charset.StandardCharsets
 
 internal fun List<Any>.toPaginatedResponse(page: Int = 1) =
-    com.dhorowitz.openmovie.discover.data.model.PaginatedResponse(page, this)
+    PaginatedResponse(page, this)
 
 internal fun MockWebServer.enqueueResponse(fileName: String, code: Int) {
     val inputStream = javaClass.classLoader?.getResourceAsStream("api-response/$fileName")

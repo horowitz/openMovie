@@ -31,9 +31,9 @@ class MoviesNetworkDataSourceTest {
         .client(client)
         .addConverterFactory(defaultConverter(isLenient = true))
         .build()
-        .create(com.dhorowitz.openmovie.discover.data.MoviesApi::class.java)
+        .create(MoviesApi::class.java)
 
-    private val sut = com.dhorowitz.openmovie.discover.data.MoviesNetworkDataSource(api)
+    private val sut = MoviesNetworkDataSource(api)
 
     @After
     fun tearDown() {

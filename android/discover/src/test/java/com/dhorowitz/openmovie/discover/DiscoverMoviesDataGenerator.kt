@@ -11,7 +11,7 @@ internal fun movieDTO(
     voteAverage: Double = 0.0,
     voteCount: Int = 0,
     posterPath: String = "posterPath"
-) = com.dhorowitz.openmovie.discover.data.model.MovieDTO(
+) = MovieDTO(
     id,
     overview,
     title,
@@ -27,7 +27,7 @@ internal fun movie(
     voteAverage: Double = 0.0,
     voteCount: Int = 0,
     image: String = "https://image.tmdb.org/t/p/w500posterPath"
-) = com.dhorowitz.openmovie.discover.domain.model.Movie(
+) = Movie(
     id,
     title,
     overview,
@@ -40,4 +40,4 @@ internal fun discoverViewEntity(
     id: String = "id",
     title: String = "id",
     image: String = "https://image.tmdb.org/t/p/w500posterPath"
-) = com.dhorowitz.openmovie.discover.presentation.model.DiscoverViewEntity(id, title, image)
+) = DiscoverViewEntity(id, title, image)

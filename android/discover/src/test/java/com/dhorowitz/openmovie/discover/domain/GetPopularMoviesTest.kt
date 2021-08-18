@@ -14,7 +14,7 @@ import org.junit.Test
 class GetPopularMoviesTest {
     private val fakeDataSource = FakeDataSource(listOf(movieDTO()))
     private val getPopularMovies =
-        com.dhorowitz.openmovie.discover.domain.GetPopularMovies(fakeDataSource)
+        GetPopularMovies(fakeDataSource)
 
     @Test
     fun `should get popular movies correctly`() {
@@ -28,9 +28,9 @@ class GetPopularMoviesTest {
 }
 
 class FakeDataSource(private val items: List<com.dhorowitz.openmovie.discover.data.model.MovieDTO>) :
-    com.dhorowitz.openmovie.discover.data.MoviesDataSource {
+    MoviesDataSource {
     override suspend fun fetchMovies(): com.dhorowitz.openmovie.discover.data.model.PaginatedResponse<com.dhorowitz.openmovie.discover.data.model.MovieDTO> =
-        com.dhorowitz.openmovie.discover.data.model.PaginatedResponse(1, items)
+        PaginatedResponse(1, items)
     override suspend fun fetchNextPage(): com.dhorowitz.openmovie.discover.data.model.PaginatedResponse<com.dhorowitz.openmovie.discover.data.model.MovieDTO> =
-        com.dhorowitz.openmovie.discover.data.model.PaginatedResponse(1, items)
+        PaginatedResponse(1, items)
 }
