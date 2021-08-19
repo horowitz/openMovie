@@ -1,9 +1,9 @@
-package com.dhorowitz.openmovie.network
+package com.dhorowitz.openmovie.discover.di
 
+import com.dhorowitz.network.RetrofitAdapter
 import com.dhorowitz.openmovie.discover.data.DiscoverApi
 import com.dhorowitz.openmovie.discover.data.MoviesDataSource
 import com.dhorowitz.openmovie.discover.data.MoviesNetworkDataSource
-import com.dhorowitz.network.RetrofitAdapter
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -11,7 +11,7 @@ import dagger.hilt.components.SingletonComponent
 
 @Module
 @InstallIn(SingletonComponent::class)
-class NetworkModule {
+class DiscoverNetworkModule {
     @Provides
     fun provideDataSource(): MoviesDataSource =
         MoviesNetworkDataSource(

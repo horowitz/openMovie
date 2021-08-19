@@ -9,8 +9,9 @@ import com.dhorowitz.openmovie.moviedetails.domain.GetMovieDetails
 import com.dhorowitz.openmovie.moviedetails.presentation.model.MovieDetailsAction
 import com.dhorowitz.openmovie.moviedetails.presentation.model.MovieDetailsAction.*
 import com.dhorowitz.openmovie.moviedetails.presentation.model.MovieDetailsEvent
+import com.dhorowitz.openmovie.moviedetails.presentation.model.MovieDetailsEvent.NavigateToBrowser
 import com.dhorowitz.openmovie.moviedetails.presentation.model.MovieDetailsState
-import com.dhorowitz.openmovie.moviedetails.presentation.model.MovieDetailsState.*
+import com.dhorowitz.openmovie.moviedetails.presentation.model.MovieDetailsState.Content
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
 import timber.log.Timber
@@ -19,7 +20,7 @@ import javax.inject.Inject
 @HiltViewModel
 class MovieDetailsViewModel @Inject constructor(
     private val getMovieDetails: GetMovieDetails
-): ViewModel() {
+) : ViewModel() {
 
     private val stateLiveData = MutableLiveData<MovieDetailsState>()
     val state: LiveData<MovieDetailsState> = stateLiveData
@@ -29,6 +30,12 @@ class MovieDetailsViewModel @Inject constructor(
 
     fun handle(action: MovieDetailsAction) = when (action) {
         is Load -> fetchMovieDetails(action.id)
+        is HomepageButtonClicked -> onButtonClicked(action.url)
+        is ImdbButtonClicked -> onButtonClicked(action.url)
+    }
+
+    private fun onButtonClicked(url: String) {
+        eventLiveData.value = NavigateToBrowser(url)
     }
 
     private fun fetchMovieDetails(id: String) {

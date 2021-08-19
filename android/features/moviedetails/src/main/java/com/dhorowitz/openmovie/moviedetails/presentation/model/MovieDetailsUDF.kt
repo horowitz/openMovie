@@ -6,7 +6,10 @@ sealed class MovieDetailsState {
 
 sealed class MovieDetailsAction {
     data class Load(val id: String) : MovieDetailsAction()
+    data class HomepageButtonClicked(val url: String) : MovieDetailsAction()
+    data class ImdbButtonClicked(val url: String) : MovieDetailsAction()
 }
 
-sealed class MovieDetailsEvent() {
+sealed class MovieDetailsEvent {
+    data class NavigateToBrowser(val url: String): MovieDetailsEvent()
 }

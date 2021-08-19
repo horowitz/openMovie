@@ -55,6 +55,7 @@ class MovieDetailsNetworkDataSourceTest {
                 backdropPath = "/jlGmlFOcfo8n5tURmhC7YVd4Iyy.jpg",
                 tagline = "They're dying to save the world.",
                 overview = "Supervillains Harley Quinn, Bloodsport, Peacemaker and a collection of nutty cons at Belle Reve prison join the super-secret, super-shady Task Force X as they are dropped off at the remote, enemy-infused island of Corto Maltese.",
+                imdbId = "tt6334354"
             )
 
             assertEquals(expected, actual)

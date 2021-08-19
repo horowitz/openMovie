@@ -6,8 +6,9 @@ import android.os.Bundle
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import com.dhorowitz.openmovie.moviedetails.databinding.ActivityMovieDetailsBinding
-import com.dhorowitz.openmovie.moviedetails.presentation.model.MovieDetailsAction.Load
+import com.dhorowitz.openmovie.moviedetails.presentation.model.MovieDetailsAction.*
 import com.dhorowitz.openmovie.moviedetails.presentation.model.MovieDetailsEvent
+import com.dhorowitz.openmovie.moviedetails.presentation.model.MovieDetailsEvent.NavigateToBrowser
 import com.dhorowitz.openmovie.moviedetails.presentation.model.MovieDetailsState
 import com.dhorowitz.openmovie.moviedetails.presentation.model.MovieDetailsViewEntity
 import com.squareup.picasso.Picasso
@@ -33,7 +34,7 @@ class MovieDetailsActivity : AppCompatActivity() {
     }
 
     private fun handleEvent(event: MovieDetailsEvent) = when (event) {
-        else -> null
+        is NavigateToBrowser -> openBrowser(event.url)
     }
 
     private fun handleState(state: MovieDetailsState) = when (state) {
@@ -48,8 +49,16 @@ class MovieDetailsActivity : AppCompatActivity() {
         overviewTextView.text = viewEntity.overview
 
         homepageButton.setOnClickListener {
-            val browserIntent = Intent(Intent.ACTION_VIEW, Uri.parse(viewEntity.homepage))
-            startActivity(browserIntent)
+            viewModel.handle(HomepageButtonClicked(viewEntity.homepage))
         }
+
+        imdbButton.setOnClickListener {
+            viewModel.handle(ImdbButtonClicked(viewEntity.imdbUrl))
+        }
+    }
+
+    private fun openBrowser(url: String) {
+        val browserIntent = Intent(Intent.ACTION_VIEW, Uri.parse(url))
+        startActivity(browserIntent)
     }
 }

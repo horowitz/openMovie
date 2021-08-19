@@ -10,6 +10,7 @@ fun movieDetailsDto(
     homepage: String = "homepage",
     voteAverage: Double = 0.0,
     runtime: Int = 0,
+    imdbId: String = "imdb"
 ) = MovieDetailsDTO(
     id,
     title,
@@ -19,5 +20,6 @@ fun movieDetailsDto(
     overview,
     homepage,
     voteAverage,
-    runtime
+    runtime,
+    imdbId
 )

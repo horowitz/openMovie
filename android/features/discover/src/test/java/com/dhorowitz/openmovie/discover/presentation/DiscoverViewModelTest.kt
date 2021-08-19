@@ -59,7 +59,7 @@ class DiscoverViewModelTest {
             observer.assertValues(
                 NavigateToMovieDetails(
                     "id",
-                    "com.dhorowitz.openmovie.moviedetails.MovieDetailsActivity"
+                    "com.dhorowitz.openmovie.moviedetails.presentation.MovieDetailsActivity"
                 )
             )
         }

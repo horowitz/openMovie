@@ -17,4 +17,6 @@ data class MovieDetailsDTO(
    @SerialName("vote_average")
    val voteAverage: Double,
    val runtime: Int,
+   @SerialName("imdb_id")
+   val imdbId: String,
 )
