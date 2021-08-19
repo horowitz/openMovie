@@ -7,6 +7,7 @@
         <entry key="app/src/main/res/layout/discover_list_item.xml" value="0.22282608695652173" />
         <entry key="discover/src/main/res/layout/activity_discover.xml" value="0.15052083333333333" />
         <entry key="discover/src/main/res/layout/discover_list_item.xml" value="0.15052083333333333" />
+        <entry key="features/moviedetails/src/main/res/layout/activity_movie_details.xml" value="0.34885089891283394" />
       </map>
     </option>
   </component>

@@ -10,7 +10,9 @@ apply from: "$rootDir/libraries/common/gradle/feature.gradle"
 
 android {
     compileSdk 30
-
+    buildFeatures {
+        viewBinding true
+    }
     defaultConfig {
         minSdk 21
         targetSdk 30
