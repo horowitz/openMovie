@@ -1,0 +1,70 @@
+apply plugin: 'jacoco'
+
+jacoco {
+    toolVersion = '0.8.7'
+}
+
+ext.setProperty("isCodeAnalysisOn", true)
+
+tasks.withType(Test).configureEach {
+    jacoco.includeNoLocationClasses = true
+    jacoco.excludes = ['jdk.internal.*']
+}
+
+tasks.register("jacocoUnitTestReport", JacocoReport) {
+    dependsOn "testDebugUnitTest"
+    def buildDir = 'build'
+
+    def coverageSourceDirs = [
+            "src/main/java", "src/main/kotlin"
+    ]
+
+    def androidExclusion = [
+            '**/databinding/**/*.*',
+            '**/android/databinding/*Binding.*',
+            '**/BR.*',
+            '**/R.*',
+            '**/R$*.*',
+            '**/*$ViewInjector*.*',
+            '**/*$ViewBinder*.*',
+            '**/BuildConfig.*',
+            '**/Manifest*.*',
+            '**/*_MembersInjector.*',
+            '**/di/**/*.*',
+            '**/Dagger*Component.*',
+            '**/Dagger*Component$Builder.*',
+            '**/*Module_*Factory.*',
+            '**/*Adapter*.*',
+            '**/*ViewPager*.*',
+            '**/*ViewHolder*.*',
+            '**/*_Provide*/**',
+            '**/*_Factory*/**',
+            '**/anvil/hint/multibinding/**/*.*'
+    ]
+
+    def javaClasses = fileTree(
+            dir: "$buildDir/intermediates/classes/debug",
+            excludes: androidExclusion
+    )
+
+    def kotlinClasses = fileTree(
+            dir: "$buildDir/tmp/kotlin-classes/debug",
+            excludes: androidExclusion
+    )
+
+    getClassDirectories().setFrom(files([javaClasses, kotlinClasses]))
+    getAdditionalSourceDirs().setFrom(files(coverageSourceDirs))
+    getSourceDirectories().setFrom(files([coverageSourceDirs]))
+    getExecutionData().setFrom(fileTree(dir: "$buildDir", includes: [
+            "jacoco/testDebugUnitTest.exec"
+    ]))
+
+    reports {
+        xml.enabled = true
+        html.enabled = true
+    }
+
+    doLast {
+        exec { commandLine 'open', "build/reports/jacoco/jacocoUnitTestReport/html/index.html" }
+    }
+}

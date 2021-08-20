@@ -2,11 +2,13 @@ plugins {
     id "com.android.library"
     id "kotlin-android"
     id 'org.jetbrains.kotlin.plugin.serialization' version '1.5.21'
+    id 'jacoco'
 }
 
 apply plugin: 'kotlin-kapt'
 apply plugin: 'dagger.hilt.android.plugin'
 apply from: "$rootDir/libraries/common/gradle/feature.gradle"
+apply from: "$rootDir/libraries/common/gradle/jacoco.gradle"
 
 android {
     compileSdk 30
@@ -30,11 +32,11 @@ android {
         }
     }
     compileOptions {
-        sourceCompatibility JavaVersion.VERSION_1_8
-        targetCompatibility JavaVersion.VERSION_1_8
+        sourceCompatibility JavaVersion.VERSION_11
+        targetCompatibility JavaVersion.VERSION_11
     }
     kotlinOptions {
-        jvmTarget = '1.8'
+        jvmTarget = '11'
     }
 }
 
