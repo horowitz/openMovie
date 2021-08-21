@@ -26,10 +26,13 @@ jobs:
           java-version: '11'
           distribution: 'adopt'
 
-       # Execute unit tests
-      - name: Unit Test with Android Emulator Runner
-        run: ./gradlew jacocoUnitTestReport
-
+      # Execute unit tests
+      - name: Test with Android Emulator Runner
+        uses: ReactiveCircus/android-emulator-runner@v2.19.1
+        with: 
+            api-level: 29
+            script: ./gradlew jacocoUnitTestReport
+      
       - name: generate report
         uses: actions/upload-artifact@v2
         with:
