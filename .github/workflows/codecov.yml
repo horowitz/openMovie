@@ -33,18 +33,20 @@ jobs:
             api-level: 29
             script: ./gradlew jacocoUnitTestReport
       
-      - name: generate report
+      - name: upload reports unit test reports
         uses: actions/upload-artifact@v2
         with:
-          name: report 
-          path: app/build/reports/coverage/debug
-
-
-      - name: Download Test Reports Folder
-        uses: actions/download-artifact@v2
-        with:
           name: report
-          path: app/build/reports/coverage/debug
+          path: |
+            **/build/reports/coverage/jacocoUnitTestReport/jacocoUnitTestReport.xml
+            **/build/reports/coverage/androidTest/debug/report.xml
 
-      - name: Upload Test Report
-        run:  bash <(curl -s https://codecov.io/bash) -f "app/build/reports/coverage/debug/report.xml"
+
+#      - name: Download Test Reports Folder
+#        uses: actions/download-artifact@v2
+#        with:
+#          name: report
+#          path: app/build/reports/coverage/debug
+#
+#      - name: Upload Test Report
+#        run:  bash <(curl -s https://codecov.io/bash) -f "app/build/reports/coverage/debug/report.xml"
