@@ -20,13 +20,8 @@ tasks.register("jacocoUnitTestReport", JacocoReport) {
     ]
 
     def androidExclusion = [
-            '**/databinding/**/*.*',
-            '**/android/databinding/*Binding.*',
-            '**/BR.*',
             '**/R.*',
             '**/R$*.*',
-            '**/*$ViewInjector*.*',
-            '**/*$ViewBinder*.*',
             '**/BuildConfig.*',
             '**/Manifest*.*',
             '**/*_MembersInjector.*',
@@ -39,7 +34,6 @@ tasks.register("jacocoUnitTestReport", JacocoReport) {
             '**/*ViewHolder*.*',
             '**/*_Provide*/**',
             '**/*_Factory*/**',
-            '**/anvil/hint/multibinding/**/*.*'
     ]
 
     def javaClasses = fileTree(
