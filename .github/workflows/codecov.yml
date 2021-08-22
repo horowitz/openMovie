@@ -45,6 +45,5 @@ jobs:
       - name: Download Test Reports Folder
         uses: actions/download-artifact@v2
 
-#
-#      - name: Upload Test Report
-#        run:  bash <(curl -s https://codecov.io/bash) -f "app/build/reports/coverage/debug/report.xml"
+      - name: Upload Test Report
+        run:  bash <(curl -s https://codecov.io/bash)
