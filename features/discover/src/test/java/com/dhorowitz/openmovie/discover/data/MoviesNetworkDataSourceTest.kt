@@ -1,9 +1,9 @@
 package com.dhorowitz.openmovie.discover.data
 
 import com.dhorowitz.network.serializer.defaultConverter
+import com.dhorowitz.openmovie.discover.data.model.PaginatedResponse
 import com.dhorowitz.openmovie.discover.movieDTO
-import com.dhorowitz.openmovie.enqueueResponse
-import com.dhorowitz.openmovie.toPaginatedResponse
+import com.dhorowitz.openmovie.test.enqueueResponse
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.runBlocking
 import kotlinx.serialization.ExperimentalSerializationApi
@@ -62,3 +62,5 @@ class MoviesNetworkDataSourceTest {
         }
     }
 }
+
+internal fun List<Any>.toPaginatedResponse(page: Int = 1) = PaginatedResponse(page, this)
