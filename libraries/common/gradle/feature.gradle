@@ -57,6 +57,9 @@ dependencies {
     // Picasso
     implementation 'com.squareup.picasso:picasso:2.71828'
 
+    //Logs
+    implementation 'com.jakewharton.timber:timber:5.0.1'
+
     // Unit tests
     testImplementation 'junit:junit:4.13.2'
     testImplementation 'android.arch.core:core-testing:1.1.1'
@@ -77,6 +80,12 @@ dependencies {
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.4.0'
     testImplementation "com.squareup.okhttp3:mockwebserver:4.9.1"
 
-    //Logs
-    implementation 'com.jakewharton.timber:timber:5.0.1'
+    androidTestImplementation('com.adevinta.android:barista:4.0.0') {
+        exclude group: 'org.jetbrains.kotlin' // Only if you already use Kotlin in your project
+    }
+
+    testImplementation 'com.google.dagger:hilt-android-testing:2.37'
+    kaptTest 'com.google.dagger:hilt-android-compiler:2.37'
+    androidTestImplementation 'com.google.dagger:hilt-android-testing:2.37'
+    kaptAndroidTest 'com.google.dagger:hilt-android-compiler:2.37'
 }
