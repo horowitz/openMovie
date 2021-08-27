@@ -6,12 +6,17 @@ import retrofit2.http.GET
 import retrofit2.http.Query
 
 interface DiscoverApi {
-    @GET("discover/movie")
+
+    companion object {
+        const val PATH = "discover/movie"
+    }
+
+    @GET(PATH)
     suspend fun fetchPopularMovies(
         @Query("language") language: String = "en-US",
-        @Query("sort_by")  sortBy: String = "popularity.desc",
-        @Query("include_adult")  includeAdult: Boolean = false,
-        @Query("include_video")  includeVideo: Boolean = false,
-        @Query("page")  page: Int = 1,
+        @Query("sort_by") sortBy: String = "popularity.desc",
+        @Query("include_adult") includeAdult: Boolean = false,
+        @Query("include_video") includeVideo: Boolean = false,
+        @Query("page") page: Int = 1,
     ): PaginatedResponse<MovieDTO>
 }

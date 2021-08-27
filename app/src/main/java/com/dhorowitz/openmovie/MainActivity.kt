@@ -9,5 +9,6 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         navigateTo(QuadrantConstants.DISCOVER_ACTIVITY)
+        finish()
     }
 }

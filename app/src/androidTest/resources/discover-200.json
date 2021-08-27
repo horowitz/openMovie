@@ -1,0 +1,110 @@
+{
+  "page": 1,
+  "results": [
+    {
+      "adult": false,
+      "backdrop_path": "/jlGmlFOcfo8n5tURmhC7YVd4Iyy.jpg",
+      "genre_ids": [
+        28,
+        12,
+        14,
+        35
+      ],
+      "id": 436969,
+      "original_language": "en",
+      "original_title": "The Suicide Squad",
+      "overview": "Supervillains Harley Quinn, Bloodsport, Peacemaker and a collection of nutty cons at Belle Reve prison join the super-secret, super-shady Task Force X as they are dropped off at the remote, enemy-infused island of Corto Maltese.",
+      "popularity": 6286.069,
+      "poster_path": "/iCi4c4FvVdbaU1t8poH1gvzT6xM.jpg",
+      "release_date": "2021-07-28",
+      "title": "The Suicide Squad",
+      "video": false,
+      "vote_average": 8.1,
+      "vote_count": 2723
+    },
+    {
+      "adult": false,
+      "backdrop_path": "/7WJjFviFBffEJvkAms4uWwbcVUk.jpg",
+      "genre_ids": [
+        12,
+        14,
+        35,
+        28
+      ],
+      "id": 451048,
+      "original_language": "en",
+      "original_title": "Jungle Cruise",
+      "overview": "Dr. Lily Houghton enlists the aid of wisecracking skipper Frank Wolff to take her down the Amazon in his dilapidated boat. Together, they search for an ancient tree that holds the power to heal – a discovery that will change the future of medicine.",
+      "popularity": 5554.516,
+      "poster_path": "/9dKCd55IuTT5QRs989m9Qlb7d2B.jpg",
+      "release_date": "2021-07-28",
+      "title": "Jungle Cruise",
+      "video": false,
+      "vote_average": 7.9,
+      "vote_count": 1954
+    },
+    {
+      "adult": false,
+      "backdrop_path": "/j28p5VwI5ieZnNwfeuZ5Ve3mPsn.jpg",
+      "genre_ids": [
+        35,
+        28,
+        12,
+        878
+      ],
+      "id": 550988,
+      "original_language": "en",
+      "original_title": "Free Guy",
+      "overview": "A bank teller called Guy realizes he is a background character in an open world video game called Free City that will soon go offline.",
+      "popularity": 2783.233,
+      "poster_path": "/acCS12FVUQ7blkC8qEbuXbsWEs2.jpg",
+      "release_date": "2021-08-11",
+      "title": "Free Guy",
+      "video": false,
+      "vote_average": 7.9,
+      "vote_count": 288
+    },
+    {
+      "adult": false,
+      "backdrop_path": "/dq18nCTTLpy9PmtzZI6Y2yAgdw5.jpg",
+      "genre_ids": [
+        28,
+        12,
+        53,
+        878
+      ],
+      "id": 497698,
+      "original_language": "en",
+      "original_title": "Black Widow",
+      "overview": "Natasha Romanoff, also known as Black Widow, confronts the darker parts of her ledger when a dangerous conspiracy with ties to her past arises. Pursued by a force that will stop at nothing to bring her down, Natasha must deal with her history as a spy and the broken relationships left in her wake long before she became an Avenger.",
+      "popularity": 2522.194,
+      "poster_path": "/qAZ0pzat24kLdO3o8ejmbLxyOac.jpg",
+      "release_date": "2021-07-07",
+      "title": "Black Widow",
+      "video": false,
+      "vote_average": 7.8,
+      "vote_count": 4376
+    },
+    {
+      "adult": false,
+      "backdrop_path": "/7BkkPaXnYo82T2pLSJP7GRyhD2S.jpg",
+      "genre_ids": [
+        10749,
+        35
+      ],
+      "id": 727745,
+      "original_language": "en",
+      "original_title": "The Kissing Booth 3",
+      "overview": "It’s the summer before Elle heads to college, and she has a secret decision to make. Elle has been accepted into Harvard, where boyfriend Noah is matriculating, and also Berkeley, where her BFF Lee is headed and has to decide if she should stay or not.",
+      "popularity": 1124.873,
+      "poster_path": "/c7xcqnMDVQ5v1hJBm3AZ5YikNe6.jpg",
+      "release_date": "2021-08-11",
+      "title": "The Kissing Booth 3",
+      "video": false,
+      "vote_average": 7.6,
+      "vote_count": 823
+    }
+  ],
+  "total_pages": 500,
+  "total_results": 10000
+}

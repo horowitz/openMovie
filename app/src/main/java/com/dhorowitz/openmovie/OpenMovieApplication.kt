@@ -1,6 +1,9 @@
 package com.dhorowitz.openmovie
 
 import android.app.Application
+import android.content.Intent
+import com.dhorowitz.openmovie.BuildConfig.*
+import com.dhorowitz.openmovie.discover.presentation.DiscoverActivity
 import dagger.hilt.android.HiltAndroidApp
 import timber.log.Timber
 import timber.log.Timber.DebugTree
@@ -11,7 +14,7 @@ class OpenMovieApplication : Application() {
         super.onCreate()
 
         when {
-            BuildConfig.DEBUG -> Timber.plant(DebugTree())
+            DEBUG -> Timber.plant(DebugTree())
         }
     }
 }

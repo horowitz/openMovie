@@ -11,6 +11,7 @@ import com.dhorowitz.openmovie.discover.presentation.model.DiscoverAction
 import com.dhorowitz.openmovie.discover.presentation.model.DiscoverAction.ItemClicked
 import com.dhorowitz.openmovie.discover.presentation.model.DiscoverAction.Load
 import com.dhorowitz.openmovie.discover.presentation.model.DiscoverEvent
+import com.dhorowitz.openmovie.discover.presentation.model.DiscoverEvent.*
 import com.dhorowitz.openmovie.discover.presentation.model.DiscoverState
 import com.dhorowitz.openmovie.discover.presentation.model.DiscoverState.Content
 import com.dhorowitz.openmovie.discover.presentation.model.DiscoverViewEntity
@@ -37,7 +38,7 @@ class DiscoverViewModel @Inject constructor(
     }
 
     private fun onItemClicked(item: DiscoverViewEntity) {
-        eventLiveData.value = DiscoverEvent.NavigateToMovieDetails(item.id, MOVIE_DETAILS_ACTIVITY)
+        eventLiveData.postValue(NavigateToMovieDetails(item.id, MOVIE_DETAILS_ACTIVITY))
     }
 
     private fun fetchPopularMovies() {
@@ -48,7 +49,7 @@ class DiscoverViewModel @Inject constructor(
                 val movies = getPopularMovies()
                 movies.map { it.toDiscoverViewEntity() }
             }
-                .onSuccess { stateLiveData.value = Content(currentItems + it) }
+                .onSuccess { stateLiveData.postValue(Content(currentItems + it)) }
                 .onFailure { Timber.e(it) }
         }
     }

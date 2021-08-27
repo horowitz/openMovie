@@ -18,3 +18,9 @@ fun MockWebServer.enqueueResponse(fileName: String, code: Int) {
         )
     }
 }
+
+fun MockWebServer.registerApiRequest(httpRequest: HttpRequest, responseBody: String) {
+    val mockServerDispatcher = dispatcher as MockServerDispatcher
+
+    mockServerDispatcher.registerApiRequest(httpRequest, responseBody)
+}

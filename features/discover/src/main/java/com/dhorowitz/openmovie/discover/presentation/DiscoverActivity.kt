@@ -39,11 +39,11 @@ class DiscoverActivity : AppCompatActivity() {
     }
 
     private fun setupViews() = with(binding) {
-        recyclerView.layoutManager = GridLayoutManager(this@DiscoverActivity, 3)
-        recyclerView.addItemDecoration(GridSpacingItemDecoration(3, 20, true))
-        recyclerView.addOnScrollListener(OnScrollListener { viewModel.handle(Load) })
+        discoverRecyclerView.layoutManager = GridLayoutManager(this@DiscoverActivity, 3)
+        discoverRecyclerView.addItemDecoration(GridSpacingItemDecoration(3, 20, true))
+        discoverRecyclerView.addOnScrollListener(OnScrollListener { viewModel.handle(Load) })
 
-        recyclerView.adapter = adapter
+        discoverRecyclerView.adapter = adapter
     }
 
     private fun handleEvent(event: DiscoverEvent) = when (event) {

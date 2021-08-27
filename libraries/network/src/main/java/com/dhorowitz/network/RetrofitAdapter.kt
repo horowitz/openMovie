@@ -12,21 +12,8 @@ object RetrofitAdapter {
     val openMovieRetrofit: Retrofit
 
     init {
-        val httpLoggingInterceptor = HttpLoggingInterceptor().apply {
-            level = HttpLoggingInterceptor.Level.BODY
-        }
-        val apiKeyInterceptor = ApiKeyInterceptor()
-        val client = OkHttpClient.Builder()
-            .addInterceptor(httpLoggingInterceptor)
-            .addInterceptor(apiKeyInterceptor)
-            .readTimeout(15, SECONDS)
-            .connectTimeout(15, SECONDS)
-            .build()
+        val client = buildOkHttpClient(ApiKeyInterceptor())
 
-        openMovieRetrofit = Retrofit.Builder()
-            .baseUrl(NetworkConfig.BASE_URL)
-            .client(client)
-            .addConverterFactory(defaultConverter(isLenient = true))
-            .build()
+        openMovieRetrofit = buildRetrofit(NetworkConfig.BASE_URL, client)
     }
 }
