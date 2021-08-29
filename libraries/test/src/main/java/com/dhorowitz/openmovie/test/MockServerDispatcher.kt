@@ -1,5 +1,6 @@
 package com.dhorowitz.openmovie.test
 
+import android.util.Log
 import okhttp3.mockwebserver.Dispatcher
 import okhttp3.mockwebserver.MockResponse
 import okhttp3.mockwebserver.RecordedRequest
@@ -18,6 +19,7 @@ class MockServerDispatcher : Dispatcher() {
         val requestKey = "${httpRequest.method}:${httpRequest.path}"
 
         apiRequests[requestKey] = mockResponse
+        Timber.i("saved $requestKey")
     }
 
     override fun dispatch(request: RecordedRequest): MockResponse {
@@ -25,6 +27,7 @@ class MockServerDispatcher : Dispatcher() {
         val requestMethod = request.method
 
         val requestKey = buildKey(normalizedPath, requestMethod)
+        Timber.i("key is  $requestKey")
         return apiRequests[requestKey] ?: createNoMatchingResponse(requestKey)
     }
 

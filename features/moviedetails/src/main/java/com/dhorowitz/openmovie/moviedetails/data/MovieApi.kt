@@ -4,7 +4,10 @@ import retrofit2.http.GET
 import retrofit2.http.Path
 
 interface MovieApi {
-    @GET("movie/{movieId}")
+    companion object {
+        const val PATH = "movie"
+    }
+    @GET("$PATH/{movieId}")
     suspend fun fetchMovieDetails(
         @Path("movieId") movieId:  String
     ): MovieDetailsDTO
