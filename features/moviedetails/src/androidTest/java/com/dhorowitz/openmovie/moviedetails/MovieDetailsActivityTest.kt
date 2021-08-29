@@ -3,6 +3,7 @@ package com.dhorowitz.openmovie.moviedetails
 import android.content.Context
 import android.content.Intent
 import androidx.test.core.app.ActivityScenario
+import androidx.test.espresso.intent.Intents
 import androidx.test.platform.app.InstrumentationRegistry
 import com.dhorowitz.openmovie.moviedetails.data.MovieApi
 import com.dhorowitz.openmovie.moviedetails.di.MovieDetailsNetworkModule
@@ -34,6 +35,7 @@ class MovieDetailsActivityTest {
 
     @Before
     fun setUp() {
+        Intents.init()
         hiltRule.inject()
         mockWebServer = MockWebServer()
         mockWebServer.dispatcher = MockServerDispatcher()
@@ -43,29 +45,50 @@ class MovieDetailsActivityTest {
     @After
     fun tearDown() {
         mockWebServer.shutdown()
+        Intents.release()
     }
 
     @Test
     fun shouldDisplayItemsCorrectly() {
-        val movieId = "123"
-        val intent: Intent = Intent(targetContext, MovieDetailsActivity::class.java).apply {
-            putExtra("id", movieId)
-        }
-
-        givenItemsFromNetwork(movieId)
-
-        ActivityScenario.launch<MovieDetailsActivity>(intent)
+        setupDetailsAndLaunch()
 
         movieDetailsRobot {
             areItemsDisplayedCorrectly()
         }
     }
 
-    private fun givenItemsFromNetwork(movieId: String) {
+    @Test
+    fun shouldOpenHomepageAfterClick() {
+        setupDetailsAndLaunch()
+
+        movieDetailsRobot {
+            clickOnHomepageButton()
+            didOpenHomepageLink()
+        }
+    }
+
+    @Test
+    fun shouldOpenIMDBAfterClick() {
+        setupDetailsAndLaunch()
+
+        movieDetailsRobot {
+            clickOnIMDBButton()
+            didOpenIMDBLink("tt6334354")
+        }
+    }
+
+    private fun setupDetailsAndLaunch(){
+        val movieId = "123"
+        val intent: Intent = Intent(targetContext, MovieDetailsActivity::class.java).apply {
+            putExtra("id", movieId)
+        }
+
         mockWebServer.registerApiRequest(
             HttpRequest("/${MovieApi.PATH}/$movieId", HttpMethod.GET),
             getJsonContent("movie-details-200.json")
         )
+
+        ActivityScenario.launch<MovieDetailsActivity>(intent)
     }
 
     private fun getJsonContent(fileName: String): String =
