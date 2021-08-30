@@ -22,7 +22,7 @@ tasks.withType(Test).configureEach {
 
 task jacocoTestReport(type: JacocoReport, dependsOn: ['testDebugUnitTest', 'createDebugCoverageReport']) {
 
-    def excludes = [
+    def defaultExclusions = [
             '**/R.*',
             '**/R$*.*',
             '**/BuildConfig.*',
@@ -39,13 +39,17 @@ task jacocoTestReport(type: JacocoReport, dependsOn: ['testDebugUnitTest', 'crea
             '**/*_Factory*/**'
     ]
 
+    def moduleExclusions = getModuleExclusions()
+
+    defaultExclusions.addAll(moduleExclusions.split(','))
+
     // generated classes
     classDirectories.from = fileTree(
             dir: "$buildDir/intermediates/classes/debug",
-            excludes: excludes
+            excludes: defaultExclusions
     ) + fileTree(
             dir: "$buildDir/tmp/kotlin-classes/debug",
-            excludes: excludes
+            excludes: defaultExclusions
     )
     // sources
     sourceDirectories.from = [
@@ -70,4 +74,14 @@ task jacocoTestReport(type: JacocoReport, dependsOn: ['testDebugUnitTest', 'crea
     doLast {
         exec { commandLine 'open', "build/reports/coverage/jacocoTestReport/html/index.html" }
     }
+}
+
+private String getModuleExclusions() {
+    def defaultExclusion = "**/di/**/*,"
+    def propertyKey = "module.coverage.exclusions"
+
+    if (hasProperty(propertyKey)) {
+        return defaultExclusion + getProperty(propertyKey)
+    }
+    return defaultExclusion
 }
