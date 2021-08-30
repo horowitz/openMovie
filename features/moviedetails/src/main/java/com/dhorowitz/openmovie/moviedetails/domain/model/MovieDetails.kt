@@ -1,4 +1,4 @@
-package com.dhorowitz.openmovie.moviedetails.domain
+package com.dhorowitz.openmovie.moviedetails.domain.model
 
 data class MovieDetails(
     val id: String,

@@ -1,6 +1,7 @@
 package com.dhorowitz.openmovie.moviedetails.domain
 
-import com.dhorowitz.openmovie.moviedetails.data.MovieDetailsDTO
+import com.dhorowitz.openmovie.moviedetails.data.model.MovieDetailsDTO
+import com.dhorowitz.openmovie.moviedetails.domain.model.MovieDetails
 
 fun MovieDetailsDTO.toMovieDetails(): MovieDetails = MovieDetails(
     id = id,

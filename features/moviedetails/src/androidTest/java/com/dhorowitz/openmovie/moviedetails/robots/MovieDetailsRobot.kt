@@ -1,4 +1,4 @@
-package com.dhorowitz.openmovie.moviedetails
+package com.dhorowitz.openmovie.moviedetails.robots
 
 import android.app.Instrumentation
 import android.content.Intent
@@ -9,6 +9,7 @@ import androidx.test.espresso.intent.matcher.IntentMatchers.hasAction
 import androidx.test.espresso.intent.matcher.IntentMatchers.hasData
 import com.adevinta.android.barista.assertion.BaristaVisibilityAssertions.assertDisplayed
 import com.adevinta.android.barista.interaction.BaristaClickInteractions.clickOn
+import com.dhorowitz.openmovie.moviedetails.R
 import org.hamcrest.Matcher
 import org.hamcrest.core.AllOf.allOf
 

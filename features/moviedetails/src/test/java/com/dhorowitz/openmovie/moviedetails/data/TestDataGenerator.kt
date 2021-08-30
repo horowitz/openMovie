@@ -1,5 +1,7 @@
 package com.dhorowitz.openmovie.moviedetails.data
 
+import com.dhorowitz.openmovie.moviedetails.data.model.MovieDetailsDTO
+
 fun movieDetailsDto(
     id: String = "id",
     title: String = "title",

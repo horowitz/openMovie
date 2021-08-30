@@ -1,6 +1,7 @@
 package com.dhorowitz.openmovie.discover.tests
 
 import androidx.test.core.app.ActivityScenario
+import androidx.test.ext.junit.runners.AndroidJUnit4
 import com.dhorowitz.openmovie.discover.data.DiscoverApi
 import com.dhorowitz.openmovie.discover.di.DiscoverNetworkModule
 import com.dhorowitz.openmovie.discover.presentation.DiscoverActivity
@@ -17,9 +18,11 @@ import org.junit.After
 import org.junit.Before
 import org.junit.Rule
 import org.junit.Test
+import org.junit.runner.RunWith
 import java.io.InputStreamReader
 
 @HiltAndroidTest
+@RunWith(AndroidJUnit4::class)
 @UninstallModules(DiscoverNetworkModule::class)
 class DiscoverActivityTest {
 

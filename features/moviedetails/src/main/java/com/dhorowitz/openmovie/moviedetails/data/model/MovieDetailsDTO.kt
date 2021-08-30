@@ -1,4 +1,4 @@
-package com.dhorowitz.openmovie.moviedetails.data
+package com.dhorowitz.openmovie.moviedetails.data.model
 
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable

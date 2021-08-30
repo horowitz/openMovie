@@ -1,13 +1,15 @@
-package com.dhorowitz.openmovie.moviedetails
+package com.dhorowitz.openmovie.moviedetails.tests
 
 import android.content.Context
 import android.content.Intent
 import androidx.test.core.app.ActivityScenario
 import androidx.test.espresso.intent.Intents
+import androidx.test.ext.junit.runners.AndroidJUnit4
 import androidx.test.platform.app.InstrumentationRegistry
 import com.dhorowitz.openmovie.moviedetails.data.MovieApi
 import com.dhorowitz.openmovie.moviedetails.di.MovieDetailsNetworkModule
 import com.dhorowitz.openmovie.moviedetails.presentation.MovieDetailsActivity
+import com.dhorowitz.openmovie.moviedetails.robots.movieDetailsRobot
 import com.dhorowitz.openmovie.test.HttpMethod
 import com.dhorowitz.openmovie.test.HttpRequest
 import com.dhorowitz.openmovie.test.MockServerDispatcher
@@ -20,9 +22,11 @@ import org.junit.After
 import org.junit.Before
 import org.junit.Rule
 import org.junit.Test
+import org.junit.runner.RunWith
 import java.io.InputStreamReader
 
 @HiltAndroidTest
+@RunWith(AndroidJUnit4::class)
 @UninstallModules(MovieDetailsNetworkModule::class)
 class MovieDetailsActivityTest {
 
@@ -50,34 +54,34 @@ class MovieDetailsActivityTest {
 
     @Test
     fun shouldDisplayItemsCorrectly() {
-        setupDetailsAndLaunch()
-
-        movieDetailsRobot {
-            areItemsDisplayedCorrectly()
+        setupDetailsAndLaunch().use {
+            movieDetailsRobot {
+                areItemsDisplayedCorrectly()
+            }
         }
     }
 
     @Test
     fun shouldOpenHomepageAfterClick() {
-        setupDetailsAndLaunch()
-
-        movieDetailsRobot {
-            clickOnHomepageButton()
-            didOpenHomepageLink()
+        setupDetailsAndLaunch().use {
+            movieDetailsRobot {
+                clickOnHomepageButton()
+                didOpenHomepageLink()
+            }
         }
     }
 
     @Test
     fun shouldOpenIMDBAfterClick() {
-        setupDetailsAndLaunch()
-
-        movieDetailsRobot {
-            clickOnIMDBButton()
-            didOpenIMDBLink("tt6334354")
+        setupDetailsAndLaunch().use {
+            movieDetailsRobot {
+                clickOnIMDBButton()
+                didOpenIMDBLink("tt6334354")
+            }
         }
     }
 
-    private fun setupDetailsAndLaunch(){
+    private fun setupDetailsAndLaunch(): ActivityScenario<MovieDetailsActivity>? {
         val movieId = "123"
         val intent: Intent = Intent(targetContext, MovieDetailsActivity::class.java).apply {
             putExtra("id", movieId)
@@ -88,7 +92,7 @@ class MovieDetailsActivityTest {
             getJsonContent("movie-details-200.json")
         )
 
-        ActivityScenario.launch<MovieDetailsActivity>(intent)
+        return ActivityScenario.launch(intent)
     }
 
     private fun getJsonContent(fileName: String): String =

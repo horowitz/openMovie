@@ -1,5 +1,6 @@
 package com.dhorowitz.openmovie.moviedetails.data
 
+import com.dhorowitz.openmovie.moviedetails.data.model.MovieDetailsDTO
 import javax.inject.Inject
 import javax.inject.Singleton
 
