@@ -31,14 +31,14 @@ jobs:
         uses: ReactiveCircus/android-emulator-runner@v2.19.1
         with: 
             api-level: 29
-            script: ./gradlew jacocoUnitTestReport
+            script: ./gradlew jacocoTestReport
       
       - name: upload reports unit test reports
         uses: actions/upload-artifact@v2
         with:
           name: report
           path: |
-            **/build/reports/coverage/jacocoUnitTestReport/jacocoUnitTestReport.xml
+            **/build/reports/coverage/jacocoTestReport/jacocoTestReport.xml
             **/build/reports/coverage/androidTest/debug/report.xml
 
 

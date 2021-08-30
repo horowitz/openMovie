@@ -1,7 +1,7 @@
 import subprocess
 
 unitTestReports = str(subprocess.run(
-    'find . -type f -name "jacocoUnitTestReport.xml" ',
+    'find . -type f -name "jacocoTestReport.xml" ',
     shell=True, 
     capture_output=True).stdout.decode('utf-8')).replace('./', '').split('\n')
 

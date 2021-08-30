@@ -20,7 +20,7 @@ tasks.withType(Test).configureEach {
     jacoco.excludes = ['jdk.internal.*']
 }
 
-task jacocoUnitTestReport(type: JacocoReport, dependsOn: ['testDebugUnitTest', 'createDebugCoverageReport']) {
+task jacocoTestReport(type: JacocoReport, dependsOn: ['testDebugUnitTest', 'createDebugCoverageReport']) {
 
     def excludes = [
             '**/R.*',
@@ -68,6 +68,6 @@ task jacocoUnitTestReport(type: JacocoReport, dependsOn: ['testDebugUnitTest', '
     }
 
     doLast {
-        exec { commandLine 'open', "build/reports/coverage/jacocoUnitTestReport/html/index.html" }
+        exec { commandLine 'open', "build/reports/coverage/jacocoTestReport/html/index.html" }
     }
 }
