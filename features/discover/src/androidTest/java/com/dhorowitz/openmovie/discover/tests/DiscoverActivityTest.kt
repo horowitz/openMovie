@@ -47,7 +47,7 @@ class DiscoverActivityTest {
 
         givenItemsFromNetwork()
         discoverRobot {
-            isGridDisplayedCorrectly(20)
+            isGridDisplayedCorrectly(5)
         }
     }
 
