@@ -1,7 +1,6 @@
 plugins {
     id 'com.android.application'
     id 'kotlin-android'
-    id 'kotlin-android-extensions'
     id 'org.jetbrains.kotlin.plugin.serialization' version '1.5.21'
     id 'jacoco'
 }
@@ -124,6 +123,9 @@ dependencies {
 
     // Picasso
     implementation 'com.squareup.picasso:picasso:2.71828'
+
+    //Lottie
+    implementation 'com.airbnb.android:lottie:4.1.0'
 
     // Unit tests
     testImplementation 'junit:junit:4.13.2'
