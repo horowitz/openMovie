@@ -1,6 +1,7 @@
 package com.dhorowitz.openmovie.discover.tests
 
 import androidx.test.core.app.ActivityScenario
+import androidx.test.espresso.intent.Intents
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import com.dhorowitz.openmovie.discover.data.DiscoverApi
 import com.dhorowitz.openmovie.discover.di.DiscoverNetworkModule
@@ -33,6 +34,7 @@ class DiscoverActivityTest {
 
     @Before
     fun setUp() {
+        Intents.init()
         hiltRule.inject()
         mockWebServer = MockWebServer()
         mockWebServer.dispatcher = MockServerDispatcher()
@@ -41,6 +43,7 @@ class DiscoverActivityTest {
 
     @After
     fun tearDown() {
+        Intents.release()
         mockWebServer.shutdown()
     }
 
@@ -51,6 +54,18 @@ class DiscoverActivityTest {
         givenItemsFromNetwork()
         discoverRobot {
             isGridDisplayedCorrectly(5)
+        }
+    }
+
+    @Test
+    fun shouldNavigateToDetails() {
+        ActivityScenario.launch(DiscoverActivity::class.java)
+
+        givenItemsFromNetwork()
+
+        discoverRobot {
+            clickOnFirstItem()
+            didNavigateToDetails()
         }
     }
 
