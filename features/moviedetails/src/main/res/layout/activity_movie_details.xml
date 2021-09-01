@@ -16,32 +16,33 @@
 
     <TextView
         android:id="@+id/titleTextView"
+        style="@style/TextTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:textColor="@color/yellow_bg"
         android:layout_marginStart="8dp"
-        android:textSize="32sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/mainImageView"
         tools:text="Title" />
 
     <TextView
         android:id="@+id/voteAverageTextView"
+        style="@style/TextBody"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
-        android:textSize="18sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/titleTextView"
         tools:text="8.2" />
 
     <TextView
         android:id="@+id/durationTextView"
+        style="@style/TextBody"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
-        android:textSize="18sp"
         app:layout_constraintStart_toEndOf="@id/voteAverageTextView"
         app:layout_constraintTop_toBottomOf="@id/titleTextView"
         tools:text="132 min" />
@@ -52,6 +53,7 @@
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="32dp"
         android:layout_marginVertical="16dp"
+        android:backgroundTint="@color/purple_bg"
         android:text="@string/homepage_button"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -62,14 +64,15 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="32dp"
+        android:backgroundTint="@color/purple_bg_dark"
         android:text="@string/imdb_button"
-        android:backgroundTint="@color/purple_700"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/homepageButton" />
 
     <TextView
         android:id="@+id/overviewTextView"
+        style="@style/TextBody"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="TextBody">
+        <item name="android:fontFamily">@font/open_sans</item>
+    </style>
+
+    <style name="TextTitle">
+        <item name="android:fontFamily">@font/alfa_slab_one</item>
+        <item name="android:textSize">36sp</item>
+        <item name="android:shadowDy">10</item>
+        <item name="android:shadowRadius">5</item>
+        <item name="android:textAllCaps">true</item>
+        <item name="android:shadowColor">@color/black</item>
+        <item name="android:textColor">@color/yellow_bg_2</item>
+    </style>
+</resources>
