@@ -18,7 +18,7 @@
             android:name="org.apache.http.legacy"
             android:required="false" />
 
-        <activity android:name="com.dhorowitz.openmovie.moviedetails.presentation.MovieDetailsActivity"/>
+        <activity android:name="com.dhorowitz.openmovie.moviedetails.presentation.MovieDetailsActivity" android:theme="@style/Theme.OpenMovie.NoLimits"/>
     </application>
 
 </manifest>

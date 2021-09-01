@@ -26,11 +26,22 @@ class MovieDetailsActivity : AppCompatActivity() {
         binding = ActivityMovieDetailsBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        setupToolbar()
+
         viewModel.state.observe(this, ::handleState)
         viewModel.event.observe(this, ::handleEvent)
 
         val id = requireNotNull(intent.extras?.getString("id"), { "movie id is required" })
         viewModel.handle(Load(id))
+    }
+
+    private fun setupToolbar() = with(binding) {
+        setSupportActionBar(toolbar)
+        supportActionBar?.let {
+            it.setDisplayHomeAsUpEnabled(true)
+            it.setDisplayShowTitleEnabled(false)
+        }
+        toolbar.setNavigationOnClickListener { onBackPressed() }
     }
 
     private fun handleEvent(event: MovieDetailsEvent) = when (event) {
