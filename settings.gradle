@@ -14,3 +14,4 @@ include ':libraries:test'
 
 include ':features:moviedetails'
 include ':features:discover'
+include ':libraries:ui'

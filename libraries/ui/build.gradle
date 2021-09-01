@@ -1,26 +1,18 @@
 plugins {
-    id "com.android.library"
-    id "kotlin-android"
-    id 'org.jetbrains.kotlin.plugin.serialization' version '1.5.21'
-    id 'jacoco'
+    id 'com.android.library'
+    id 'kotlin-android'
 }
-
-apply plugin: 'kotlin-kapt'
-apply plugin: 'dagger.hilt.android.plugin'
-apply from: "$rootDir/libraries/common/gradle/feature.gradle"
-apply from: "$rootDir/libraries/common/gradle/jacoco.gradle"
 
 android {
     compileSdk 30
-    buildFeatures {
-        viewBinding true
-    }
+
     defaultConfig {
         minSdk 21
         targetSdk 30
         versionCode 1
         versionName "1.0"
 
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         consumerProguardFiles "consumer-rules.pro"
     }
 
@@ -39,17 +31,12 @@ android {
     }
 }
 
-kapt {
-    correctErrorTypes true
-}
-
 dependencies {
-    implementation project(path: ":libraries:ui")
-    implementation project(path: ':libraries:navigation')
-    implementation project(path: ':libraries:common')
-    implementation project(path: ':libraries:network')
-    implementation project(path: ':libraries:test')
 
+    implementation 'androidx.core:core-ktx:1.6.0'
+    implementation 'androidx.appcompat:appcompat:1.3.1'
+    implementation 'com.google.android.material:material:1.4.0'
+    testImplementation 'junit:junit:4.+'
     androidTestImplementation 'androidx.test.ext:junit:1.1.3'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.4.0'
 }

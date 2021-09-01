@@ -17,7 +17,6 @@ import com.dhorowitz.openmovie.discover.presentation.model.DiscoverViewEntity
 import com.dhorowitz.openmovie.navigation.navigateToMovieDetails
 import dagger.hilt.android.AndroidEntryPoint
 
-
 @AndroidEntryPoint
 class DiscoverActivity : AppCompatActivity() {
 

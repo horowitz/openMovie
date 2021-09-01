@@ -74,6 +74,7 @@ kapt {
 }
 
 dependencies {
+    implementation project(path: ":libraries:ui")
     implementation project(path: ':libraries:network')
     implementation project(path: ':libraries:common')
     implementation project(path: ':libraries:test')
