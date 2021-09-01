@@ -41,6 +41,7 @@
     <TextView
         android:id="@+id/voteAverageTextView"
         style="@style/TextBody"
+        android:textStyle="bold"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
@@ -52,6 +53,7 @@
     <TextView
         android:id="@+id/durationTextView"
         style="@style/TextBody"
+        android:textStyle="bold"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
