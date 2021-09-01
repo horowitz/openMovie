@@ -39,6 +39,7 @@ class DiscoverActivity : AppCompatActivity() {
     }
 
     private fun setupViews() = with(binding) {
+        setSupportActionBar(toolbar)
         discoverRecyclerView.layoutManager = GridLayoutManager(this@DiscoverActivity, 3)
         discoverRecyclerView.addItemDecoration(GridSpacingItemDecoration(3, 20, true))
         discoverRecyclerView.addOnScrollListener(OnScrollListener { viewModel.handle(Load) })

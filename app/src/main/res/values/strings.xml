@@ -1,3 +1,5 @@
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools">
     <string name="app_name">Open Movie</string>
+    <string name="movie" translatable="false" tools:ignore="ExtraTranslation">Movie</string>
+    <string name="open" tools:ignore="ExtraTranslation">Open</string>
 </resources>
