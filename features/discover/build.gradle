@@ -11,6 +11,11 @@ apply from: "$rootDir/libraries/common/gradle/feature.gradle"
 apply from: "$rootDir/libraries/common/gradle/jacoco.gradle"
 
 android {
+
+    testOptions {
+        animationsDisabled = true
+    }
+
     buildFeatures {
         viewBinding true
     }
