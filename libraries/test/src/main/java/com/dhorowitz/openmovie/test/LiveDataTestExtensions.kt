@@ -3,6 +3,7 @@ package com.dhorowitz.openmovie.test
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.Observer
 import org.junit.Assert.assertEquals
+import org.junit.Assert.assertTrue
 
 fun <T> LiveData<T>.test(): TestObserver<T> {
     val observer = TestObserver<T>()
@@ -25,7 +26,7 @@ class TestObserver<T> : Observer<T> {
         assertEquals(items, values.toList())
     }
 
-    fun assertLastValue(value: T): TestObserver<T> = also {
-        assertEquals(items.last(), value)
+    fun assertOnce(value: T): TestObserver<T> = also {
+        assertTrue(items.count { it == value } == 1)
     }
 }

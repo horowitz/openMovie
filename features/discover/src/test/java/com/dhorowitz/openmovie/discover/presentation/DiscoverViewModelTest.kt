@@ -7,7 +7,8 @@ import com.dhorowitz.openmovie.discover.movie
 import com.dhorowitz.openmovie.discover.presentation.model.DiscoverAction.ItemClicked
 import com.dhorowitz.openmovie.discover.presentation.model.DiscoverAction.Load
 import com.dhorowitz.openmovie.discover.presentation.model.DiscoverEvent.*
-import com.dhorowitz.openmovie.discover.presentation.model.DiscoverState.Content
+import com.dhorowitz.openmovie.discover.presentation.model.DiscoverState
+import com.dhorowitz.openmovie.discover.presentation.model.DiscoverState.*
 import com.dhorowitz.openmovie.test.MainCoroutineRule
 import com.dhorowitz.openmovie.test.test
 import com.nhaarman.mockitokotlin2.mock
@@ -40,7 +41,21 @@ class DiscoverViewModelTest {
 
             viewModel.handle(Load)
 
-            observer.assertValues(Content(listOf(discoverViewEntity())))
+            observer.assertValues(Loading, Content(listOf(discoverViewEntity())))
+        }
+    }
+
+    @Test
+    fun `should only show loading state for initial loading of movies`() {
+        runBlocking {
+            val observer = viewModel.state.test()
+            val movies = listOf(movie())
+            givenMovies(movies)
+
+            viewModel.handle(Load)
+            viewModel.handle(Load)
+
+            observer.assertOnce(Loading)
         }
     }
 

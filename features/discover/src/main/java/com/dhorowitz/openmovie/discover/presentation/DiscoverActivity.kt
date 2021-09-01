@@ -1,6 +1,7 @@
 package com.dhorowitz.openmovie.discover.presentation
 
 import android.os.Bundle
+import android.view.View
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.GridLayoutManager
@@ -51,8 +52,15 @@ class DiscoverActivity : AppCompatActivity() {
     }
 
     private fun handleState(state: DiscoverState) = when (state) {
-        is Content -> render(state.items)
+        is Content -> setViewsVisibility(content = View.VISIBLE).also { render(state.items) }
+        Loading -> setViewsVisibility(loading = View.VISIBLE)
     }
+
+    private fun setViewsVisibility(loading: Int = View.GONE, content: Int = View.GONE) =
+        with(binding) {
+            discoverLoading.visibility = loading
+            discoverRecyclerView.visibility = content
+        }
 
     private fun render(items: List<DiscoverViewEntity>) {
         adapter.submitList(items)

@@ -11,9 +11,10 @@ import com.dhorowitz.openmovie.discover.presentation.model.DiscoverAction
 import com.dhorowitz.openmovie.discover.presentation.model.DiscoverAction.ItemClicked
 import com.dhorowitz.openmovie.discover.presentation.model.DiscoverAction.Load
 import com.dhorowitz.openmovie.discover.presentation.model.DiscoverEvent
-import com.dhorowitz.openmovie.discover.presentation.model.DiscoverEvent.*
+import com.dhorowitz.openmovie.discover.presentation.model.DiscoverEvent.NavigateToMovieDetails
 import com.dhorowitz.openmovie.discover.presentation.model.DiscoverState
 import com.dhorowitz.openmovie.discover.presentation.model.DiscoverState.Content
+import com.dhorowitz.openmovie.discover.presentation.model.DiscoverState.Loading
 import com.dhorowitz.openmovie.discover.presentation.model.DiscoverViewEntity
 import com.gaelmarhic.quadrant.QuadrantConstants.MOVIE_DETAILS_ACTIVITY
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -43,6 +44,8 @@ class DiscoverViewModel @Inject constructor(
 
     private fun fetchPopularMovies() {
         val currentItems = state.asContent()?.items ?: emptyList()
+
+        if (currentItems.isEmpty()) stateLiveData.postValue(Loading)
 
         viewModelScope.launch {
             runCatching {

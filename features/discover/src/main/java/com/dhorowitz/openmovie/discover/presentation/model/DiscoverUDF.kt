@@ -1,6 +1,7 @@
 package com.dhorowitz.openmovie.discover.presentation.model
 
 sealed class DiscoverState {
+    object Loading: DiscoverState()
     data class Content(val items: List<DiscoverViewEntity>) : DiscoverState()
 }
 
