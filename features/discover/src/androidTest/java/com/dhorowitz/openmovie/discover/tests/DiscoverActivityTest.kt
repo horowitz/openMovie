@@ -58,6 +58,18 @@ class DiscoverActivityTest {
     }
 
     @Test
+    fun shouldRecoverFromErrorCorrectly() {
+        ActivityScenario.launch(DiscoverActivity::class.java)
+
+        discoverRobot {
+            isErrorDisplayed()
+            givenItemsFromNetwork()
+            clickOnRetry()
+            isGridDisplayedCorrectly(5)
+        }
+    }
+
+    @Test
     fun shouldNavigateToDetails() {
         ActivityScenario.launch(DiscoverActivity::class.java)
 

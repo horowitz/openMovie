@@ -8,6 +8,7 @@ import androidx.test.espresso.intent.matcher.IntentMatchers
 import androidx.test.espresso.intent.matcher.IntentMatchers.hasComponent
 import com.adevinta.android.barista.assertion.BaristaListAssertions.assertListItemCount
 import com.adevinta.android.barista.assertion.BaristaListAssertions.assertListNotEmpty
+import com.adevinta.android.barista.assertion.BaristaVisibilityAssertions.assertDisplayed
 import com.adevinta.android.barista.interaction.BaristaClickInteractions.clickOn
 import com.adevinta.android.barista.interaction.BaristaListInteractions.clickListItem
 import com.dhorowitz.openmovie.discover.R
@@ -42,5 +43,13 @@ class DiscoverRobot {
         intending(expectedIntent).respondWith(Instrumentation.ActivityResult(0, null))
 
         clickListItem(R.id.discoverRecyclerView, 0)
+    }
+
+    fun clickOnRetry() {
+        clickOn("Retry")
+    }
+
+    fun isErrorDisplayed() {
+        assertDisplayed("An error has occurred. Tap on the button below to try again")
     }
 }

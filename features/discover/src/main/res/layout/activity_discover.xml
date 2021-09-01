@@ -32,9 +32,13 @@
         layout="@layout/loading"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@id/centerGuideline"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/centerGuideline" />
+
+    <include
+        android:id="@+id/discoverError"
+        layout="@layout/error" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/centerGuideline"

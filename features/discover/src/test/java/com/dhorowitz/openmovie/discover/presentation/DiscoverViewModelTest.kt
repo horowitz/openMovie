@@ -7,16 +7,17 @@ import com.dhorowitz.openmovie.discover.movie
 import com.dhorowitz.openmovie.discover.presentation.model.DiscoverAction.ItemClicked
 import com.dhorowitz.openmovie.discover.presentation.model.DiscoverAction.Load
 import com.dhorowitz.openmovie.discover.presentation.model.DiscoverEvent.*
-import com.dhorowitz.openmovie.discover.presentation.model.DiscoverState
 import com.dhorowitz.openmovie.discover.presentation.model.DiscoverState.*
 import com.dhorowitz.openmovie.test.MainCoroutineRule
 import com.dhorowitz.openmovie.test.test
+import com.nhaarman.mockitokotlin2.doAnswer
 import com.nhaarman.mockitokotlin2.mock
 import com.nhaarman.mockitokotlin2.whenever
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.runBlocking
 import org.junit.Rule
 import org.junit.Test
+import java.io.IOException
 
 class DiscoverViewModelTest {
 
@@ -42,6 +43,19 @@ class DiscoverViewModelTest {
             viewModel.handle(Load)
 
             observer.assertValues(Loading, Content(listOf(discoverViewEntity())))
+        }
+    }
+
+    @Test
+    fun `should show error when network fails`() {
+        runBlocking {
+            val observer = viewModel.state.test()
+            val exception = IOException()
+            givenNetworkFailure(exception)
+
+            viewModel.handle(Load)
+
+            observer.assertValues(Loading, Error)
         }
     }
 
@@ -80,5 +94,9 @@ class DiscoverViewModelTest {
 
     private suspend fun givenMovies(movies: List<com.dhorowitz.openmovie.discover.domain.model.Movie>) {
         whenever(getPopularMovies()).thenReturn(movies)
+    }
+
+    private suspend fun givenNetworkFailure(exception: Exception) {
+        whenever(getPopularMovies()).doAnswer { throw exception }
     }
 }

@@ -14,12 +14,12 @@ import com.dhorowitz.openmovie.discover.presentation.model.DiscoverEvent
 import com.dhorowitz.openmovie.discover.presentation.model.DiscoverEvent.NavigateToMovieDetails
 import com.dhorowitz.openmovie.discover.presentation.model.DiscoverState
 import com.dhorowitz.openmovie.discover.presentation.model.DiscoverState.Content
+import com.dhorowitz.openmovie.discover.presentation.model.DiscoverState.Error
 import com.dhorowitz.openmovie.discover.presentation.model.DiscoverState.Loading
 import com.dhorowitz.openmovie.discover.presentation.model.DiscoverViewEntity
 import com.gaelmarhic.quadrant.QuadrantConstants.MOVIE_DETAILS_ACTIVITY
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
-import timber.log.Timber
 import javax.inject.Inject
 
 @HiltViewModel
@@ -53,7 +53,7 @@ class DiscoverViewModel @Inject constructor(
                 movies.map { it.toDiscoverViewEntity() }
             }
                 .onSuccess { stateLiveData.postValue(Content(currentItems + it)) }
-                .onFailure { Timber.e(it) }
+                .onFailure { stateLiveData.postValue(Error) }
         }
     }
 }
