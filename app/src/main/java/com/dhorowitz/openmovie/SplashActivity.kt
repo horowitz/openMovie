@@ -10,7 +10,9 @@ import androidx.annotation.AnimRes
 import androidx.appcompat.app.AppCompatActivity
 import com.dhorowitz.openmovie.navigation.navigateTo
 import com.gaelmarhic.quadrant.QuadrantConstants
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class SplashActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
