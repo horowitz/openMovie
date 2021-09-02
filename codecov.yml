@@ -2,3 +2,4 @@ ignore:
   - "**/grid/**"
   - "**/di/**"
   - "**/model/**"
+  - "**/OpenMovieApplication.kt"
