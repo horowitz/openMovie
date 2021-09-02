@@ -12,6 +12,9 @@ apply from: "$rootDir/libraries/common/gradle/jacoco.gradle"
 
 android {
     compileSdk 30
+    testOptions {
+        animationsDisabled = true
+    }
     buildFeatures {
         viewBinding true
     }

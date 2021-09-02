@@ -3,13 +3,21 @@ package com.dhorowitz.openmovie.moviedetails.presentation
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
+import android.view.View
+import android.widget.Button
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
+import com.dhorowitz.openmovie.moviedetails.R
 import com.dhorowitz.openmovie.moviedetails.databinding.ActivityMovieDetailsBinding
-import com.dhorowitz.openmovie.moviedetails.presentation.model.MovieDetailsAction.*
+import com.dhorowitz.openmovie.moviedetails.presentation.model.MovieDetailsAction.HomepageButtonClicked
+import com.dhorowitz.openmovie.moviedetails.presentation.model.MovieDetailsAction.ImdbButtonClicked
+import com.dhorowitz.openmovie.moviedetails.presentation.model.MovieDetailsAction.Load
 import com.dhorowitz.openmovie.moviedetails.presentation.model.MovieDetailsEvent
 import com.dhorowitz.openmovie.moviedetails.presentation.model.MovieDetailsEvent.NavigateToBrowser
 import com.dhorowitz.openmovie.moviedetails.presentation.model.MovieDetailsState
+import com.dhorowitz.openmovie.moviedetails.presentation.model.MovieDetailsState.Content
+import com.dhorowitz.openmovie.moviedetails.presentation.model.MovieDetailsState.Error
+import com.dhorowitz.openmovie.moviedetails.presentation.model.MovieDetailsState.Loading
 import com.dhorowitz.openmovie.moviedetails.presentation.model.MovieDetailsViewEntity
 import com.squareup.picasso.Picasso
 import dagger.hilt.android.AndroidEntryPoint
@@ -18,6 +26,10 @@ import dagger.hilt.android.AndroidEntryPoint
 @AndroidEntryPoint
 class MovieDetailsActivity : AppCompatActivity() {
     private val viewModel: MovieDetailsViewModel by viewModels()
+
+    val id: String by lazy {
+        requireNotNull(intent.extras?.getString("id"), { "movie id is required" })
+    }
 
     private lateinit var binding: ActivityMovieDetailsBinding
 
@@ -49,10 +61,21 @@ class MovieDetailsActivity : AppCompatActivity() {
     }
 
     private fun handleState(state: MovieDetailsState) = when (state) {
-        is MovieDetailsState.Content -> render(state.viewEntity)
+        is Content -> render(state.viewEntity)
+        Loading -> setViewsVisibility(loading = View.VISIBLE)
+        Error -> handleError()
+    }
+
+    private fun handleError() {
+        setViewsVisibility(error = View.VISIBLE)
+
+        binding.movieDetailsError.findViewById<Button>(R.id.errorButton)
+            .setOnClickListener { viewModel.handle(Load(id)) }
     }
 
     private fun render(viewEntity: MovieDetailsViewEntity) = with(binding) {
+        setViewsVisibility(content = View.VISIBLE)
+
         Picasso.get().load(viewEntity.backdropPath).into(mainImageView)
         titleTextView.text = viewEntity.title
         durationTextView.text = viewEntity.runtime
@@ -66,6 +89,16 @@ class MovieDetailsActivity : AppCompatActivity() {
         imdbButton.setOnClickListener {
             viewModel.handle(ImdbButtonClicked(viewEntity.imdbUrl))
         }
+    }
+
+    private fun setViewsVisibility(
+        loading: Int = View.GONE,
+        content: Int = View.GONE,
+        error: Int = View.GONE
+    ) = with(binding) {
+        movieDetailsLoading.visibility = loading
+        contentGroup.visibility = content
+        movieDetailsError.visibility = error
     }
 
     private fun openBrowser(url: String) {

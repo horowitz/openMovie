@@ -1,6 +1,8 @@
 package com.dhorowitz.openmovie.moviedetails.presentation.model
 
 sealed class MovieDetailsState {
+    object Loading: MovieDetailsState()
+    object Error: MovieDetailsState()
     data class Content(val viewEntity: MovieDetailsViewEntity) : MovieDetailsState()
 }
 

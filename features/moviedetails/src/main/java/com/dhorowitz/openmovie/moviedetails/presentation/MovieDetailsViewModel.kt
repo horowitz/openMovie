@@ -7,11 +7,15 @@ import androidx.lifecycle.viewModelScope
 import com.dhorowitz.openmovie.common.livedata.SingleLiveEvent
 import com.dhorowitz.openmovie.moviedetails.domain.GetMovieDetails
 import com.dhorowitz.openmovie.moviedetails.presentation.model.MovieDetailsAction
-import com.dhorowitz.openmovie.moviedetails.presentation.model.MovieDetailsAction.*
+import com.dhorowitz.openmovie.moviedetails.presentation.model.MovieDetailsAction.HomepageButtonClicked
+import com.dhorowitz.openmovie.moviedetails.presentation.model.MovieDetailsAction.ImdbButtonClicked
+import com.dhorowitz.openmovie.moviedetails.presentation.model.MovieDetailsAction.Load
 import com.dhorowitz.openmovie.moviedetails.presentation.model.MovieDetailsEvent
 import com.dhorowitz.openmovie.moviedetails.presentation.model.MovieDetailsEvent.NavigateToBrowser
 import com.dhorowitz.openmovie.moviedetails.presentation.model.MovieDetailsState
 import com.dhorowitz.openmovie.moviedetails.presentation.model.MovieDetailsState.Content
+import com.dhorowitz.openmovie.moviedetails.presentation.model.MovieDetailsState.Error
+import com.dhorowitz.openmovie.moviedetails.presentation.model.MovieDetailsState.Loading
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
 import timber.log.Timber
@@ -35,14 +39,18 @@ class MovieDetailsViewModel @Inject constructor(
     }
 
     private fun onButtonClicked(url: String) {
-        eventLiveData.value = NavigateToBrowser(url)
+        eventLiveData.postValue(NavigateToBrowser(url))
     }
 
     private fun fetchMovieDetails(id: String) {
+        stateLiveData.postValue(Loading)
+
         viewModelScope.launch {
             runCatching { getMovieDetails(id).toViewEntity() }
-                .onSuccess { stateLiveData.value = Content(it) }
-                .onFailure { Timber.e(it) }
+                .onSuccess { stateLiveData.postValue(Content(it)) }
+                .onFailure { exception ->
+                    stateLiveData.postValue(Error).also { Timber.e(exception) }
+                }
         }
     }
 }

@@ -70,12 +70,11 @@ class DiscoverActivity : AppCompatActivity() {
         loading: Int = View.GONE,
         content: Int = View.GONE,
         error: Int = View.GONE
-    ) =
-        with(binding) {
-            discoverLoading.visibility = loading
-            discoverError.visibility = error
-            discoverRecyclerView.visibility = content
-        }
+    ) = with(binding) {
+        discoverLoading.visibility = loading
+        discoverError.visibility = error
+        discoverRecyclerView.visibility = content
+    }
 
     private fun render(items: List<DiscoverViewEntity>) {
         adapter.submitList(items)
