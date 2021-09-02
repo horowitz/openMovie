@@ -48,4 +48,12 @@ class MovieDetailsRobot {
         intending(expectedIntent).respondWith(Instrumentation.ActivityResult(0, null))
         intended(expectedIntent)
     }
+
+    fun isErrorDisplayed() {
+        assertDisplayed("Retry")
+    }
+
+    fun clickOnRetry() {
+        clickOn("Retry")
+    }
 }

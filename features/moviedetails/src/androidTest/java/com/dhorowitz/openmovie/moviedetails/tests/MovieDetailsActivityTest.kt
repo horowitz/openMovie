@@ -62,6 +62,26 @@ class MovieDetailsActivityTest {
     }
 
     @Test
+    fun shouldRecoverFromErrorCorrectly() {
+        val movieId = "123"
+        val intent: Intent = Intent(targetContext, MovieDetailsActivity::class.java).apply {
+            putExtra("id", movieId)
+        }
+
+        ActivityScenario.launch<MovieDetailsActivity>(intent).use {
+            movieDetailsRobot {
+                isErrorDisplayed()
+                mockWebServer.registerApiRequest(
+                    HttpRequest("/${MovieApi.PATH}/$movieId", HttpMethod.GET),
+                    getJsonContent("movie-details-200.json")
+                )
+                clickOnRetry()
+                areItemsDisplayedCorrectly()
+            }
+        }
+    }
+
+    @Test
     fun shouldOpenHomepageAfterClick() {
         setupDetailsAndLaunch().use {
             movieDetailsRobot {
