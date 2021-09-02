@@ -49,35 +49,38 @@ class DiscoverActivityTest {
 
     @Test
     fun shouldDisplayItemsCorrectly() {
-        ActivityScenario.launch(DiscoverActivity::class.java)
+        ActivityScenario.launch(DiscoverActivity::class.java).use {
 
-        givenItemsFromNetwork()
-        discoverRobot {
-            isGridDisplayedCorrectly(5)
+            givenItemsFromNetwork()
+            discoverRobot {
+                isGridDisplayedCorrectly(5)
+            }
         }
     }
 
     @Test
     fun shouldRecoverFromErrorCorrectly() {
-        ActivityScenario.launch(DiscoverActivity::class.java)
+        ActivityScenario.launch(DiscoverActivity::class.java).use {
 
-        discoverRobot {
-            isErrorDisplayed()
-            givenItemsFromNetwork()
-            clickOnRetry()
-            isGridDisplayedCorrectly(5)
+            discoverRobot {
+                isErrorDisplayed()
+                givenItemsFromNetwork()
+                clickOnRetry()
+                isGridDisplayedCorrectly(5)
+            }
         }
     }
 
     @Test
     fun shouldNavigateToDetails() {
-        ActivityScenario.launch(DiscoverActivity::class.java)
+        ActivityScenario.launch(DiscoverActivity::class.java).use {
 
-        givenItemsFromNetwork()
+            givenItemsFromNetwork()
 
-        discoverRobot {
-            clickOnFirstItem()
-            didNavigateToDetails()
+            discoverRobot {
+                clickOnFirstItem()
+                didNavigateToDetails()
+            }
         }
     }
 
