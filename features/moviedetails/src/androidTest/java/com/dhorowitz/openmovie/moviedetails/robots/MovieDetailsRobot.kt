@@ -10,9 +10,9 @@ import androidx.test.espresso.intent.matcher.IntentMatchers.hasData
 import com.adevinta.android.barista.assertion.BaristaVisibilityAssertions.assertDisplayed
 import com.adevinta.android.barista.interaction.BaristaClickInteractions.clickOn
 import com.dhorowitz.openmovie.moviedetails.R
+import com.dhorowitz.openmovie.test.wait.waitUntil
 import org.hamcrest.Matcher
 import org.hamcrest.core.AllOf.allOf
-
 
 internal fun movieDetailsRobot(func: MovieDetailsRobot.() -> Unit) =
     MovieDetailsRobot().apply { func() }
@@ -20,10 +20,12 @@ internal fun movieDetailsRobot(func: MovieDetailsRobot.() -> Unit) =
 
 class MovieDetailsRobot {
     fun areItemsDisplayedCorrectly() {
-        assertDisplayed("The Suicide Squad")
-        assertDisplayed("Supervillains Harley Quinn, Bloodsport, Peacemaker and a collection of nutty cons at Belle Reve prison join the super-secret, super-shady Task Force X as they are dropped off at the remote, enemy-infused island of Corto Maltese.")
-        assertDisplayed("⭐️ 8.1")
-        assertDisplayed("🕒 132 min")
+        waitUntil {
+            assertDisplayed("The Suicide Squad")
+            assertDisplayed("Supervillains Harley Quinn, Bloodsport, Peacemaker and a collection of nutty cons at Belle Reve prison join the super-secret, super-shady Task Force X as they are dropped off at the remote, enemy-infused island of Corto Maltese.")
+            assertDisplayed("⭐️ 8.1")
+            assertDisplayed("🕒 132 min")
+        }
     }
 
     fun clickOnHomepageButton() {
