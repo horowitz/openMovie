@@ -78,6 +78,7 @@ class DiscoverActivityTest {
             givenItemsFromNetwork()
 
             discoverRobot {
+                isGridDisplayedCorrectly(5)
                 clickOnFirstItem()
                 didNavigateToDetails()
             }
