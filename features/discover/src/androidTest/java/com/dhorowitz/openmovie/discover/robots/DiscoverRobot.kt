@@ -2,12 +2,10 @@ package com.dhorowitz.openmovie.discover.robots
 
 import android.app.Instrumentation
 import android.content.Intent
-import androidx.test.espresso.intent.Intents
-import androidx.test.espresso.intent.Intents.*
-import androidx.test.espresso.intent.matcher.IntentMatchers
+import androidx.test.espresso.intent.Intents.intended
+import androidx.test.espresso.intent.Intents.intending
 import androidx.test.espresso.intent.matcher.IntentMatchers.hasComponent
 import com.adevinta.android.barista.assertion.BaristaListAssertions.assertListItemCount
-import com.adevinta.android.barista.assertion.BaristaListAssertions.assertListNotEmpty
 import com.adevinta.android.barista.assertion.BaristaVisibilityAssertions.assertDisplayed
 import com.adevinta.android.barista.interaction.BaristaClickInteractions.clickOn
 import com.adevinta.android.barista.interaction.BaristaListInteractions.clickListItem
@@ -24,10 +22,8 @@ internal fun discoverRobot(func: DiscoverRobot.() -> Unit) =
 
 class DiscoverRobot {
     fun isGridDisplayedCorrectly(expectedItemsCount: Int) {
-        waitUntil {
-            assertListNotEmpty(R.id.discoverRecyclerView)
-            assertListItemCount(R.id.discoverRecyclerView, expectedItemsCount)
-        }
+        waitUntil { assertDisplayed(R.id.discoverRecyclerView) }
+        waitUntil { assertListItemCount(R.id.discoverRecyclerView, expectedItemsCount) }
     }
 
     fun didNavigateToDetails() {

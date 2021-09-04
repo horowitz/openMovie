@@ -4,4 +4,16 @@
 [![codecov](https://codecov.io/gh/horowitz/openMovie/branch/main/graph/badge.svg?token=AXMKDL22OR)](https://codecov.io/gh/horowitz/openMovie)
 
 
-Show case Android practices using the Movie database
+Show case Android practices using [the Movie db](https://www.themoviedb.org/)
+
+## Tech stack
+- 100% testable Kotlin code
+- Clean multimodular architecture
+- Presentation layer built based on Unidirectional data flow (UDF) and single entry points
+- Latest AGP 7+
+- Dagger Hilt
+
+
+## Testing
+
+
