@@ -24,6 +24,9 @@ This project aims for showcasing a multi modular architecture based on 2 concept
 - **Features** contains all user facing functionality (e.g. Discover, Movie Details)
 - **Libraries** are shared modules that help the building of features (e.g. network,  ui, test)
 
+#### CI
+In addition to static analysis and unit tests we are using a test matrix for each commit on master. and triggering all instrumentation tests for different API lvls 
+
 #### Testing strategy
 
 The data layer is tested through a combination of unit tests + Mockwebserver in order to fully test Retrofit network integrations. By following  this approach we are covering:
