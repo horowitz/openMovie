@@ -44,7 +44,7 @@ dependencies {
     implementation "com.jakewharton.espresso:okhttp3-idling-resource:1.0.0"
     // Coroutines
     implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-core:1.5.0'
-    implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-android:1.5.0'
+    implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-android:1.5.2'
     // Unit tests
     implementation 'junit:junit:4.13.2'
     implementation 'android.arch.core:core-testing:1.1.1'
