@@ -1,5 +1,6 @@
 package com.dhorowitz.openmovie.discover.presentation
 
+import androidx.annotation.VisibleForTesting
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -27,7 +28,8 @@ class DiscoverViewModel @Inject constructor(
     private val getPopularMovies: GetPopularMovies
 ) : ViewModel() {
 
-    private val stateLiveData = MutableLiveData<DiscoverState>()
+    @VisibleForTesting
+    internal val stateLiveData = MutableLiveData<DiscoverState>()
     val state: LiveData<DiscoverState> = stateLiveData
 
     private val eventLiveData = SingleLiveEvent<DiscoverEvent>()

@@ -77,10 +77,8 @@ class DiscoverViewModelTest {
     fun `should send navigation event when item is clicked`() {
         runBlocking {
             val observer = viewModel.event.test()
-            val movies = listOf(movie())
-            givenMovies(movies)
 
-            viewModel.handle(Load)
+            viewModel.stateLiveData.value = Content(listOf(discoverViewEntity()))
             viewModel.handle(ItemClicked(discoverViewEntity(id = "id")))
 
             observer.assertValues(

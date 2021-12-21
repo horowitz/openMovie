@@ -11,7 +11,7 @@ sealed class DiscoverAction {
     data class ItemClicked(val item: DiscoverViewEntity) : DiscoverAction()
 }
 
-sealed class DiscoverEvent() {
+sealed class DiscoverEvent {
     data class NavigateToMovieDetails(val id: String, val className: String): DiscoverEvent()
 }
 
