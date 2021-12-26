@@ -7,6 +7,7 @@ import android.view.View
 import android.widget.Button
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
+import com.dhorowitz.openmovie.common.udf.Screen
 import com.dhorowitz.openmovie.moviedetails.R
 import com.dhorowitz.openmovie.moviedetails.databinding.ActivityMovieDetailsBinding
 import com.dhorowitz.openmovie.moviedetails.presentation.model.MovieDetailsAction.HomepageButtonClicked
@@ -24,7 +25,7 @@ import dagger.hilt.android.AndroidEntryPoint
 
 
 @AndroidEntryPoint
-class MovieDetailsActivity : AppCompatActivity() {
+class MovieDetailsActivity : AppCompatActivity(), Screen<MovieDetailsState, MovieDetailsEvent> {
     private val viewModel: MovieDetailsViewModel by viewModels()
 
     val id: String by lazy {
@@ -56,11 +57,11 @@ class MovieDetailsActivity : AppCompatActivity() {
         toolbar.setNavigationOnClickListener { onBackPressed() }
     }
 
-    private fun handleEvent(event: MovieDetailsEvent) = when (event) {
+    override fun handleEvent(event: MovieDetailsEvent) = when (event) {
         is NavigateToBrowser -> openBrowser(event.url)
     }
 
-    private fun handleState(state: MovieDetailsState) = when (state) {
+    override fun handleState(state: MovieDetailsState) = when (state) {
         is Content -> render(state.viewEntity)
         Loading -> setViewsVisibility(loading = View.VISIBLE)
         Error -> handleError()

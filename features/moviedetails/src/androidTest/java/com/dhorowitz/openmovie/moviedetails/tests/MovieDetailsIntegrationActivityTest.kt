@@ -28,7 +28,7 @@ import java.io.InputStreamReader
 @HiltAndroidTest
 @RunWith(AndroidJUnit4::class)
 @UninstallModules(MovieDetailsNetworkModule::class)
-class MovieDetailsActivityTest {
+class MovieDetailsIntegrationActivityTest {
 
     private val targetContext: Context = InstrumentationRegistry.getInstrumentation().targetContext
 
@@ -53,15 +53,6 @@ class MovieDetailsActivityTest {
     }
 
     @Test
-    fun shouldDisplayItemsCorrectly() {
-        setupDetailsAndLaunch().use {
-            movieDetailsRobot {
-                areItemsDisplayedCorrectly()
-            }
-        }
-    }
-
-    @Test
     fun shouldRecoverFromErrorCorrectly() {
         val movieId = "123"
         val intent: Intent = Intent(targetContext, MovieDetailsActivity::class.java).apply {
@@ -76,43 +67,14 @@ class MovieDetailsActivityTest {
                     getJsonContent("movie-details-200.json")
                 )
                 clickOnRetry()
-                areItemsDisplayedCorrectly()
+                areItemsDisplayedCorrectly(
+                    "The Suicide Squad",
+                    "Supervillains Harley Quinn, Bloodsport, Peacemaker and a collection of nutty cons at Belle Reve prison join the super-secret, super-shady Task Force X as they are dropped off at the remote, enemy-infused island of Corto Maltese.",
+                    "⭐️ 8.1",
+                    "🕒 132 min"
+                )
             }
         }
-    }
-
-    @Test
-    fun shouldOpenHomepageAfterClick() {
-        setupDetailsAndLaunch().use {
-            movieDetailsRobot {
-                clickOnHomepageButton()
-                didOpenHomepageLink()
-            }
-        }
-    }
-
-    @Test
-    fun shouldOpenIMDBAfterClick() {
-        setupDetailsAndLaunch().use {
-            movieDetailsRobot {
-                clickOnIMDBButton()
-                didOpenIMDBLink("tt6334354")
-            }
-        }
-    }
-
-    private fun setupDetailsAndLaunch(): ActivityScenario<MovieDetailsActivity>? {
-        val movieId = "123"
-        val intent: Intent = Intent(targetContext, MovieDetailsActivity::class.java).apply {
-            putExtra("id", movieId)
-        }
-
-        mockWebServer.registerApiRequest(
-            HttpRequest("/${MovieApi.PATH}/$movieId", HttpMethod.GET),
-            getJsonContent("movie-details-200.json")
-        )
-
-        return ActivityScenario.launch(intent)
     }
 
     private fun getJsonContent(fileName: String): String =

@@ -10,6 +10,7 @@ import com.dhorowitz.openmovie.discover.presentation.DiscoverActivity
 import com.dhorowitz.openmovie.discover.presentation.model.DiscoverState.Content
 import com.dhorowitz.openmovie.discover.robots.discoverRobot
 import com.dhorowitz.openmovie.discover.tests.data.discoverViewEntity
+import com.dhorowitz.openmovie.test.withState
 import dagger.hilt.android.testing.HiltAndroidRule
 import dagger.hilt.android.testing.HiltAndroidTest
 import dagger.hilt.android.testing.UninstallModules
@@ -60,13 +61,6 @@ class DiscoverActivityUITest {
                 clickOnFirstItem()
                 didNavigateToDetails()
             }
-        }
-    }
-
-    private fun ActivityScenario<out Activity>.withState(state: Any) {
-        onActivity { activity ->
-            val screen = activity as Screen<Any, Any>
-            screen.handleState(state)
         }
     }
 }

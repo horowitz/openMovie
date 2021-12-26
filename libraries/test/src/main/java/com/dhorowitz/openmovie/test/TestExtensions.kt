@@ -1,5 +1,8 @@
 package com.dhorowitz.openmovie.test
 
+import android.app.Activity
+import androidx.test.core.app.ActivityScenario
+import com.dhorowitz.openmovie.common.udf.Screen
 import okhttp3.mockwebserver.MockResponse
 import okhttp3.mockwebserver.MockWebServer
 import okio.buffer
@@ -23,4 +26,12 @@ fun MockWebServer.registerApiRequest(httpRequest: HttpRequest, responseBody: Str
     val mockServerDispatcher = dispatcher as MockServerDispatcher
 
     mockServerDispatcher.registerApiRequest(httpRequest, responseBody)
+}
+
+@Suppress("UNCHECKED_CAST")
+fun ActivityScenario<out Activity>.withState(state: Any) {
+    onActivity { activity ->
+        val screen = activity as Screen<Any, Any>
+        screen.handleState(state)
+    }
 }

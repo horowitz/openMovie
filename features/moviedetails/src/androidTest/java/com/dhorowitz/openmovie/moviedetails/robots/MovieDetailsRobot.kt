@@ -19,12 +19,17 @@ internal fun movieDetailsRobot(func: MovieDetailsRobot.() -> Unit) =
 
 
 class MovieDetailsRobot {
-    fun areItemsDisplayedCorrectly() {
+    fun areItemsDisplayedCorrectly(
+        title: String,
+        description: String,
+        imdbScore: String,
+        duration: String
+    ) {
         waitUntil {
-            assertDisplayed("The Suicide Squad")
-            assertDisplayed("Supervillains Harley Quinn, Bloodsport, Peacemaker and a collection of nutty cons at Belle Reve prison join the super-secret, super-shady Task Force X as they are dropped off at the remote, enemy-infused island of Corto Maltese.")
-            assertDisplayed("⭐️ 8.1")
-            assertDisplayed("🕒 132 min")
+            assertDisplayed(title)
+            assertDisplayed(description)
+            assertDisplayed(imdbScore)
+            assertDisplayed(duration)
         }
     }
 
@@ -37,16 +42,16 @@ class MovieDetailsRobot {
     }
 
 
-    fun didOpenIMDBLink(imdbId: String) {
+    fun didOpenIMDBLink(url: String) {
         val expectedIntent: Matcher<Intent> =
-            allOf(hasAction(Intent.ACTION_VIEW), hasData("https://www.imdb.com/title/$imdbId"))
+            allOf(hasAction(Intent.ACTION_VIEW), hasData(url))
         intending(expectedIntent).respondWith(Instrumentation.ActivityResult(0, null))
         intended(expectedIntent)
     }
 
-    fun didOpenHomepageLink() {
+    fun didOpenHomepageLink(url: String) {
         val expectedIntent: Matcher<Intent> =
-            allOf(hasAction(Intent.ACTION_VIEW), hasData("https://www.thesuicidesquad.net"))
+            allOf(hasAction(Intent.ACTION_VIEW), hasData(url))
         intending(expectedIntent).respondWith(Instrumentation.ActivityResult(0, null))
         intended(expectedIntent)
     }
