@@ -25,7 +25,7 @@ import java.io.InputStreamReader
 @HiltAndroidTest
 @RunWith(AndroidJUnit4::class)
 @UninstallModules(DiscoverNetworkModule::class)
-class DiscoverActivityTest {
+class DiscoverActivityIntegrationTest {
 
     @get:Rule
     var hiltRule = HiltAndroidRule(this)
@@ -48,17 +48,6 @@ class DiscoverActivityTest {
     }
 
     @Test
-    fun shouldDisplayItemsCorrectly() {
-        ActivityScenario.launch(DiscoverActivity::class.java).use {
-
-            givenItemsFromNetwork()
-            discoverRobot {
-                isGridDisplayedCorrectly(5)
-            }
-        }
-    }
-
-    @Test
     fun shouldRecoverFromErrorCorrectly() {
         ActivityScenario.launch(DiscoverActivity::class.java).use {
 
@@ -67,20 +56,6 @@ class DiscoverActivityTest {
                 givenItemsFromNetwork()
                 clickOnRetry()
                 isGridDisplayedCorrectly(5)
-            }
-        }
-    }
-
-    @Test
-    fun shouldNavigateToDetails() {
-        ActivityScenario.launch(DiscoverActivity::class.java).use {
-
-            givenItemsFromNetwork()
-
-            discoverRobot {
-                isGridDisplayedCorrectly(5)
-                clickOnFirstItem()
-                didNavigateToDetails()
             }
         }
     }
@@ -94,4 +69,5 @@ class DiscoverActivityTest {
 
     private fun getJsonContent(fileName: String): String =
         InputStreamReader(this.javaClass.classLoader!!.getResourceAsStream(fileName)).use { it.readText() }
+
 }

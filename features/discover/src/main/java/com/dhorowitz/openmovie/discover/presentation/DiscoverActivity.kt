@@ -6,6 +6,7 @@ import android.widget.Button
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.GridLayoutManager
+import com.dhorowitz.openmovie.common.udf.Screen
 import com.dhorowitz.openmovie.discover.R
 import com.dhorowitz.openmovie.discover.databinding.ActivityDiscoverBinding
 import com.dhorowitz.openmovie.discover.presentation.grid.DiscoverAdapter
@@ -21,7 +22,7 @@ import com.dhorowitz.openmovie.navigation.navigateToMovieDetails
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class DiscoverActivity : AppCompatActivity() {
+class DiscoverActivity : AppCompatActivity(), Screen<DiscoverState, DiscoverEvent> {
 
     private lateinit var binding: ActivityDiscoverBinding
 
@@ -49,11 +50,11 @@ class DiscoverActivity : AppCompatActivity() {
         discoverRecyclerView.adapter = adapter
     }
 
-    private fun handleEvent(event: DiscoverEvent) = when (event) {
+    override fun handleEvent(event: DiscoverEvent) = when (event) {
         is NavigateToMovieDetails -> navigateToMovieDetails(event.id)
     }
 
-    private fun handleState(state: DiscoverState) = when (state) {
+    override fun handleState(state: DiscoverState) = when (state) {
         is Content -> setViewsVisibility(content = View.VISIBLE).also { render(state.items) }
         Loading -> setViewsVisibility(loading = View.VISIBLE)
         Error -> handleError()

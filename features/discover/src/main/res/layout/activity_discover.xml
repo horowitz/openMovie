@@ -38,6 +38,7 @@
 
     <include
         android:id="@+id/discoverError"
+        android:visibility="gone"
         layout="@layout/error" />
 
     <androidx.constraintlayout.widget.Guideline
