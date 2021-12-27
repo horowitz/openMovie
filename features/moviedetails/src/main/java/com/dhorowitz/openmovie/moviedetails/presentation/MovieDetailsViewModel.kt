@@ -1,5 +1,6 @@
 package com.dhorowitz.openmovie.moviedetails.presentation
 
+import androidx.annotation.VisibleForTesting
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -26,7 +27,8 @@ class MovieDetailsViewModel @Inject constructor(
     private val getMovieDetails: GetMovieDetails
 ) : ViewModel() {
 
-    private val stateLiveData = MutableLiveData<MovieDetailsState>()
+    @VisibleForTesting
+    internal val stateLiveData = MutableLiveData<MovieDetailsState>()
     val state: LiveData<MovieDetailsState> = stateLiveData
 
     private val eventLiveData = SingleLiveEvent<MovieDetailsEvent>()

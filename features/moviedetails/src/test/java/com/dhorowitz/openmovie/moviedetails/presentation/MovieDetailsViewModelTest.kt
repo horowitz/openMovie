@@ -63,12 +63,9 @@ class MovieDetailsViewModelTest {
 
     @Test
     fun `should navigate to external browser after click on homepage`() {
+        val url = "url"
         runBlocking {
-            val url = "url"
-            val id = "id"
-            whenever(getMovieDetails(id)).thenReturn(movieDetails(homepage = url))
-
-            viewModel.handle(Load(id))
+            viewModel.stateLiveData.value = Content(movieDetailsViewEntity(homepage = url))
             viewModel.handle(HomepageButtonClicked(url))
 
             val observer = viewModel.event.test()
@@ -80,10 +77,7 @@ class MovieDetailsViewModelTest {
     fun `should navigate to external browser after click on imdb`() {
         runBlocking {
             val url = "imdbUrl"
-            val id = "id"
-            whenever(getMovieDetails(id)).thenReturn(movieDetails(homepage = url))
-
-            viewModel.handle(Load(id))
+            viewModel.stateLiveData.value = Content(movieDetailsViewEntity(imdbUrl = url))
             viewModel.handle(ImdbButtonClicked(url))
 
             val observer = viewModel.event.test()
