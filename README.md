@@ -18,7 +18,8 @@ Show case Android practices using [the Movie db](https://www.themoviedb.org/)
 
 ## Architecture
 
-#### Multi modular project structure
+### Multi modular project structure
+![Architecture](/assets/modules%20structure.png "Text to show on mouseover")
 This project aims for showcasing a multi modular architecture based on 2 concepts: Libraries and Features
 
 - **Features** contains all user facing functionality (e.g. Discover, Movie Details)
