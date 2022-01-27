@@ -90,6 +90,7 @@ dependencies {
 
     // Picasso
     implementation 'com.squareup.picasso:picasso:2.71828'
+    implementation 'io.coil-kt:coil-compose:1.4.0'
 
     //Logs
     implementation 'com.jakewharton.timber:timber:5.0.1'
