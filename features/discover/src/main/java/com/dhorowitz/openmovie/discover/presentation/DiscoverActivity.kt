@@ -3,8 +3,10 @@ package com.dhorowitz.openmovie.discover.presentation
 import android.os.Bundle
 import android.view.View
 import android.widget.Button
+import androidx.activity.compose.setContent
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
+import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.recyclerview.widget.GridLayoutManager
 import com.dhorowitz.openmovie.common.udf.Screen
 import com.dhorowitz.openmovie.discover.R
@@ -18,9 +20,11 @@ import com.dhorowitz.openmovie.discover.presentation.model.DiscoverEvent.*
 import com.dhorowitz.openmovie.discover.presentation.model.DiscoverState
 import com.dhorowitz.openmovie.discover.presentation.model.DiscoverState.*
 import com.dhorowitz.openmovie.discover.presentation.model.DiscoverViewEntity
+import com.dhorowitz.openmovie.discover.presentation.ui.DiscoverScreen
 import com.dhorowitz.openmovie.navigation.navigateToMovieDetails
 import dagger.hilt.android.AndroidEntryPoint
 
+@ExperimentalFoundationApi
 @AndroidEntryPoint
 class DiscoverActivity : AppCompatActivity(), Screen<DiscoverState, DiscoverEvent> {
 
@@ -31,12 +35,12 @@ class DiscoverActivity : AppCompatActivity(), Screen<DiscoverState, DiscoverEven
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = ActivityDiscoverBinding.inflate(layoutInflater)
-        setupViews()
-        setContentView(binding.root)
+//        binding = ActivityDiscoverBinding.inflate(layoutInflater)
+//        setupViews()
+        setContent { DiscoverScreen(viewModel) }
 
-        viewModel.state.observe(this, ::handleState)
-        viewModel.event.observe(this, ::handleEvent)
+//        viewModel.state.observe(this, ::handleState)
+//        viewModel.event.observe(this, ::handleEvent)
 
         viewModel.handle(Load)
     }
