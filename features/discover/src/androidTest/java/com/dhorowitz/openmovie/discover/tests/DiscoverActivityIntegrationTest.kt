@@ -1,5 +1,6 @@
 package com.dhorowitz.openmovie.discover.tests
 
+import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.test.core.app.ActivityScenario
 import androidx.test.espresso.intent.Intents
 import androidx.test.ext.junit.runners.AndroidJUnit4
@@ -23,6 +24,7 @@ import org.junit.runner.RunWith
 import java.io.InputStreamReader
 
 @HiltAndroidTest
+@ExperimentalFoundationApi
 @RunWith(AndroidJUnit4::class)
 @UninstallModules(DiscoverNetworkModule::class)
 class DiscoverActivityIntegrationTest {
