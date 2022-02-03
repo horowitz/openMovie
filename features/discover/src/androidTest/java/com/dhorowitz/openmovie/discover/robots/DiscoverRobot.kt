@@ -2,28 +2,39 @@ package com.dhorowitz.openmovie.discover.robots
 
 import android.app.Instrumentation
 import android.content.Intent
+import androidx.compose.foundation.ExperimentalFoundationApi
+import androidx.compose.ui.test.*
+import androidx.compose.ui.test.junit4.AndroidComposeTestRule
+import androidx.compose.ui.unit.ExperimentalUnitApi
 import androidx.test.espresso.intent.Intents.intended
 import androidx.test.espresso.intent.Intents.intending
 import androidx.test.espresso.intent.matcher.IntentMatchers.hasComponent
-import com.adevinta.android.barista.assertion.BaristaListAssertions.assertListItemCount
+import androidx.test.ext.junit.rules.ActivityScenarioRule
 import com.adevinta.android.barista.assertion.BaristaVisibilityAssertions.assertDisplayed
 import com.adevinta.android.barista.interaction.BaristaClickInteractions.clickOn
-import com.adevinta.android.barista.interaction.BaristaListInteractions.clickListItem
-import com.dhorowitz.openmovie.discover.R
+import com.dhorowitz.openmovie.discover.presentation.DiscoverActivity
+import com.dhorowitz.openmovie.discover.presentation.ui.DISCOVER_MOVIE_GRID_CELL_TAG
+import com.dhorowitz.openmovie.discover.presentation.ui.DISCOVER_MOVIE_GRID_TAG
+import com.dhorowitz.openmovie.discover.tests.DiscoverScreenKtTest
 import com.dhorowitz.openmovie.test.wait.waitUntil
 import com.gaelmarhic.quadrant.QuadrantConstants
 import org.hamcrest.Matcher
 import org.hamcrest.core.AllOf
 
+@ExperimentalFoundationApi
+@ExperimentalUnitApi
+internal fun DiscoverScreenKtTest.discoverRobot(func: DiscoverRobot.() -> Unit) =
+    DiscoverRobot(composeTestRule).apply { func() }
 
-internal fun discoverRobot(func: DiscoverRobot.() -> Unit) =
-    DiscoverRobot().apply { func() }
 
-
-class DiscoverRobot {
+@ExperimentalFoundationApi
+@ExperimentalUnitApi
+class DiscoverRobot constructor(
+    private val composeTestRule: AndroidComposeTestRule<ActivityScenarioRule<DiscoverActivity>, DiscoverActivity>
+) {
     fun isGridDisplayedCorrectly(expectedItemsCount: Int) {
-        waitUntil { assertDisplayed(R.id.discoverRecyclerView) }
-        waitUntil { assertListItemCount(R.id.discoverRecyclerView, expectedItemsCount) }
+        composeTestRule.onNodeWithTag(DISCOVER_MOVIE_GRID_TAG).assertIsDisplayed()
+        composeTestRule.onAllNodesWithTag(DISCOVER_MOVIE_GRID_CELL_TAG).assertCountEquals(expectedItemsCount)
     }
 
     fun didNavigateToDetails() {
@@ -41,7 +52,7 @@ class DiscoverRobot {
             )
         intending(expectedIntent).respondWith(Instrumentation.ActivityResult(0, null))
 
-        waitUntil { clickListItem(R.id.discoverRecyclerView, 0) }
+        composeTestRule.onNodeWithTag(DISCOVER_MOVIE_GRID_CELL_TAG).performClick()
     }
 
     fun clickOnRetry() {
