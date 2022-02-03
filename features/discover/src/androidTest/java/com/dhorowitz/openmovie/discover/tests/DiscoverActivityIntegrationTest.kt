@@ -1,6 +1,7 @@
 package com.dhorowitz.openmovie.discover.tests
 
 import androidx.compose.foundation.ExperimentalFoundationApi
+import androidx.compose.ui.test.junit4.createAndroidComposeRule
 import androidx.compose.ui.unit.ExperimentalUnitApi
 import androidx.test.core.app.ActivityScenario
 import androidx.test.espresso.intent.Intents
@@ -31,15 +32,18 @@ import java.io.InputStreamReader
 @UninstallModules(DiscoverNetworkModule::class)
 class DiscoverActivityIntegrationTest {
 
-    @get:Rule
-    var hiltRule = HiltAndroidRule(this)
+    @get:Rule(order = 1)
+    var hiltTestRule = HiltAndroidRule(this)
+
+    @get:Rule(order = 2)
+    var composeTestRule = createAndroidComposeRule<DiscoverActivity>()
 
     private lateinit var mockWebServer: MockWebServer
 
     @Before
     fun setUp() {
         Intents.init()
-        hiltRule.inject()
+        hiltTestRule.inject()
         mockWebServer = MockWebServer()
         mockWebServer.dispatcher = MockServerDispatcher()
         mockWebServer.start(8080)
@@ -55,12 +59,12 @@ class DiscoverActivityIntegrationTest {
     fun shouldRecoverFromErrorCorrectly() {
         ActivityScenario.launch(DiscoverActivity::class.java).use {
 
-//            discoverRobot {
-//                isErrorDisplayed()
-//                givenItemsFromNetwork()
-//                clickOnRetry()
-//                isGridDisplayedCorrectly(5)
-//            }
+            composeTestRule.discoverRobot {
+                isErrorDisplayed()
+                givenItemsFromNetwork()
+                clickOnRetry()
+                isGridDisplayedCorrectly()
+            }
         }
     }
 

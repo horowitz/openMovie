@@ -46,8 +46,9 @@ class DiscoverScreenKtTest {
 
         initScreenWithState(state)
 
-        discoverRobot {
-            isGridDisplayedCorrectly(state.items.size)
+        composeTestRule.discoverRobot {
+            isGridDisplayedCorrectly()
+            assertExpectedItems(state.items.size)
         }
     }
 
@@ -57,8 +58,8 @@ class DiscoverScreenKtTest {
 
         initScreenWithState(state)
 
-        discoverRobot {
-            isGridDisplayedCorrectly(1)
+        composeTestRule.discoverRobot {
+            assertExpectedItems(1)
             clickOnFirstItem()
 //            didNavigateToDetails()
         }

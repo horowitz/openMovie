@@ -23,18 +23,22 @@ import org.hamcrest.core.AllOf
 
 @ExperimentalFoundationApi
 @ExperimentalUnitApi
-internal fun DiscoverScreenKtTest.discoverRobot(func: DiscoverRobot.() -> Unit) =
-    DiscoverRobot(composeTestRule).apply { func() }
-
+internal fun AndroidComposeTestRule<ActivityScenarioRule<DiscoverActivity>, DiscoverActivity>.discoverRobot(
+    func: DiscoverRobot.() -> Unit
+) = DiscoverRobot(this).apply { func() }
 
 @ExperimentalFoundationApi
 @ExperimentalUnitApi
-class DiscoverRobot constructor(
+class DiscoverRobot(
     private val composeTestRule: AndroidComposeTestRule<ActivityScenarioRule<DiscoverActivity>, DiscoverActivity>
 ) {
-    fun isGridDisplayedCorrectly(expectedItemsCount: Int) {
+    fun isGridDisplayedCorrectly() {
         composeTestRule.onNodeWithTag(DISCOVER_MOVIE_GRID_TAG).assertIsDisplayed()
-        composeTestRule.onAllNodesWithTag(DISCOVER_MOVIE_GRID_CELL_TAG).assertCountEquals(expectedItemsCount)
+    }
+
+    fun assertExpectedItems(expectedItemsCount: Int) {
+        composeTestRule.onAllNodesWithTag(DISCOVER_MOVIE_GRID_CELL_TAG)
+            .assertCountEquals(expectedItemsCount)
     }
 
     fun didNavigateToDetails() {
@@ -56,10 +60,14 @@ class DiscoverRobot constructor(
     }
 
     fun clickOnRetry() {
-        clickOn("Retry")
+        composeTestRule
+            .onNodeWithText("Retry")
+            .performClick()
     }
 
     fun isErrorDisplayed() {
-        waitUntil { assertDisplayed("An error has occurred. Tap on the button below to try again") }
+        composeTestRule
+            .onNodeWithText("An error has occurred. Tap on the button below to try again")
+            .assertIsDisplayed()
     }
 }
