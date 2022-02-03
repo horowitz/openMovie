@@ -27,6 +27,7 @@ import com.dhorowitz.openmovie.discover.presentation.model.DiscoverAction.Load
 import com.dhorowitz.openmovie.discover.presentation.model.DiscoverState
 import com.dhorowitz.openmovie.discover.presentation.model.DiscoverState.*
 import com.dhorowitz.openmovie.discover.presentation.model.DiscoverViewEntity
+import com.dhorowitz.openmovie.ui.TitleText
 
 @ExperimentalUnitApi
 @ExperimentalFoundationApi
@@ -40,19 +41,7 @@ fun DiscoverScreen(
     Scaffold(
         topBar = {
             TopAppBar(backgroundColor = colorResource(id = R.color.purple_bg)) {
-                Text(
-                    style = TextStyle(
-                        color = colorResource(id = R.color.yellow_bg_2),
-                        shadow = Shadow(
-                            color = colorResource(id = R.color.black),
-                            offset = Offset(10f, 10f),
-                            blurRadius = 8f
-                        ),
-                        fontFamily = FontFamily(Font(R.font.alfa_slab_one, FontWeight.Normal))
-                    ),
-                    text = stringResource(id = R.string.app_name).uppercase(),
-                    fontSize = 24.sp
-                )
+                TitleText(text = stringResource(id = R.string.app_name))
             }
         },
         content = {

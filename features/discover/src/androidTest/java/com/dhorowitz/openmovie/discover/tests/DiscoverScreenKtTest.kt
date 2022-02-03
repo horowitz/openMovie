@@ -61,6 +61,7 @@ class DiscoverScreenKtTest {
         composeTestRule.discoverRobot {
             assertExpectedItems(1)
             clickOnFirstItem()
+            // TODO: Assert navigation once fully migrated to compose
 //            didNavigateToDetails()
         }
     }
