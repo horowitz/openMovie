@@ -1,4 +1,4 @@
-package com.dhorowitz.openmovie.discover.presentation.ui
+package com.dhorowitz.openmovie.ui
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.*
@@ -12,14 +12,14 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.semantics.Role.Companion.Image
 import androidx.compose.ui.unit.dp
-import com.dhorowitz.openmovie.discover.R
+
 
 @Composable
 fun ErrorView(onRetryClicked: () -> Unit) {
     Column(
-        modifier = Modifier.fillMaxSize(),
         verticalArrangement = Arrangement.Center,
-        horizontalAlignment = Alignment.CenterHorizontally
+        horizontalAlignment = Alignment.CenterHorizontally,
+        modifier = Modifier.fillMaxSize()
     ) {
         Image(
             painter = painterResource(R.drawable.popcorn),

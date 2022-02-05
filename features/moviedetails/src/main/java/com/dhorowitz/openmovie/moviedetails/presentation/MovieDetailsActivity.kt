@@ -5,8 +5,12 @@ import android.net.Uri
 import android.os.Bundle
 import android.view.View
 import android.widget.Button
+import androidx.activity.compose.setContent
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
+import androidx.compose.foundation.ExperimentalFoundationApi
+import androidx.compose.runtime.livedata.observeAsState
+import androidx.compose.ui.unit.ExperimentalUnitApi
 import com.dhorowitz.openmovie.common.udf.Screen
 import com.dhorowitz.openmovie.moviedetails.R
 import com.dhorowitz.openmovie.moviedetails.databinding.ActivityMovieDetailsBinding
@@ -20,31 +24,37 @@ import com.dhorowitz.openmovie.moviedetails.presentation.model.MovieDetailsState
 import com.dhorowitz.openmovie.moviedetails.presentation.model.MovieDetailsState.Error
 import com.dhorowitz.openmovie.moviedetails.presentation.model.MovieDetailsState.Loading
 import com.dhorowitz.openmovie.moviedetails.presentation.model.MovieDetailsViewEntity
+import com.dhorowitz.openmovie.moviedetails.presentation.ui.MovieDetailsScreen
 import com.squareup.picasso.Picasso
 import dagger.hilt.android.AndroidEntryPoint
 
 
+@ExperimentalFoundationApi
+@ExperimentalUnitApi
 @AndroidEntryPoint
 class MovieDetailsActivity : AppCompatActivity(), Screen<MovieDetailsState, MovieDetailsEvent> {
     private val viewModel: MovieDetailsViewModel by viewModels()
 
     val id: String by lazy {
-        requireNotNull(intent.extras?.getString("id"), { "movie id is required" })
+        requireNotNull(intent.extras?.getString("id")) { "movie id is required" }
     }
 
     private lateinit var binding: ActivityMovieDetailsBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = ActivityMovieDetailsBinding.inflate(layoutInflater)
-        setContentView(binding.root)
+//        binding = ActivityMovieDetailsBinding.inflate(layoutInflater)
+//        setContentView(binding.root)
+//
+//        setupToolbar()
+        setContent {
+            val state = viewModel.state.observeAsState(Loading).value
+            MovieDetailsScreen(id = id, state = state, onAction = { viewModel.handle(it) })
+        }
 
-        setupToolbar()
-
-        viewModel.state.observe(this, ::handleState)
         viewModel.event.observe(this, ::handleEvent)
 
-        val id = requireNotNull(intent.extras?.getString("id"), { "movie id is required" })
+        val id = requireNotNull(intent.extras?.getString("id")) { "movie id is required" }
         viewModel.handle(Load(id))
     }
 

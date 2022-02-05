@@ -27,6 +27,8 @@ import com.dhorowitz.openmovie.discover.presentation.model.DiscoverAction.Load
 import com.dhorowitz.openmovie.discover.presentation.model.DiscoverState
 import com.dhorowitz.openmovie.discover.presentation.model.DiscoverState.*
 import com.dhorowitz.openmovie.discover.presentation.model.DiscoverViewEntity
+import com.dhorowitz.openmovie.ui.ErrorView
+import com.dhorowitz.openmovie.ui.LoadingLottie
 import com.dhorowitz.openmovie.ui.TitleText
 
 @ExperimentalUnitApi

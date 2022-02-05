@@ -2,10 +2,10 @@ package com.dhorowitz.openmovie.ui
 
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.Modifier
 import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.graphics.Shadow
 import androidx.compose.ui.res.colorResource
-import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.Font
 import androidx.compose.ui.text.font.FontFamily
@@ -14,7 +14,7 @@ import androidx.compose.ui.unit.TextUnit
 import androidx.compose.ui.unit.sp
 
 @Composable
-fun TitleText(text: String, fontSize: TextUnit = 24.sp) {
+fun TitleText(text: String, modifier: Modifier = Modifier, fontSize: TextUnit = 24.sp) {
     Text(
         style = TextStyle(
             color = colorResource(id = R.color.yellow_bg_2),
@@ -26,6 +26,7 @@ fun TitleText(text: String, fontSize: TextUnit = 24.sp) {
             fontFamily = FontFamily(Font(R.font.alfa_slab_one, FontWeight.Normal))
         ),
         text = text.uppercase(),
-        fontSize = fontSize
+        fontSize = fontSize,
+        modifier = modifier
     )
 }
