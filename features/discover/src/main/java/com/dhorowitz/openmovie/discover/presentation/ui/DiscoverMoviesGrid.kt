@@ -6,6 +6,7 @@ import androidx.compose.foundation.Image
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.PaddingValues
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.lazy.GridCells
 import androidx.compose.foundation.lazy.LazyVerticalGrid
@@ -13,6 +14,7 @@ import androidx.compose.foundation.lazy.itemsIndexed
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.unit.dp
 import coil.compose.rememberImagePainter
@@ -33,6 +35,7 @@ fun DiscoverMoviesGrid(
         cells = GridCells.Fixed(3),
         contentPadding = PaddingValues(4.dp),
         horizontalArrangement = Arrangement.spacedBy(4.dp),
+        verticalArrangement = Arrangement.spacedBy(4.dp),
         modifier = Modifier.testTag(DISCOVER_MOVIE_GRID_TAG)
     ) {
         itemsIndexed(items) { index, viewEntity ->
@@ -40,10 +43,11 @@ fun DiscoverMoviesGrid(
                 LaunchedEffect(Unit) { onLastItemReached() }
             }
             Image(
+                contentScale = ContentScale.Crop,
                 painter = rememberImagePainter(viewEntity.imageUrl),
                 contentDescription = null,
                 modifier = Modifier
-                    .size(200.dp)
+                    .height(200.dp)
                     .clickable { onItemClick(viewEntity) }
                     .testTag(DISCOVER_MOVIE_GRID_CELL_TAG)
             )
