@@ -49,6 +49,10 @@ dependencies {
     // Needed for createComposeRule, but not createAndroidComposeRule:
     debugImplementation("androidx.compose.ui:ui-test-manifest:1.2.0-alpha02")
 
+    //Accompanist
+    implementation "com.google.accompanist:accompanist-systemuicontroller:0.24.1-alpha"
+    implementation "com.google.accompanist:accompanist-insets:0.24.1-alpha"
+
     // UI Tests
     androidTestImplementation 'androidx.compose.ui:ui-test-junit4:1.0.5'
 

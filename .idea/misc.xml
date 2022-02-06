@@ -11,6 +11,7 @@
         <entry key="features/discover/src/main/res/layout/activity_discover.xml" value="0.11614583333333334" />
         <entry key="features/discover/src/main/res/layout/discover_list_item.xml" value="0.1" />
         <entry key="features/moviedetails/src/main/res/layout/activity_movie_details.xml" value="0.20153985507246377" />
+        <entry key="features/moviedetails/src/main/res/layout/movie_details_toolbar.xml" value="0.1890625" />
         <entry key="libraries/ui/src/main/res/drawable/transparent_toolbar_bg.xml" value="0.2777777777777778" />
         <entry key="libraries/ui/src/main/res/font/open_sans.xml" value="0.2777777777777778" />
         <entry key="libraries/ui/src/main/res/layout/error.xml" value="0.20153985507246377" />
