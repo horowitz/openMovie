@@ -1,9 +1,7 @@
 package com.dhorowitz.openmovie.moviedetails.tests
 
-import android.content.Context
 import androidx.test.espresso.intent.Intents
 import androidx.test.ext.junit.runners.AndroidJUnit4
-import androidx.test.platform.app.InstrumentationRegistry
 import com.dhorowitz.openmovie.moviedetails.di.MovieDetailsNetworkModule
 import dagger.hilt.android.testing.HiltAndroidRule
 import dagger.hilt.android.testing.HiltAndroidTest
@@ -17,8 +15,6 @@ import org.junit.runner.RunWith
 @RunWith(AndroidJUnit4::class)
 @UninstallModules(MovieDetailsNetworkModule::class)
 class MovieDetailsUIActivityTest {
-
-    private val targetContext: Context = InstrumentationRegistry.getInstrumentation().targetContext
 
     @get:Rule
     var hiltRule = HiltAndroidRule(this)

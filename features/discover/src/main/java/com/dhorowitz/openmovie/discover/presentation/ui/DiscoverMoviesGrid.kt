@@ -18,6 +18,8 @@ import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.unit.dp
 import coil.compose.rememberImagePainter
+import com.dhorowitz.openmovie.discover.presentation.model.DiscoverAction
+import com.dhorowitz.openmovie.discover.presentation.model.DiscoverAction.*
 import com.dhorowitz.openmovie.discover.presentation.model.DiscoverViewEntity
 
 @VisibleForTesting
@@ -28,8 +30,7 @@ internal const val DISCOVER_MOVIE_GRID_CELL_TAG = "DISCOVER_MOVIE_GRID_CELL_TAG"
 @Composable
 fun DiscoverMoviesGrid(
     items: List<DiscoverViewEntity>,
-    onItemClick: (DiscoverViewEntity) -> Unit,
-    onLastItemReached: () -> Unit
+    onAction: (DiscoverAction) -> Unit
 ) {
     LazyVerticalGrid(
         cells = GridCells.Fixed(3),
@@ -40,7 +41,7 @@ fun DiscoverMoviesGrid(
     ) {
         itemsIndexed(items) { index, viewEntity ->
             if (index == items.lastIndex) {
-                LaunchedEffect(Unit) { onLastItemReached() }
+                LaunchedEffect(Unit) { onAction(Load) }
             }
             Image(
                 contentScale = ContentScale.Crop,
@@ -48,7 +49,7 @@ fun DiscoverMoviesGrid(
                 contentDescription = null,
                 modifier = Modifier
                     .height(200.dp)
-                    .clickable { onItemClick(viewEntity) }
+                    .clickable { onAction(ItemClicked(viewEntity)) }
                     .testTag(DISCOVER_MOVIE_GRID_CELL_TAG)
             )
         }

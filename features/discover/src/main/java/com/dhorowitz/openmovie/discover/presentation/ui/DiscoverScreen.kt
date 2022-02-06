@@ -22,6 +22,7 @@ import androidx.compose.ui.unit.ExperimentalUnitApi
 import androidx.compose.ui.unit.sp
 import com.dhorowitz.openmovie.discover.R
 import com.dhorowitz.openmovie.discover.presentation.DiscoverViewModel
+import com.dhorowitz.openmovie.discover.presentation.model.DiscoverAction
 import com.dhorowitz.openmovie.discover.presentation.model.DiscoverAction.ItemClicked
 import com.dhorowitz.openmovie.discover.presentation.model.DiscoverAction.Load
 import com.dhorowitz.openmovie.discover.presentation.model.DiscoverState
@@ -36,9 +37,7 @@ import com.dhorowitz.openmovie.ui.TitleText
 @Composable
 fun DiscoverScreen(
     state: DiscoverState,
-    onItemClicked: (DiscoverViewEntity) -> Unit,
-    onLastItemReached: () -> Unit,
-    onRetryClicked: () -> Unit
+    onAction: (DiscoverAction) -> Unit
 ) {
     Scaffold(
         topBar = {
@@ -50,11 +49,10 @@ fun DiscoverScreen(
             Box(modifier = Modifier.fillMaxSize(), contentAlignment = Alignment.Center) {
                 when (state) {
                     is Content -> DiscoverMoviesGrid(
-                        state.items,
-                        onItemClick = { onItemClicked(it) },
-                        onLastItemReached = { onLastItemReached() }
+                        items = state.items,
+                        onAction
                     )
-                    Error -> ErrorView { onRetryClicked() }
+                    Error -> ErrorView { onAction(Load) }
                     Loading -> LoadingLottie()
                 }
             }

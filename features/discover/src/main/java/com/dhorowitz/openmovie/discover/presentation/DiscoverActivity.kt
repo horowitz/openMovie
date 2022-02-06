@@ -7,11 +7,10 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.runtime.livedata.observeAsState
 import androidx.compose.ui.unit.ExperimentalUnitApi
-import com.dhorowitz.openmovie.discover.presentation.model.DiscoverAction
 import com.dhorowitz.openmovie.discover.presentation.model.DiscoverAction.Load
 import com.dhorowitz.openmovie.discover.presentation.model.DiscoverEvent
 import com.dhorowitz.openmovie.discover.presentation.model.DiscoverEvent.NavigateToMovieDetails
-import com.dhorowitz.openmovie.discover.presentation.model.DiscoverState
+import com.dhorowitz.openmovie.discover.presentation.model.DiscoverState.Loading
 import com.dhorowitz.openmovie.discover.presentation.ui.DiscoverScreen
 import com.dhorowitz.openmovie.navigation.navigateToMovieDetails
 import dagger.hilt.android.AndroidEntryPoint
@@ -26,13 +25,8 @@ class DiscoverActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
-            val state = viewModel.state.observeAsState(DiscoverState.Loading).value
-            DiscoverScreen(
-                state = state,
-                onItemClicked = { viewModel.handle(DiscoverAction.ItemClicked(it)) },
-                onLastItemReached = { viewModel.handle(Load) },
-                onRetryClicked = { viewModel.handle(Load) }
-            )
+            val state = viewModel.state.observeAsState(initial = Loading).value
+            DiscoverScreen(state = state, onAction = { viewModel.handle(it) })
         }
 
         viewModel.event.observe(this, ::handleEvent)
