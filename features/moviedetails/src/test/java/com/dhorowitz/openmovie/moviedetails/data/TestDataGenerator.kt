@@ -50,7 +50,7 @@ fun movieDetails(
     imdbUrl
 )
 
-fun movieDetailsViewEntity(
+internal fun movieDetailsViewEntity(
     id: String = "id",
     title: String = "title",
     backdropPath: String = "backdropPath",

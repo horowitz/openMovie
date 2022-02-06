@@ -1,4 +1,4 @@
-package com.dhorowitz.openmovie.moviedetails.test.data
+package com.dhorowitz.openmovie.moviedetails.data.entity
 
 import com.dhorowitz.openmovie.moviedetails.presentation.model.MovieDetailsViewEntity
 
