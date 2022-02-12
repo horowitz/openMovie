@@ -67,13 +67,6 @@ class DiscoverScreenKtTest {
     }
 
     private fun initScreenWithState(state: Content) {
-        composeTestRule.setContent {
-            DiscoverScreen(
-                state = state,
-                onItemClicked = {},
-                onLastItemReached = {},
-                onRetryClicked = {},
-            )
-        }
+        composeTestRule.setContent { DiscoverScreen(state = state, onAction = {}) }
     }
 }

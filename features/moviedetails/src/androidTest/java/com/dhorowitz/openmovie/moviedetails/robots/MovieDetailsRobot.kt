@@ -3,7 +3,10 @@ package com.dhorowitz.openmovie.moviedetails.robots
 import android.app.Instrumentation
 import android.content.Intent
 import androidx.compose.foundation.ExperimentalFoundationApi
+import androidx.compose.ui.test.assertIsDisplayed
 import androidx.compose.ui.test.junit4.AndroidComposeTestRule
+import androidx.compose.ui.test.onNodeWithText
+import androidx.compose.ui.test.performClick
 import androidx.compose.ui.unit.ExperimentalUnitApi
 import androidx.test.espresso.intent.Intents
 import androidx.test.espresso.intent.Intents.intended
@@ -36,28 +39,32 @@ class MovieDetailsRobot(
         description: String,
         imdbScore: String,
         duration: String
-    ) {
-        waitUntil {
-            assertDisplayed(title)
-            assertDisplayed(description)
-            assertDisplayed(imdbScore)
-            assertDisplayed(duration)
-        }
+    ) = with(composeTestRule) {
+        onNodeWithText(title).assertIsDisplayed()
+        onNodeWithText(description).assertIsDisplayed()
+        onNodeWithText(imdbScore).assertIsDisplayed()
+        onNodeWithText(duration).assertIsDisplayed()
     }
 
-    fun clickOnHomepageButton() {
-        clickOn(R.id.homepageButton)
+    fun clickOnHomepageButton() = with(composeTestRule) {
+        onNodeWithText("Go to Homepage", ignoreCase = true).performClick()
     }
 
-    fun clickOnIMDBButton() {
-        clickOn(R.id.imdbButton)
+    fun clickOnIMDBButton() = with(composeTestRule) {
+        onNodeWithText("Go to IMDB", ignoreCase = true).performClick()
     }
 
+    fun isErrorDisplayed() = with(composeTestRule) {
+        onNodeWithText("Retry").assertIsDisplayed()
+    }
+
+    fun clickOnRetry() = with(composeTestRule) {
+        onNodeWithText("Retry").performClick()
+    }
 
     fun didOpenIMDBLink(url: String) {
         val expectedIntent: Matcher<Intent> =
             allOf(hasAction(Intent.ACTION_VIEW), hasData(url))
-        intending(expectedIntent).respondWith(Instrumentation.ActivityResult(0, null))
         intended(expectedIntent)
     }
 
@@ -66,13 +73,5 @@ class MovieDetailsRobot(
             allOf(hasAction(Intent.ACTION_VIEW), hasData(url))
         intending(expectedIntent).respondWith(Instrumentation.ActivityResult(0, null))
         intended(expectedIntent)
-    }
-
-    fun isErrorDisplayed() {
-        assertDisplayed("Retry")
-    }
-
-    fun clickOnRetry() {
-        clickOn("Retry")
     }
 }

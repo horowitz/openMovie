@@ -41,6 +41,7 @@ class MovieDetailsViewModel @Inject constructor(
     }
 
     private fun onButtonClicked(url: String) {
+        Timber.v("onButtonClicked")
         eventLiveData.postValue(NavigateToBrowser(url))
     }
 

@@ -2,10 +2,13 @@ package com.dhorowitz.openmovie.moviedetails.tests
 
 import android.content.Context
 import android.content.Intent
+import androidx.compose.foundation.ExperimentalFoundationApi
+import androidx.compose.ui.unit.ExperimentalUnitApi
 import androidx.test.core.app.ActivityScenario
 import androidx.test.espresso.intent.Intents
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import androidx.test.platform.app.InstrumentationRegistry
+import com.dhorowitz.openmovie.moviedetails.createAndroidIntentComposeRule
 import com.dhorowitz.openmovie.moviedetails.data.MovieApi
 import com.dhorowitz.openmovie.moviedetails.di.MovieDetailsNetworkModule
 import com.dhorowitz.openmovie.moviedetails.presentation.MovieDetailsActivity
@@ -25,6 +28,8 @@ import org.junit.Test
 import org.junit.runner.RunWith
 import java.io.InputStreamReader
 
+@ExperimentalUnitApi
+@ExperimentalFoundationApi
 @HiltAndroidTest
 @RunWith(AndroidJUnit4::class)
 @UninstallModules(MovieDetailsNetworkModule::class)
@@ -32,15 +37,22 @@ class MovieDetailsIntegrationActivityTest {
 
     private val targetContext: Context = InstrumentationRegistry.getInstrumentation().targetContext
 
-    @get:Rule
-    var hiltRule = HiltAndroidRule(this)
+    @get:Rule(order = 1)
+    var hiltTestRule = HiltAndroidRule(this)
+
+    @get:Rule(order = 2)
+    val composeTestRule = createAndroidIntentComposeRule<MovieDetailsActivity> {
+        Intent(it, MovieDetailsActivity::class.java).apply {
+            putExtra("id", "123")
+        }
+    }
 
     private lateinit var mockWebServer: MockWebServer
 
     @Before
     fun setUp() {
         Intents.init()
-        hiltRule.inject()
+        hiltTestRule.inject()
         mockWebServer = MockWebServer()
         mockWebServer.dispatcher = MockServerDispatcher()
         mockWebServer.start(8080)
@@ -54,27 +66,22 @@ class MovieDetailsIntegrationActivityTest {
 
     @Test
     fun shouldRecoverFromErrorCorrectly() {
-//        val movieId = "123"
-//        val intent: Intent = Intent(targetContext, MovieDetailsActivity::class.java).apply {
-//            putExtra("id", movieId)
-//        }
-//
-//        ActivityScenario.launch<MovieDetailsActivity>(intent).use {
-//            movieDetailsRobot {
-//                isErrorDisplayed()
-//                mockWebServer.registerApiRequest(
-//                    HttpRequest("/${MovieApi.PATH}/$movieId", HttpMethod.GET),
-//                    getJsonContent("movie-details-200.json")
-//                )
-//                clickOnRetry()
-//                areItemsDisplayedCorrectly(
-//                    "The Suicide Squad",
-//                    "Supervillains Harley Quinn, Bloodsport, Peacemaker and a collection of nutty cons at Belle Reve prison join the super-secret, super-shady Task Force X as they are dropped off at the remote, enemy-infused island of Corto Maltese.",
-//                    "⭐️ 8.1",
-//                    "🕒 132 min"
-//                )
-//            }
-//        }
+        val movieId = "123"
+
+        composeTestRule.movieDetailsRobot {
+            isErrorDisplayed()
+            mockWebServer.registerApiRequest(
+                HttpRequest("/${MovieApi.PATH}/$movieId", HttpMethod.GET),
+                getJsonContent("movie-details-200.json")
+            )
+            clickOnRetry()
+            areItemsDisplayedCorrectly(
+                "THE SUICIDE SQUAD",
+                "Supervillains Harley Quinn, Bloodsport, Peacemaker and a collection of nutty cons at Belle Reve prison join the super-secret, super-shady Task Force X as they are dropped off at the remote, enemy-infused island of Corto Maltese.",
+                "⭐️ 8.1",
+                "🕒 132 min"
+            )
+        }
     }
 
     private fun getJsonContent(fileName: String): String =

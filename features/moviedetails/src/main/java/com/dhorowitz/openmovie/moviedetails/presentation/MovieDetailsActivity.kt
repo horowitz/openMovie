@@ -3,6 +3,7 @@ package com.dhorowitz.openmovie.moviedetails.presentation
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
+import android.util.Log
 import androidx.activity.compose.setContent
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
@@ -16,6 +17,7 @@ import com.dhorowitz.openmovie.moviedetails.presentation.model.MovieDetailsState
 import com.dhorowitz.openmovie.moviedetails.presentation.ui.MovieDetailsScreen
 import com.google.accompanist.insets.ProvideWindowInsets
 import dagger.hilt.android.AndroidEntryPoint
+import timber.log.Timber
 
 @ExperimentalFoundationApi
 @ExperimentalUnitApi
@@ -45,6 +47,7 @@ class MovieDetailsActivity : AppCompatActivity() {
     }
 
     private fun openBrowser(url: String) {
+        Timber.d("openBrowser")
         val browserIntent = Intent(Intent.ACTION_VIEW, Uri.parse(url))
         startActivity(browserIntent)
     }
