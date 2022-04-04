@@ -60,7 +60,7 @@ dependencies {
     implementation 'com.google.android.material:material:1.5.0'
 
     //Lottie
-    implementation 'com.airbnb.android:lottie:4.2.2'
+    implementation 'com.airbnb.android:lottie:5.0.3'
     implementation "com.airbnb.android:lottie-compose:4.2.2"
     
     testImplementation 'junit:junit:4.13.2'
