@@ -1,7 +1,7 @@
 plugins {
     id 'com.android.application'
     id 'kotlin-android'
-    id 'org.jetbrains.kotlin.plugin.serialization' version '1.6.10'
+    id 'org.jetbrains.kotlin.plugin.serialization' version '1.7.0'
     id 'jacoco'
 }
 
@@ -23,14 +23,14 @@ android {
         buildConfig true
         viewBinding true
     }
-    compileSdkVersion 31
+    compileSdkVersion 32
     buildToolsVersion "30.0.3"
 
     defaultConfig {
         multiDexEnabled true
         applicationId "com.dhorowitz.openmovie"
         minSdkVersion 27
-        targetSdkVersion 31
+        targetSdkVersion 32
         versionCode 1
         versionName "1.0"
 
