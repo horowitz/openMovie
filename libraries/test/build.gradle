@@ -32,26 +32,26 @@ android {
 dependencies {
     implementation project(path: ':libraries:network')
     implementation project(path: ':libraries:common')
-    implementation 'androidx.core:core-ktx:1.7.0'
-    implementation 'androidx.appcompat:appcompat:1.4.1'
-    implementation 'com.google.android.material:material:1.5.0'
+    implementation 'androidx.core:core-ktx:1.8.0'
+    implementation 'androidx.appcompat:appcompat:1.4.2'
+    implementation 'com.google.android.material:material:1.6.1'
 
     // Network
     implementation "com.squareup.retrofit2:retrofit:2.9.0"
     implementation "com.squareup.okhttp3:okhttp:4.9.3"
     implementation "com.squareup.okhttp3:logging-interceptor:4.9.3"
-    implementation "org.jetbrains.kotlinx:kotlinx-serialization-json:1.3.2"
+    implementation "org.jetbrains.kotlinx:kotlinx-serialization-json:1.3.3"
     implementation "com.jakewharton.retrofit:retrofit2-kotlinx-serialization-converter:0.8.0"
     implementation "com.jakewharton.espresso:okhttp3-idling-resource:1.0.0"
     // Coroutines
-    implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-core:1.5.1-native-mt'
-    implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-android:1.6.1'
+    implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-core:1.6.2'
+    implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-android:1.6.2'
     // Unit tests
     implementation 'junit:junit:4.13.2'
     implementation 'android.arch.core:core-testing:1.1.1'
 
     // Coroutines testing
-    implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-test:1.5.2'
+    implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-test:1.6.2'
 
     //MockWebServer
     implementation "com.squareup.okhttp3:mockwebserver:4.9.3"
@@ -64,6 +64,6 @@ dependencies {
 
     testImplementation "com.squareup.okhttp3:mockwebserver:4.9.3"
 
-    implementation 'com.google.dagger:hilt-android-testing:2.41'
+    implementation 'com.google.dagger:hilt-android-testing:2.38.1'
     androidTestImplementation 'com.google.dagger:hilt-android-testing:2.38.1'
 }
