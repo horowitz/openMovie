@@ -3,6 +3,7 @@ package com.dhorowitz.openmovie.discover.presentation.ui
 import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.padding
 import androidx.compose.material.Scaffold
 import androidx.compose.material.Text
 import androidx.compose.material.TopAppBar
@@ -46,7 +47,7 @@ fun DiscoverScreen(
             }
         },
         content = {
-            Box(modifier = Modifier.fillMaxSize(), contentAlignment = Alignment.Center) {
+            Box(modifier = Modifier.fillMaxSize().padding(it), contentAlignment = Alignment.Center) {
                 when (state) {
                     is Content -> DiscoverMoviesGrid(
                         items = state.items,

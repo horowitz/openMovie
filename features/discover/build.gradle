@@ -39,6 +39,9 @@ android {
     kotlinOptions {
         jvmTarget = '11'
     }
+    lintOptions {
+        disable "JvmStaticProvidesInObjectDetector", "FieldSiteTargetOnQualifierAnnotation", "ModuleCompanionObjects", "ModuleCompanionObjectsNotInModuleParent"
+    }
 }
 
 kapt {

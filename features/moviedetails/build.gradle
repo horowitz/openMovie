@@ -38,6 +38,9 @@ android {
     kotlinOptions {
         jvmTarget = '11'
     }
+    lintOptions {
+        baseline file("lint-baseline.xml")
+    }
 }
 
 kapt {
