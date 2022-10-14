@@ -1,13 +1,10 @@
 package com.dhorowitz.openmovie.moviedetails.tests
 
-import android.content.Context
 import android.content.Intent
 import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.ui.unit.ExperimentalUnitApi
-import androidx.test.core.app.ActivityScenario
 import androidx.test.espresso.intent.Intents
 import androidx.test.ext.junit.runners.AndroidJUnit4
-import androidx.test.platform.app.InstrumentationRegistry
 import com.dhorowitz.openmovie.moviedetails.createAndroidIntentComposeRule
 import com.dhorowitz.openmovie.moviedetails.data.MovieApi
 import com.dhorowitz.openmovie.moviedetails.di.MovieDetailsNetworkModule
@@ -20,13 +17,13 @@ import com.dhorowitz.openmovie.test.registerApiRequest
 import dagger.hilt.android.testing.HiltAndroidRule
 import dagger.hilt.android.testing.HiltAndroidTest
 import dagger.hilt.android.testing.UninstallModules
+import java.io.InputStreamReader
 import okhttp3.mockwebserver.MockWebServer
 import org.junit.After
 import org.junit.Before
 import org.junit.Rule
 import org.junit.Test
 import org.junit.runner.RunWith
-import java.io.InputStreamReader
 
 @ExperimentalUnitApi
 @ExperimentalFoundationApi
@@ -34,8 +31,6 @@ import java.io.InputStreamReader
 @RunWith(AndroidJUnit4::class)
 @UninstallModules(MovieDetailsNetworkModule::class)
 class MovieDetailsIntegrationActivityTest {
-
-    private val targetContext: Context = InstrumentationRegistry.getInstrumentation().targetContext
 
     @get:Rule(order = 1)
     var hiltTestRule = HiltAndroidRule(this)
