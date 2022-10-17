@@ -1,7 +1,8 @@
 package com.dhorowitz.openmovie.discover.data
 
-import com.dhorowitz.openmovie.discover.data.model.MovieDTO
-import com.dhorowitz.openmovie.discover.data.model.PaginatedResponse
+import com.dhorowitz.openmovie.discover.domain.MoviesDataSource
+import com.dhorowitz.openmovie.discover.domain.model.Movie
+import com.dhorowitz.openmovie.discover.domain.toMovies
 import javax.inject.Inject
 import javax.inject.Singleton
 
@@ -11,14 +12,14 @@ class MoviesNetworkDataSource @Inject constructor(
 ) : MoviesDataSource {
     var page = 0
 
-    override suspend fun fetchMovies(): PaginatedResponse<MovieDTO> {
+    override suspend fun fetchMovies(): List<Movie> {
         page = 0
-        return fetchPopularMovies()
+        return fetchPopularMovies().results.toMovies()
     }
 
-    override suspend fun fetchNextPage(): PaginatedResponse<MovieDTO> {
+    override suspend fun fetchNextPage(): List<Movie> {
         page++
-        return fetchPopularMovies()
+        return fetchPopularMovies().results.toMovies()
     }
 
     private suspend fun fetchPopularMovies() =

@@ -3,6 +3,7 @@ package com.dhorowitz.openmovie.discover.presentation
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import com.dhorowitz.openmovie.discover.discoverViewEntity
 import com.dhorowitz.openmovie.discover.domain.GetPopularMovies
+import com.dhorowitz.openmovie.discover.domain.model.Movie
 import com.dhorowitz.openmovie.discover.movie
 import com.dhorowitz.openmovie.discover.presentation.model.DiscoverAction.ItemClicked
 import com.dhorowitz.openmovie.discover.presentation.model.DiscoverAction.Load
@@ -90,7 +91,7 @@ class DiscoverViewModelTest {
         }
     }
 
-    private suspend fun givenMovies(movies: List<com.dhorowitz.openmovie.discover.domain.model.Movie>) {
+    private suspend fun givenMovies(movies: List<Movie>) {
         whenever(getPopularMovies()).thenReturn(movies)
     }
 

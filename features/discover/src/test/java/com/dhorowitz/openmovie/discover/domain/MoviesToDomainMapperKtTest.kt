@@ -1,6 +1,5 @@
 package com.dhorowitz.openmovie.discover.domain
 
-import com.dhorowitz.openmovie.discover.domain.toMovie
 import com.dhorowitz.openmovie.discover.movie
 import com.dhorowitz.openmovie.discover.movieDTO
 import org.junit.Assert.assertEquals

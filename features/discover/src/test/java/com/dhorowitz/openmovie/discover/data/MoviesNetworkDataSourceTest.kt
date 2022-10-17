@@ -2,6 +2,7 @@ package com.dhorowitz.openmovie.discover.data
 
 import com.dhorowitz.network.serializer.defaultConverter
 import com.dhorowitz.openmovie.discover.data.model.PaginatedResponse
+import com.dhorowitz.openmovie.discover.movie
 import com.dhorowitz.openmovie.discover.movieDTO
 import com.dhorowitz.openmovie.test.enqueueResponse
 import kotlinx.coroutines.ExperimentalCoroutinesApi
@@ -48,19 +49,17 @@ class MoviesNetworkDataSourceTest {
             val actual = sut.fetchMovies()
 
             val expected = listOf(
-                movieDTO(
+                movie(
                     id = "464052",
                     overview = "Wonder Woman comes into...",
                     title = "Wonder Woman 1984",
                     voteAverage = 7.2,
-                    posterPath = "/8UlWHLMpgZm9bx6QYh0NFoq67TZ.jpg",
+                    image = "https://image.tmdb.org/t/p/w500/8UlWHLMpgZm9bx6QYh0NFoq67TZ.jpg",
                     voteCount = 2385
                 )
-            ).toPaginatedResponse()
+            )
 
             assertEquals(expected, actual)
         }
     }
 }
-
-internal fun List<Any>.toPaginatedResponse(page: Int = 1) = PaginatedResponse(page, this)

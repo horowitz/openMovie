@@ -9,12 +9,11 @@ import org.junit.Test
 
 @ExperimentalCoroutinesApi
 class GetPopularMoviesTest {
-    private val fakeDataSource = FakeDataSource(listOf(movieDTO()))
-    private val getPopularMovies =
-        GetPopularMovies(fakeDataSource)
 
     @Test
     fun `should get popular movies correctly`() {
+        val fakeDataSource = FakeDataSource(listOf(movie()))
+        val getPopularMovies = GetPopularMovies(fakeDataSource)
         runBlocking {
             val actual = getPopularMovies()
             val expected = listOf(movie())
