@@ -2,7 +2,7 @@ plugins {
     id 'java-library'
     id 'kotlin'
     id 'org.jetbrains.kotlin.plugin.serialization' version '1.7.20'
-    id("com.github.gmazzo.buildconfig") version '3.0.3'
+    id("com.github.gmazzo.buildconfig") version '3.1.0'
 }
 
 buildConfig {
