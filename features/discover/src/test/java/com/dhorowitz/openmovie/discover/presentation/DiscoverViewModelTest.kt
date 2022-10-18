@@ -10,16 +10,21 @@ import com.dhorowitz.openmovie.discover.presentation.model.DiscoverAction.Load
 import com.dhorowitz.openmovie.discover.presentation.model.DiscoverEvent.*
 import com.dhorowitz.openmovie.discover.presentation.model.DiscoverState.*
 import com.dhorowitz.openmovie.test.MainCoroutineRule
+import com.dhorowitz.openmovie.test.coroutines.test
 import com.dhorowitz.openmovie.test.test
 import com.nhaarman.mockitokotlin2.doAnswer
 import com.nhaarman.mockitokotlin2.mock
 import com.nhaarman.mockitokotlin2.whenever
 import kotlinx.coroutines.ExperimentalCoroutinesApi
-import kotlinx.coroutines.runBlocking
 import org.junit.Rule
 import org.junit.Test
 import java.io.IOException
+import kotlinx.coroutines.test.runTest
+import org.junit.Assert
+import org.junit.Assert.assertEquals
+import org.junit.Assert.assertTrue
 
+@OptIn(ExperimentalCoroutinesApi::class)
 class DiscoverViewModelTest {
 
     @Rule
@@ -36,58 +41,68 @@ class DiscoverViewModelTest {
 
     @Test
     fun `should load movies when vm starts`() {
-        runBlocking {
-            val observer = viewModel.state.test()
-            val movies = listOf(movie())
-            givenMovies(movies)
+        runTest {
+            viewModel.state.test(this).use { observer ->
+                val movies = listOf(movie())
+                givenMovies(movies)
 
-            viewModel.handle(Load)
+                viewModel.handle(Load)
 
-            observer.assertValues(Loading, Content(listOf(discoverViewEntity())))
+                val expected = listOf(Loading, Content(listOf(discoverViewEntity())))
+
+                assertEquals(observer.values, expected)
+            }
         }
     }
 
     @Test
     fun `should show error when network fails`() {
-        runBlocking {
-            val observer = viewModel.state.test()
-            val exception = IOException()
-            givenNetworkFailure(exception)
+        runTest {
+            viewModel.state.test(this).use { observer ->
+                val exception = IOException()
+                givenNetworkFailure(exception)
 
-            viewModel.handle(Load)
+                viewModel.handle(Load)
 
-            observer.assertValues(Loading, Error)
+                val expected = listOf(Loading, Error)
+
+                assertEquals(observer.values, expected)
+            }
         }
     }
 
+    //
     @Test
     fun `should only show loading state for initial loading of movies`() {
-        runBlocking {
-            val observer = viewModel.state.test()
-            val movies = listOf(movie())
-            givenMovies(movies)
+        runTest {
+            viewModel.state.test(this).use { observer ->
+                val movies = listOf(movie())
+                givenMovies(movies)
 
-            viewModel.handle(Load)
-            viewModel.handle(Load)
+                viewModel.handle(Load)
+                viewModel.handle(Load)
 
-            observer.assertOnce(Loading)
+                assertTrue(observer.values.count { it == Loading } == 1)
+            }
         }
     }
 
     @Test
     fun `should send navigation event when item is clicked`() {
-        runBlocking {
-            val observer = viewModel.event.test()
+        runTest {
+            viewModel.event.test(this).use { observer ->
+                viewModel.stateFlow.value = Content(listOf(discoverViewEntity()))
+                viewModel.handle(ItemClicked(discoverViewEntity(id = "id")))
 
-            viewModel.stateLiveData.value = Content(listOf(discoverViewEntity()))
-            viewModel.handle(ItemClicked(discoverViewEntity(id = "id")))
-
-            observer.assertValues(
-                NavigateToMovieDetails(
-                    "id",
-                    "com.dhorowitz.openmovie.moviedetails.presentation.MovieDetailsActivity"
+                val expected = listOf(
+                    NavigateToMovieDetails(
+                        "id",
+                        "com.dhorowitz.openmovie.moviedetails.presentation.MovieDetailsActivity"
+                    )
                 )
-            )
+
+                assertEquals(observer.values, expected)
+            }
         }
     }
 

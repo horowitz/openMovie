@@ -5,8 +5,12 @@ import androidx.activity.compose.setContent
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.compose.foundation.ExperimentalFoundationApi
+import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.livedata.observeAsState
 import androidx.compose.ui.unit.ExperimentalUnitApi
+import androidx.lifecycle.compose.ExperimentalLifecycleComposeApi
+import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.dhorowitz.openmovie.discover.presentation.model.DiscoverAction.Load
 import com.dhorowitz.openmovie.discover.presentation.model.DiscoverEvent
 import com.dhorowitz.openmovie.discover.presentation.model.DiscoverEvent.NavigateToMovieDetails
@@ -14,10 +18,12 @@ import com.dhorowitz.openmovie.discover.presentation.model.DiscoverState.Loading
 import com.dhorowitz.openmovie.discover.presentation.ui.DiscoverScreen
 import com.dhorowitz.openmovie.navigation.navigateToMovieDetails
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.flow.collectLatest
 
 @ExperimentalUnitApi
 @ExperimentalFoundationApi
 @AndroidEntryPoint
+@ExperimentalLifecycleComposeApi
 class DiscoverActivity : AppCompatActivity() {
 
     private val viewModel: DiscoverViewModel by viewModels()
@@ -25,13 +31,14 @@ class DiscoverActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
-            val state = viewModel.state.observeAsState(initial = Loading).value
+            val state = viewModel.state.collectAsStateWithLifecycle(initialValue = Loading).value
             DiscoverScreen(state = state, onAction = { viewModel.handle(it) })
+
+            LaunchedEffect(Unit) {
+                viewModel.event.collectLatest { event -> handleEvent(event) }
+                viewModel.handle(Load)
+            }
         }
-
-        viewModel.event.observe(this, ::handleEvent)
-
-        viewModel.handle(Load)
     }
 
     private fun handleEvent(event: DiscoverEvent) = when (event) {
