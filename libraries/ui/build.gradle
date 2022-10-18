@@ -33,7 +33,7 @@ android {
     }
 
     composeOptions {
-        kotlinCompilerExtensionVersion '1.2.0-alpha01'
+        kotlinCompilerExtensionVersion '1.3.2'
     }
     namespace 'com.dhorowitz.openmovie.ui'
 }
