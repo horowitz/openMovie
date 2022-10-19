@@ -1,6 +1,7 @@
 package com.dhorowitz.openmovie.moviedetails.tests
 
 import android.content.Intent
+import androidx.activity.compose.setContent
 import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.ui.test.junit4.createAndroidComposeRule
 import androidx.compose.ui.unit.ExperimentalUnitApi
@@ -99,7 +100,7 @@ class MovieDetailsScreenKtTest {
     }
 
     private fun initScreenWithState(state: MovieDetailsState) {
-        composeTestRule.setContent {
+        composeTestRule.activity.setContent {
             MovieDetailsScreen(
                 state = state,
                 onAction = {},

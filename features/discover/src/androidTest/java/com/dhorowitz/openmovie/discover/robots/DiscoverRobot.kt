@@ -6,6 +6,7 @@ import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.ui.test.*
 import androidx.compose.ui.test.junit4.AndroidComposeTestRule
 import androidx.compose.ui.unit.ExperimentalUnitApi
+import androidx.lifecycle.compose.ExperimentalLifecycleComposeApi
 import androidx.test.espresso.intent.Intents.intended
 import androidx.test.espresso.intent.Intents.intending
 import androidx.test.espresso.intent.matcher.IntentMatchers.hasComponent
@@ -23,12 +24,14 @@ import org.hamcrest.core.AllOf
 
 @ExperimentalFoundationApi
 @ExperimentalUnitApi
+@ExperimentalLifecycleComposeApi
 internal fun AndroidComposeTestRule<ActivityScenarioRule<DiscoverActivity>, DiscoverActivity>.discoverRobot(
     func: DiscoverRobot.() -> Unit
 ) = DiscoverRobot(this).apply { func() }
 
 @ExperimentalFoundationApi
 @ExperimentalUnitApi
+@ExperimentalLifecycleComposeApi
 class DiscoverRobot(
     private val composeTestRule: AndroidComposeTestRule<ActivityScenarioRule<DiscoverActivity>, DiscoverActivity>
 ) {

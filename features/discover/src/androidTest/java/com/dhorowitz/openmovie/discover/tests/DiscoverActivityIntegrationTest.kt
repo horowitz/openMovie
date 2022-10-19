@@ -3,6 +3,7 @@ package com.dhorowitz.openmovie.discover.tests
 import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.ui.test.junit4.createAndroidComposeRule
 import androidx.compose.ui.unit.ExperimentalUnitApi
+import androidx.lifecycle.compose.ExperimentalLifecycleComposeApi
 import androidx.test.core.app.ActivityScenario
 import androidx.test.espresso.intent.Intents
 import androidx.test.ext.junit.runners.AndroidJUnit4
@@ -28,6 +29,7 @@ import java.io.InputStreamReader
 @ExperimentalUnitApi
 @HiltAndroidTest
 @ExperimentalFoundationApi
+@ExperimentalLifecycleComposeApi
 @RunWith(AndroidJUnit4::class)
 @UninstallModules(DiscoverNetworkModule::class)
 class DiscoverActivityIntegrationTest {
