@@ -4,23 +4,24 @@ import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import com.dhorowitz.openmovie.moviedetails.data.movieDetails
 import com.dhorowitz.openmovie.moviedetails.data.movieDetailsViewEntity
 import com.dhorowitz.openmovie.moviedetails.domain.GetMovieDetails
-import com.dhorowitz.openmovie.moviedetails.presentation.model.MovieDetailsAction
 import com.dhorowitz.openmovie.moviedetails.presentation.model.MovieDetailsAction.*
 import com.dhorowitz.openmovie.moviedetails.presentation.model.MovieDetailsEvent
 import com.dhorowitz.openmovie.moviedetails.presentation.model.MovieDetailsState.Content
 import com.dhorowitz.openmovie.moviedetails.presentation.model.MovieDetailsState.Error
 import com.dhorowitz.openmovie.moviedetails.presentation.model.MovieDetailsState.Loading
 import com.dhorowitz.openmovie.test.MainCoroutineRule
-import com.dhorowitz.openmovie.test.test
+import com.dhorowitz.openmovie.test.coroutines.test
 import com.nhaarman.mockitokotlin2.doAnswer
 import com.nhaarman.mockitokotlin2.mock
 import com.nhaarman.mockitokotlin2.whenever
+import java.io.IOException
 import kotlinx.coroutines.ExperimentalCoroutinesApi
-import kotlinx.coroutines.runBlocking
+import kotlinx.coroutines.test.runTest
+import org.junit.Assert.assertEquals
 import org.junit.Rule
 import org.junit.Test
-import java.io.IOException
 
+@OptIn(ExperimentalCoroutinesApi::class)
 class MovieDetailsViewModelTest {
     @Rule
     @JvmField
@@ -35,53 +36,62 @@ class MovieDetailsViewModelTest {
 
     @Test
     fun `should load movies when vm starts given id`() {
-        runBlocking {
+        runTest {
             val id = "id"
-            val observer = viewModel.state.test()
-            whenever(getMovieDetails(id)).thenReturn(movieDetails())
+            viewModel.state.test(this).use { observer ->
+                whenever(getMovieDetails(id)).thenReturn(movieDetails())
 
-            viewModel.handle(Load(id))
+                viewModel.handle(Load(id))
 
-            val expectedViewEntity = movieDetailsViewEntity()
-            observer.assertValues(Loading, Content(expectedViewEntity))
+                val expected = listOf(Loading, Content(movieDetailsViewEntity()))
+                assertEquals(expected, observer.values)
+            }
         }
     }
 
     @Test
     fun `should show error when network fails`() {
-        runBlocking {
+        runTest {
             val id = "id"
-            val observer = viewModel.state.test()
-            val exception = IOException()
-            whenever(getMovieDetails(id)).doAnswer { throw exception }
+            viewModel.state.test(this).use { observer ->
+                val exception = IOException()
+                whenever(getMovieDetails(id)).doAnswer { throw exception }
 
-            viewModel.handle(Load(id))
+                viewModel.handle(Load(id))
 
-            observer.assertValues(Loading, Error)
+                val expected = listOf(Loading, Error)
+
+                assertEquals(expected, observer.values)
+            }
         }
     }
 
     @Test
     fun `should navigate to external browser after click on homepage`() {
-        val url = "url"
-        runBlocking {
+        runTest {
+            val url = "url"
             viewModel.stateLiveData.value = Content(movieDetailsViewEntity(homepage = url))
             viewModel.handle(HomepageButtonClicked(url))
 
-            val observer = viewModel.event.test()
-            observer.assertValues(MovieDetailsEvent.NavigateToBrowser(url))
+            viewModel.event.test(this).use { observer ->
+                val expected = listOf(MovieDetailsEvent.NavigateToBrowser(url))
+                assertEquals(expected, observer.values)
+            }
         }
     }
 
     @Test
     fun `should navigate to external browser after click on imdb`() {
-        runBlocking {
+        runTest {
             val url = "imdbUrl"
             viewModel.stateLiveData.value = Content(movieDetailsViewEntity(imdbUrl = url))
             viewModel.handle(ImdbButtonClicked(url))
 
-            val observer = viewModel.event.test()
-            observer.assertValues(MovieDetailsEvent.NavigateToBrowser(url))
+            viewModel.event.test(this).use { observer ->
+                val expected = listOf(MovieDetailsEvent.NavigateToBrowser(url))
+                assertEquals(expected, observer.values)
+            }
+
         }
     }
 }
