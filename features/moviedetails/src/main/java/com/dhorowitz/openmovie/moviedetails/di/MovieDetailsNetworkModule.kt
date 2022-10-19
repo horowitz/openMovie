@@ -2,7 +2,7 @@ package com.dhorowitz.openmovie.moviedetails.di
 
 import com.dhorowitz.network.RetrofitAdapter
 import com.dhorowitz.openmovie.moviedetails.data.MovieApi
-import com.dhorowitz.openmovie.moviedetails.data.MovieDetailsDataSource
+import com.dhorowitz.openmovie.moviedetails.domain.MovieDetailsDataSource
 import com.dhorowitz.openmovie.moviedetails.data.MovieDetailsNetworkDataSource
 import dagger.Module
 import dagger.Provides

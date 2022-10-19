@@ -1,7 +1,7 @@
 package com.dhorowitz.openmovie.moviedetails
 
 import com.dhorowitz.openmovie.moviedetails.data.MovieApi
-import com.dhorowitz.openmovie.moviedetails.data.MovieDetailsDataSource
+import com.dhorowitz.openmovie.moviedetails.domain.MovieDetailsDataSource
 import com.dhorowitz.openmovie.moviedetails.data.MovieDetailsNetworkDataSource
 import com.dhorowitz.openmovie.test.network.FakeRetrofitAdapter
 import dagger.Module

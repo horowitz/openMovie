@@ -45,17 +45,16 @@ class MovieDetailsNetworkDataSourceTest {
         runBlocking {
             val actual = sut.fetchMovieDetails("id")
 
-            val expected = movieDetailsDto(
+            val expected = movieDetails(
                 id = "436969",
                 homepage = "https://www.thesuicidesquad.net",
-                posterPath = "/iCi4c4FvVdbaU1t8poH1gvzT6xM.jpg",
+                posterPath = "https://image.tmdb.org/t/p/w500/iCi4c4FvVdbaU1t8poH1gvzT6xM.jpg",
+                backdropPath = "https://image.tmdb.org/t/p/w500/jlGmlFOcfo8n5tURmhC7YVd4Iyy.jpg",
                 title = "The Suicide Squad",
                 voteAverage = 8.1,
                 runtime = 132,
-                backdropPath = "/jlGmlFOcfo8n5tURmhC7YVd4Iyy.jpg",
-                tagline = "They're dying to save the world.",
                 overview = "Supervillains Harley Quinn, Bloodsport, Peacemaker and a collection of nutty cons at Belle Reve prison join the super-secret, super-shady Task Force X as they are dropped off at the remote, enemy-infused island of Corto Maltese.",
-                imdbId = "tt6334354"
+                imdbUrl = "https://www.imdb.com/title/tt6334354"
             )
 
             assertEquals(expected, actual)
