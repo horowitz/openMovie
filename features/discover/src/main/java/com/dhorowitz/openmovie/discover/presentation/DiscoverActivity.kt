@@ -11,6 +11,7 @@ import androidx.compose.runtime.livedata.observeAsState
 import androidx.compose.ui.unit.ExperimentalUnitApi
 import androidx.lifecycle.compose.ExperimentalLifecycleComposeApi
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
+import com.dhorowitz.openmovie.common.flow.observeOnLifecycle
 import com.dhorowitz.openmovie.discover.presentation.model.DiscoverAction.Load
 import com.dhorowitz.openmovie.discover.presentation.model.DiscoverEvent
 import com.dhorowitz.openmovie.discover.presentation.model.DiscoverEvent.NavigateToMovieDetails
@@ -33,12 +34,10 @@ class DiscoverActivity : AppCompatActivity() {
         setContent {
             val state = viewModel.state.collectAsStateWithLifecycle(initialValue = Loading).value
             DiscoverScreen(state = state, onAction = { viewModel.handle(it) })
-
-            LaunchedEffect(Unit) {
-                viewModel.event.collectLatest { event -> handleEvent(event) }
-                viewModel.handle(Load)
-            }
         }
+
+        viewModel.event.observeOnLifecycle(this, action = ::handleEvent)
+        viewModel.handle(Load)
     }
 
     private fun handleEvent(event: DiscoverEvent) = when (event) {

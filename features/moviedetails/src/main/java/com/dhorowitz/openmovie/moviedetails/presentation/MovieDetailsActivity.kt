@@ -13,6 +13,7 @@ import androidx.compose.runtime.livedata.observeAsState
 import androidx.compose.ui.unit.ExperimentalUnitApi
 import androidx.lifecycle.compose.ExperimentalLifecycleComposeApi
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
+import com.dhorowitz.openmovie.common.flow.observeOnLifecycle
 import com.dhorowitz.openmovie.moviedetails.presentation.model.MovieDetailsAction.Load
 import com.dhorowitz.openmovie.moviedetails.presentation.model.MovieDetailsEvent
 import com.dhorowitz.openmovie.moviedetails.presentation.model.MovieDetailsEvent.NavigateToBrowser
@@ -41,12 +42,10 @@ class MovieDetailsActivity : AppCompatActivity() {
             ProvideWindowInsets {
                 MovieDetailsScreen(id = id, state = state, onAction = { viewModel.handle(it) })
             }
-
-            LaunchedEffect(Unit) {
-                viewModel.event.collectLatest { handleEvent(it) }
-                viewModel.handle(Load(id))
-            }
         }
+
+        viewModel.event.observeOnLifecycle(this, action = ::handleEvent)
+        viewModel.handle(Load(id))
     }
 
     private fun handleEvent(event: MovieDetailsEvent) = when (event) {

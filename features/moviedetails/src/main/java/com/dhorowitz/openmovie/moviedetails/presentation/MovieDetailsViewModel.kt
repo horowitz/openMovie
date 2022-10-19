@@ -1,11 +1,8 @@
 package com.dhorowitz.openmovie.moviedetails.presentation
 
 import androidx.annotation.VisibleForTesting
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.dhorowitz.openmovie.common.livedata.SingleLiveEvent
 import com.dhorowitz.openmovie.moviedetails.domain.GetMovieDetails
 import com.dhorowitz.openmovie.moviedetails.presentation.model.MovieDetailsAction
 import com.dhorowitz.openmovie.moviedetails.presentation.model.MovieDetailsAction.HomepageButtonClicked
@@ -18,8 +15,6 @@ import com.dhorowitz.openmovie.moviedetails.presentation.model.MovieDetailsState
 import com.dhorowitz.openmovie.moviedetails.presentation.model.MovieDetailsState.Error
 import com.dhorowitz.openmovie.moviedetails.presentation.model.MovieDetailsState.Loading
 import dagger.hilt.android.lifecycle.HiltViewModel
-import kotlinx.coroutines.launch
-import timber.log.Timber
 import javax.inject.Inject
 import kotlinx.coroutines.channels.BufferOverflow
 import kotlinx.coroutines.channels.Channel
@@ -27,6 +22,8 @@ import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.receiveAsFlow
+import kotlinx.coroutines.launch
+import timber.log.Timber
 
 @HiltViewModel
 class MovieDetailsViewModel @Inject constructor(
