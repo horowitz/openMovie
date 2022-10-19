@@ -25,6 +25,32 @@ This project aims for showcasing a multi modular architecture based on 2 concept
 - **Features** contains all user facing functionality (e.g. Discover, Movie Details)
 - **Libraries** are shared modules that help the building of features (e.g. network,  ui, test)
 
+### Feature architecture
+
+Each feature is developed using clean architecture composed by 3 layers: Data, Domain, and Presentation. 
+Domain is completely independent of the other layers and both Data and Presentation depend on Domain.
+This inversion of dependencies guarantees scalability, easy maintenance and testability of the code.
+![Clean_architecture](/assets/clean_architecture.png)
+
+#### Feature Presentation Design Pattern
+Features are designed following the Unidirectional Data Flow (UDF) principle in conjunction with the Model-View-View-Model pattern
+
+The UDF pattern guarantees predictability of the code which also makes the code much easier to test. These concepts come from the [REDUX](https://redux.js.org/tutorials/essentials/part-1-overview-concepts) framework from javascript
+
+In this project, we use the following structure in order to implement UDF
+* The state, the source of truth that drives our feature;
+* The view, a declarative description of the UI based on the current state
+* The actions, the events that occur in the app based on user input, and trigger updates in the state
+
+![UDF](/assets/UDF.png)
+
+We can take the following as an example of UDF:
+* State describes the condition of the feature at a specific point in time
+* The UI is rendered based on that state
+* When something happens (such as a user clicking a button), the state is updated based on what occurred
+* The UI re-renders based on the new state
+
+
 ## CI
 In addition to static analysis and unit tests we are using a test matrix for each commit on master. and triggering all instrumentation tests for different API lvls 
 
