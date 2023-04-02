@@ -1,7 +1,6 @@
 package com.dhorowitz.openmovie.discover.domain
 
 import com.dhorowitz.openmovie.discover.movie
-import com.dhorowitz.openmovie.discover.movieDTO
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.runBlocking
 import org.junit.Assert.assertEquals

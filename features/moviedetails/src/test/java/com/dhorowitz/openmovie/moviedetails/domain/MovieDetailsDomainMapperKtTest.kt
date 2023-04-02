@@ -2,13 +2,13 @@ package com.dhorowitz.openmovie.moviedetails.domain
 
 import com.dhorowitz.openmovie.moviedetails.data.movieDetails
 import com.dhorowitz.openmovie.moviedetails.data.movieDetailsDto
-import org.junit.Assert.*
+import org.junit.Assert.assertEquals
 import org.junit.Test
 
 class MovieDetailsDomainMapperKtTest {
 
     @Test
-    fun `should map movie details from dto to domain correctly`()  {
+    fun `should map movie details from dto to domain correctly`() {
         val dto = movieDetailsDto()
 
         val actual = dto.toMovieDetails()

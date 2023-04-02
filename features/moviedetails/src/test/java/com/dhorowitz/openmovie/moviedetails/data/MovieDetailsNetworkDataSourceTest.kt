@@ -7,8 +7,7 @@ import kotlinx.serialization.ExperimentalSerializationApi
 import okhttp3.OkHttpClient
 import okhttp3.mockwebserver.MockWebServer
 import org.junit.After
-import org.junit.Assert.*
-
+import org.junit.Assert.assertEquals
 import org.junit.Test
 import retrofit2.Retrofit
 import java.util.concurrent.TimeUnit

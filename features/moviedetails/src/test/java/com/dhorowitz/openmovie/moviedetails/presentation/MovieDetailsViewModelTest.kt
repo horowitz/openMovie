@@ -14,12 +14,12 @@ import com.dhorowitz.openmovie.test.coroutines.test
 import com.nhaarman.mockitokotlin2.doAnswer
 import com.nhaarman.mockitokotlin2.mock
 import com.nhaarman.mockitokotlin2.whenever
-import java.io.IOException
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.test.runTest
 import org.junit.Assert.assertEquals
 import org.junit.Rule
 import org.junit.Test
+import java.io.IOException
 
 @OptIn(ExperimentalCoroutinesApi::class)
 class MovieDetailsViewModelTest {
@@ -91,7 +91,6 @@ class MovieDetailsViewModelTest {
                 val expected = listOf(MovieDetailsEvent.NavigateToBrowser(url))
                 assertEquals(expected, observer.values)
             }
-
         }
     }
 }
