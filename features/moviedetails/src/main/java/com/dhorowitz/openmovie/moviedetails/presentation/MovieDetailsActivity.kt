@@ -3,13 +3,10 @@ package com.dhorowitz.openmovie.moviedetails.presentation
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
-import android.util.Log
 import androidx.activity.compose.setContent
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.compose.foundation.ExperimentalFoundationApi
-import androidx.compose.runtime.LaunchedEffect
-import androidx.compose.runtime.livedata.observeAsState
 import androidx.compose.ui.unit.ExperimentalUnitApi
 import androidx.lifecycle.compose.ExperimentalLifecycleComposeApi
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
@@ -21,7 +18,6 @@ import com.dhorowitz.openmovie.moviedetails.presentation.model.MovieDetailsState
 import com.dhorowitz.openmovie.moviedetails.presentation.ui.MovieDetailsScreen
 import com.google.accompanist.insets.ProvideWindowInsets
 import dagger.hilt.android.AndroidEntryPoint
-import kotlinx.coroutines.flow.collectLatest
 import timber.log.Timber
 
 @ExperimentalFoundationApi

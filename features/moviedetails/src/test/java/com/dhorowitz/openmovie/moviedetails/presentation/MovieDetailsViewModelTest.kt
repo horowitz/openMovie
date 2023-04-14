@@ -4,7 +4,9 @@ import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import com.dhorowitz.openmovie.moviedetails.data.movieDetails
 import com.dhorowitz.openmovie.moviedetails.data.movieDetailsViewEntity
 import com.dhorowitz.openmovie.moviedetails.domain.GetMovieDetails
-import com.dhorowitz.openmovie.moviedetails.presentation.model.MovieDetailsAction.*
+import com.dhorowitz.openmovie.moviedetails.presentation.model.MovieDetailsAction.Load
+import com.dhorowitz.openmovie.moviedetails.presentation.model.MovieDetailsAction.HomepageButtonClicked
+import com.dhorowitz.openmovie.moviedetails.presentation.model.MovieDetailsAction.ImdbButtonClicked
 import com.dhorowitz.openmovie.moviedetails.presentation.model.MovieDetailsEvent
 import com.dhorowitz.openmovie.moviedetails.presentation.model.MovieDetailsState.Content
 import com.dhorowitz.openmovie.moviedetails.presentation.model.MovieDetailsState.Error

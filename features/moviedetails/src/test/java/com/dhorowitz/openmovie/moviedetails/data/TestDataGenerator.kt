@@ -58,7 +58,8 @@ internal fun movieDetailsViewEntity(
     homepage: String = "homepage",
     voteAverage: String = "⭐️ 0.0",
     runtime: String = "🕒 0 min",
-    imdbUrl: String = "imdbUrl"
+    imdbUrl: String = "imdbUrl",
+    stars: String = ""
 ) = MovieDetailsViewEntity(
     id,
     title,
@@ -67,5 +68,6 @@ internal fun movieDetailsViewEntity(
     homepage,
     voteAverage,
     runtime,
-    imdbUrl
+    imdbUrl,
+    stars
 )

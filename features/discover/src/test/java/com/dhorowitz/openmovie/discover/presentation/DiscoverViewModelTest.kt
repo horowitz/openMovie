@@ -7,22 +7,22 @@ import com.dhorowitz.openmovie.discover.domain.model.Movie
 import com.dhorowitz.openmovie.discover.movie
 import com.dhorowitz.openmovie.discover.presentation.model.DiscoverAction.ItemClicked
 import com.dhorowitz.openmovie.discover.presentation.model.DiscoverAction.Load
-import com.dhorowitz.openmovie.discover.presentation.model.DiscoverEvent.*
-import com.dhorowitz.openmovie.discover.presentation.model.DiscoverState.*
+import com.dhorowitz.openmovie.discover.presentation.model.DiscoverEvent
+import com.dhorowitz.openmovie.discover.presentation.model.DiscoverState.Content
+import com.dhorowitz.openmovie.discover.presentation.model.DiscoverState.Error
+import com.dhorowitz.openmovie.discover.presentation.model.DiscoverState.Loading
 import com.dhorowitz.openmovie.test.MainCoroutineRule
 import com.dhorowitz.openmovie.test.coroutines.test
-import com.dhorowitz.openmovie.test.test
 import com.nhaarman.mockitokotlin2.doAnswer
 import com.nhaarman.mockitokotlin2.mock
 import com.nhaarman.mockitokotlin2.whenever
 import kotlinx.coroutines.ExperimentalCoroutinesApi
+import kotlinx.coroutines.test.runTest
+import org.junit.Assert.assertEquals
+import org.junit.Assert.assertTrue
 import org.junit.Rule
 import org.junit.Test
 import java.io.IOException
-import kotlinx.coroutines.test.runTest
-import org.junit.Assert
-import org.junit.Assert.assertEquals
-import org.junit.Assert.assertTrue
 
 @OptIn(ExperimentalCoroutinesApi::class)
 class DiscoverViewModelTest {
@@ -95,7 +95,7 @@ class DiscoverViewModelTest {
                 viewModel.handle(ItemClicked(discoverViewEntity(id = "id")))
 
                 val expected = listOf(
-                    NavigateToMovieDetails(
+                    DiscoverEvent.NavigateToMovieDetails(
                         "id",
                         "com.dhorowitz.openmovie.moviedetails.presentation.MovieDetailsActivity"
                     )

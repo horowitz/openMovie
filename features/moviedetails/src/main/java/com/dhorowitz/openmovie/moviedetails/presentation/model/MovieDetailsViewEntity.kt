@@ -9,4 +9,5 @@ data class MovieDetailsViewEntity(
     val voteAverage: String,
     val runtime: String,
     val imdbUrl: String,
+    val stars: String
 )

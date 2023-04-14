@@ -1,3 +1,5 @@
+@file:JvmName("MovieDetailsToViewEntityMapper")
+
 package com.dhorowitz.openmovie.moviedetails.presentation
 
 import com.dhorowitz.openmovie.moviedetails.domain.model.MovieDetails
@@ -11,5 +13,6 @@ fun MovieDetails.toViewEntity(): MovieDetailsViewEntity = MovieDetailsViewEntity
     homepage = homepage,
     voteAverage = "⭐️ $voteAverage",
     runtime = "🕒 $runtime min",
-    imdbUrl = imdbUrl
+    imdbUrl = imdbUrl,
+    stars = voteAverage.toStars()
 )

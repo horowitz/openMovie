@@ -1,9 +1,7 @@
 package com.dhorowitz.openmovie.discover.data
 
 import com.dhorowitz.network.serializer.defaultConverter
-import com.dhorowitz.openmovie.discover.data.model.PaginatedResponse
 import com.dhorowitz.openmovie.discover.movie
-import com.dhorowitz.openmovie.discover.movieDTO
 import com.dhorowitz.openmovie.test.enqueueResponse
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.runBlocking

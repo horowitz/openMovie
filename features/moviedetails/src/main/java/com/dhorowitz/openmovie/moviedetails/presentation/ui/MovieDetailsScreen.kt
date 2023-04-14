@@ -3,8 +3,22 @@ package com.dhorowitz.openmovie.moviedetails.presentation.ui
 import android.app.Activity
 import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.Image
-import androidx.compose.foundation.layout.*
-import androidx.compose.material.*
+import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.PaddingValues
+import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.width
+import androidx.compose.material.Button
+import androidx.compose.material.ButtonDefaults
+import androidx.compose.material.Icon
+import androidx.compose.material.IconButton
+import androidx.compose.material.Text
+import androidx.compose.material.TopAppBar
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ArrowBack
 import androidx.compose.runtime.Composable
@@ -25,15 +39,18 @@ import androidx.compose.ui.unit.dp
 import coil.compose.rememberImagePainter
 import com.dhorowitz.openmovie.moviedetails.R
 import com.dhorowitz.openmovie.moviedetails.presentation.model.MovieDetailsAction
-import com.dhorowitz.openmovie.moviedetails.presentation.model.MovieDetailsAction.*
+import com.dhorowitz.openmovie.moviedetails.presentation.model.MovieDetailsAction.HomepageButtonClicked
+import com.dhorowitz.openmovie.moviedetails.presentation.model.MovieDetailsAction.ImdbButtonClicked
+import com.dhorowitz.openmovie.moviedetails.presentation.model.MovieDetailsAction.Load
 import com.dhorowitz.openmovie.moviedetails.presentation.model.MovieDetailsState
-import com.dhorowitz.openmovie.moviedetails.presentation.model.MovieDetailsState.*
+import com.dhorowitz.openmovie.moviedetails.presentation.model.MovieDetailsState.Content
+import com.dhorowitz.openmovie.moviedetails.presentation.model.MovieDetailsState.Error
+import com.dhorowitz.openmovie.moviedetails.presentation.model.MovieDetailsState.Loading
 import com.dhorowitz.openmovie.moviedetails.presentation.model.MovieDetailsViewEntity
 import com.dhorowitz.openmovie.ui.ErrorView
 import com.dhorowitz.openmovie.ui.LoadingLottie
 import com.dhorowitz.openmovie.ui.TitleText
 import com.google.accompanist.insets.statusBarsHeight
-
 
 @ExperimentalUnitApi
 @ExperimentalFoundationApi
@@ -44,7 +61,6 @@ fun MovieDetailsScreen(
     onAction: (MovieDetailsAction) -> Unit
 ) {
     Box {
-
         Box(modifier = Modifier.fillMaxSize()) {
             when (state) {
                 is Content -> MovieDetailsContent(state.viewEntity, onAction)
@@ -110,14 +126,15 @@ fun MovieDetailsContent(
 
         Row(modifier = Modifier.padding(PaddingValues(horizontal = 8.dp, vertical = 8.dp))) {
             Text(
-                text = voteAverage,
+                text = stars,
                 style = TextStyle(
                     fontFamily = FontFamily(Font(R.font.open_sans_bold, FontWeight.Normal))
                 )
             )
             Spacer(modifier = Modifier.width(16.dp))
             Text(
-                text = runtime, style = TextStyle(
+                text = runtime,
+                style = TextStyle(
                     fontFamily = FontFamily(Font(R.font.open_sans_bold, FontWeight.Normal))
                 )
             )
@@ -152,7 +169,7 @@ fun MovieDetailsButton(onClick: () -> Unit, text: String, backgroundColor: Color
         colors = ButtonDefaults.buttonColors(backgroundColor = backgroundColor),
         modifier = Modifier
             .padding(horizontal = 32.dp, vertical = 4.dp)
-            .fillMaxWidth(),
+            .fillMaxWidth()
     ) {
         Text(text = text.uppercase(), color = Color.White)
     }
