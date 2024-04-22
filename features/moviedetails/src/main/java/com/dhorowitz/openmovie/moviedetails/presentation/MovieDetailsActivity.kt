@@ -8,7 +8,6 @@ import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.ui.unit.ExperimentalUnitApi
-import androidx.lifecycle.compose.ExperimentalLifecycleComposeApi
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.dhorowitz.openmovie.common.flow.observeOnLifecycle
 import com.dhorowitz.openmovie.moviedetails.presentation.model.MovieDetailsAction.Load
@@ -30,7 +29,6 @@ class MovieDetailsActivity : AppCompatActivity() {
         requireNotNull(intent.extras?.getString("id")) { "movie id is required" }
     }
 
-    @OptIn(ExperimentalLifecycleComposeApi::class)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {

@@ -14,6 +14,7 @@ import com.dhorowitz.openmovie.test.HttpMethod
 import com.dhorowitz.openmovie.test.HttpRequest
 import com.dhorowitz.openmovie.test.MockServerDispatcher
 import com.dhorowitz.openmovie.test.registerApiRequest
+import com.dhorowitz.openmovie.test.wait.waitUntil
 import dagger.hilt.android.testing.HiltAndroidRule
 import dagger.hilt.android.testing.HiltAndroidTest
 import dagger.hilt.android.testing.UninstallModules

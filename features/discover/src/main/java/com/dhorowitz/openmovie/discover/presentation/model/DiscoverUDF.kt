@@ -2,7 +2,7 @@ package com.dhorowitz.openmovie.discover.presentation.model
 
 sealed class DiscoverState() {
     object Loading: DiscoverState()
-    object Error: DiscoverState()
+    data class Error(val error: Throwable): DiscoverState()
     data class Content(val items: List<DiscoverViewEntity>) : DiscoverState()
 }
 

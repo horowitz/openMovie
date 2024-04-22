@@ -53,7 +53,7 @@ fun DiscoverScreen(
                         items = state.items,
                         onAction
                     )
-                    Error -> ErrorView { onAction(Load) }
+                    is Error -> ErrorView (state.error) { onAction(Load) }
                     Loading -> LoadingLottie()
                 }
             }

@@ -59,7 +59,7 @@ class DiscoverViewModel @Inject constructor(
                 movies.map { it.toDiscoverViewEntity() }
             }
                 .onSuccess { stateFlow.tryEmit(Content(currentItems + it)) }
-                .onFailure { stateFlow.tryEmit(Error) }
+                .onFailure { stateFlow.tryEmit(Error(it)) }
         }
     }
 }

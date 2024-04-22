@@ -1,10 +1,12 @@
 package com.dhorowitz.openmovie.ui
 
+import android.util.Log
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.*
 import androidx.compose.material.Button
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.colorResource
@@ -15,7 +17,10 @@ import androidx.compose.ui.unit.dp
 
 
 @Composable
-fun ErrorView(onRetryClicked: () -> Unit) {
+fun ErrorView(error: Throwable? = null, onRetryClicked: () -> Unit) {
+    LaunchedEffect(Unit) {
+        Log.e("Error View", "An error has occurred", error)
+    }
     Column(
         verticalArrangement = Arrangement.Center,
         horizontalAlignment = Alignment.CenterHorizontally,

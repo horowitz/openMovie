@@ -1,6 +1,5 @@
 package com.dhorowitz.openmovie.test
 
-import android.util.Log
 import okhttp3.mockwebserver.Dispatcher
 import okhttp3.mockwebserver.MockResponse
 import okhttp3.mockwebserver.RecordedRequest
