@@ -4,7 +4,6 @@ import androidx.activity.compose.setContent
 import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.ui.test.junit4.createAndroidComposeRule
 import androidx.compose.ui.unit.ExperimentalUnitApi
-import androidx.lifecycle.compose.ExperimentalLifecycleComposeApi
 import androidx.test.espresso.intent.Intents
 import com.dhorowitz.openmovie.discover.di.DiscoverNetworkModule
 import com.dhorowitz.openmovie.discover.presentation.DiscoverActivity
@@ -22,7 +21,6 @@ import org.junit.Test
 
 @ExperimentalFoundationApi
 @ExperimentalUnitApi
-@ExperimentalLifecycleComposeApi
 @HiltAndroidTest
 @UninstallModules(DiscoverNetworkModule::class)
 class DiscoverScreenKtTest {

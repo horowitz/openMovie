@@ -3,35 +3,33 @@ package com.dhorowitz.openmovie.discover.robots
 import android.app.Instrumentation
 import android.content.Intent
 import androidx.compose.foundation.ExperimentalFoundationApi
-import androidx.compose.ui.test.*
+import androidx.compose.ui.test.assertCountEquals
+import androidx.compose.ui.test.assertIsDisplayed
 import androidx.compose.ui.test.junit4.AndroidComposeTestRule
+import androidx.compose.ui.test.onAllNodesWithTag
+import androidx.compose.ui.test.onNodeWithTag
+import androidx.compose.ui.test.onNodeWithText
+import androidx.compose.ui.test.performClick
 import androidx.compose.ui.unit.ExperimentalUnitApi
-import androidx.lifecycle.compose.ExperimentalLifecycleComposeApi
 import androidx.test.espresso.intent.Intents.intended
 import androidx.test.espresso.intent.Intents.intending
 import androidx.test.espresso.intent.matcher.IntentMatchers.hasComponent
 import androidx.test.ext.junit.rules.ActivityScenarioRule
-import com.adevinta.android.barista.assertion.BaristaVisibilityAssertions.assertDisplayed
-import com.adevinta.android.barista.interaction.BaristaClickInteractions.clickOn
 import com.dhorowitz.openmovie.discover.presentation.DiscoverActivity
 import com.dhorowitz.openmovie.discover.presentation.ui.DISCOVER_MOVIE_GRID_CELL_TAG
 import com.dhorowitz.openmovie.discover.presentation.ui.DISCOVER_MOVIE_GRID_TAG
-import com.dhorowitz.openmovie.discover.tests.DiscoverScreenKtTest
-import com.dhorowitz.openmovie.test.wait.waitUntil
 import com.gaelmarhic.quadrant.QuadrantConstants
 import org.hamcrest.Matcher
 import org.hamcrest.core.AllOf
 
 @ExperimentalFoundationApi
 @ExperimentalUnitApi
-@ExperimentalLifecycleComposeApi
 internal fun AndroidComposeTestRule<ActivityScenarioRule<DiscoverActivity>, DiscoverActivity>.discoverRobot(
     func: DiscoverRobot.() -> Unit
 ) = DiscoverRobot(this).apply { func() }
 
 @ExperimentalFoundationApi
 @ExperimentalUnitApi
-@ExperimentalLifecycleComposeApi
 class DiscoverRobot(
     private val composeTestRule: AndroidComposeTestRule<ActivityScenarioRule<DiscoverActivity>, DiscoverActivity>
 ) {
