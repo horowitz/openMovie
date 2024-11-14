@@ -64,7 +64,7 @@ class DiscoverViewModelTest {
 
                 viewModel.handle(Load)
 
-                val expected = listOf(Loading, Error)
+                val expected = listOf(Loading, Error())
 
                 assertEquals(observer.values, expected)
             }

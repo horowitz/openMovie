@@ -11,9 +11,6 @@
       <SelectionState runConfigName="shouldRecoverFromErrorCorrectly()">
         <option name="selectionMode" value="DROPDOWN" />
       </SelectionState>
-      <SelectionState runConfigName="MovieDetailsActivity">
-        <option name="selectionMode" value="DROPDOWN" />
-      </SelectionState>
       <SelectionState runConfigName="DiscoverActivityIntegrationTest">
         <option name="selectionMode" value="DROPDOWN" />
       </SelectionState>
