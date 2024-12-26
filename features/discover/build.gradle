@@ -1,11 +1,13 @@
 plugins {
     id "com.android.library"
     id "kotlin-android"
-    id 'org.jetbrains.kotlin.plugin.serialization' version '2.0.0-RC1'
+    id 'org.jetbrains.kotlin.plugin.serialization' version "$kotlin_version"
+    id 'org.jetbrains.kotlin.plugin.compose' version "$kotlin_version"
     id 'jacoco'
+    id 'com.google.devtools.ksp'
 }
 
-apply plugin: 'kotlin-kapt'
+apply plugin: 'com.google.devtools.ksp'
 apply plugin: 'dagger.hilt.android.plugin'
 apply from: "$rootDir/libraries/common/gradle/feature.gradle"
 apply from: "$rootDir/libraries/common/gradle/jacoco.gradle"
@@ -25,11 +27,11 @@ android {
         viewBinding true
     }
     
-    compileSdk 34
+    compileSdk 35
 
     defaultConfig {
         minSdk 21
-        targetSdk 34
+        targetSdk 35
     }
 
     buildTypes {
@@ -37,22 +39,22 @@ android {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
+        debug {
+            enableUnitTestCoverage true
+            enableAndroidTestCoverage true
+        }
     }
     compileOptions {
-        sourceCompatibility JavaVersion.VERSION_17
-        targetCompatibility JavaVersion.VERSION_17
+        sourceCompatibility JavaVersion.VERSION_21
+        targetCompatibility JavaVersion.VERSION_21
     }
     kotlinOptions {
-        jvmTarget = '17'
+        jvmTarget = '21'
     }
     lint {
         disable 'JvmStaticProvidesInObjectDetector', 'FieldSiteTargetOnQualifierAnnotation', 'ModuleCompanionObjects', 'ModuleCompanionObjectsNotInModuleParent'
     }
     namespace 'com.dhorowitz.openmovie.discover'
-}
-
-kapt {
-    correctErrorTypes true
 }
 
 dependencies {

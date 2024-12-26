@@ -14,7 +14,7 @@ class OpenMovieRule(testInstance: Any) : TestRule {
 
     private val ruleChain: RuleChain = RuleChain
         .outerRule(hiltAndroidRule)
-        .around(MainCoroutineRule())
+        .around(MainDispatcherRule())
 
     override fun apply(base: Statement, description: Description): Statement =
         ruleChain.apply(base, description)

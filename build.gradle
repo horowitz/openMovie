@@ -1,19 +1,22 @@
 // Top-level build file where you can add configuration options common to all sub-projects/modules.
 buildscript {
-    ext.kotlin_version = "1.9.23"
+    ext.kotlin_version = "2.0.20"
     repositories {
         google()
         mavenCentral()
     }
     dependencies {
-        classpath 'com.android.tools.build:gradle:8.3.2'
+        classpath 'com.android.tools.build:gradle:8.7.3'
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
         classpath 'com.google.dagger:hilt-android-gradle-plugin:2.51.1'
-        classpath "org.jacoco:org.jacoco.core:0.8.7"
+        classpath "org.jacoco:org.jacoco.core:0.8.12"
 
         // NOTE: Do not place your application dependencies here; they belong
         // in the individual module build.gradle files
     }
+}
+plugins {
+    id 'com.google.devtools.ksp' version '2.0.21-1.0.27' apply false
 }
 
 allprojects {
@@ -28,7 +31,7 @@ subprojects {
         resolutionStrategy {
             eachDependency { details ->
                 if ('org.jacoco' == details.requested.group) {
-                    details.useVersion "0.8.7"
+                    details.useVersion "0.8.12"
                 }
             }
         }

@@ -1,12 +1,14 @@
 plugins {
     id 'com.android.application'
     id 'kotlin-android'
-    id 'org.jetbrains.kotlin.plugin.serialization' version '2.0.0-RC1'
+    id 'org.jetbrains.kotlin.plugin.serialization' version "$kotlin_version"
     id 'jacoco'
+    id 'org.jetbrains.kotlin.plugin.compose' version "$kotlin_version"
+    id 'com.google.devtools.ksp' version '2.0.21-1.0.27' apply false
 }
 
-apply plugin: 'kotlin-kapt'
 apply plugin: 'dagger.hilt.android.plugin'
+apply plugin: 'com.google.devtools.ksp'
 apply from: "$rootDir/libraries/common/gradle/feature.gradle"
 apply from: "$rootDir/libraries/common/gradle/jacoco.gradle"
 
@@ -19,17 +21,13 @@ android {
         }
         unitTests.returnDefaultValues = true
     }
-    buildFeatures {
-        buildConfig true
-        viewBinding true
-    }
-    compileSdkVersion 34
 
     defaultConfig {
         multiDexEnabled true
         applicationId "com.dhorowitz.openmovie"
+        compileSdk 35
         minSdkVersion 27
-        targetSdkVersion 34
+        targetSdkVersion 35
         versionCode 1
         versionName "1.0"
 
@@ -39,26 +37,28 @@ android {
     }
 
     buildTypes {
-        debug {
-            testCoverageEnabled true
-        }
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
+        debug {
+            enableUnitTestCoverage true
+            enableAndroidTestCoverage true
+        }
     }
     compileOptions {
-        sourceCompatibility JavaVersion.VERSION_17
-        targetCompatibility JavaVersion.VERSION_17
+        sourceCompatibility JavaVersion.VERSION_21
+        targetCompatibility JavaVersion.VERSION_21
     }
     kotlinOptions {
-        jvmTarget = '17'
+        jvmTarget = '21'
     }
     namespace 'com.dhorowitz.openmovie'
-}
 
-kapt {
-    correctErrorTypes true
+    composeCompiler {
+        reportsDestination = layout.buildDirectory.dir("compose_compiler")
+        stabilityConfigurationFile = rootProject.layout.projectDirectory.file("stability_config.conf")
+    }
 }
 
 dependencies {

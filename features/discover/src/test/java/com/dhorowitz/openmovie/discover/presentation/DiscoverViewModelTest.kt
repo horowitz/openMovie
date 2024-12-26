@@ -9,9 +9,8 @@ import com.dhorowitz.openmovie.discover.presentation.model.DiscoverAction.ItemCl
 import com.dhorowitz.openmovie.discover.presentation.model.DiscoverAction.Load
 import com.dhorowitz.openmovie.discover.presentation.model.DiscoverEvent
 import com.dhorowitz.openmovie.discover.presentation.model.DiscoverState.Content
-import com.dhorowitz.openmovie.discover.presentation.model.DiscoverState.Error
 import com.dhorowitz.openmovie.discover.presentation.model.DiscoverState.Loading
-import com.dhorowitz.openmovie.test.MainCoroutineRule
+import com.dhorowitz.openmovie.test.MainDispatcherRule
 import com.dhorowitz.openmovie.test.coroutines.test
 import com.nhaarman.mockitokotlin2.doAnswer
 import com.nhaarman.mockitokotlin2.mock
@@ -33,7 +32,7 @@ class DiscoverViewModelTest {
 
     @ExperimentalCoroutinesApi
     @get:Rule
-    var mainCoroutineRule = MainCoroutineRule()
+    var coroutineRule = MainDispatcherRule()
 
     private val getPopularMovies: GetPopularMovies = mock()
     private val viewModel =

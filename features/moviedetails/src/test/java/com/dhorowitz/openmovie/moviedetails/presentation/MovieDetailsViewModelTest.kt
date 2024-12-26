@@ -4,14 +4,14 @@ import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import com.dhorowitz.openmovie.moviedetails.data.movieDetails
 import com.dhorowitz.openmovie.moviedetails.data.movieDetailsViewEntity
 import com.dhorowitz.openmovie.moviedetails.domain.GetMovieDetails
-import com.dhorowitz.openmovie.moviedetails.presentation.model.MovieDetailsAction.Load
 import com.dhorowitz.openmovie.moviedetails.presentation.model.MovieDetailsAction.HomepageButtonClicked
 import com.dhorowitz.openmovie.moviedetails.presentation.model.MovieDetailsAction.ImdbButtonClicked
+import com.dhorowitz.openmovie.moviedetails.presentation.model.MovieDetailsAction.Load
 import com.dhorowitz.openmovie.moviedetails.presentation.model.MovieDetailsEvent
 import com.dhorowitz.openmovie.moviedetails.presentation.model.MovieDetailsState.Content
 import com.dhorowitz.openmovie.moviedetails.presentation.model.MovieDetailsState.Error
 import com.dhorowitz.openmovie.moviedetails.presentation.model.MovieDetailsState.Loading
-import com.dhorowitz.openmovie.test.MainCoroutineRule
+import com.dhorowitz.openmovie.test.MainDispatcherRule
 import com.dhorowitz.openmovie.test.coroutines.test
 import com.nhaarman.mockitokotlin2.doAnswer
 import com.nhaarman.mockitokotlin2.mock
@@ -31,7 +31,7 @@ class MovieDetailsViewModelTest {
 
     @ExperimentalCoroutinesApi
     @get:Rule
-    var mainCoroutineRule = MainCoroutineRule()
+    var coroutineRule = MainDispatcherRule()
 
     private val getMovieDetails: GetMovieDetails = mock()
     private val viewModel = MovieDetailsViewModel(getMovieDetails)
