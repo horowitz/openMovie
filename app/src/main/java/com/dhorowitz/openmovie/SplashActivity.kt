@@ -1,5 +1,6 @@
 package com.dhorowitz.openmovie
 
+import com.dhorowitz.openmovie.ui.R as UiR
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
@@ -9,7 +10,7 @@ import android.widget.TextView
 import androidx.annotation.AnimRes
 import androidx.appcompat.app.AppCompatActivity
 import com.dhorowitz.openmovie.navigation.navigateTo
-import com.gaelmarhic.quadrant.QuadrantConstants
+import com.dhorowitz.openmovie.navigation.NavigationDestinations
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -17,9 +18,9 @@ class SplashActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_splash)
-        findViewById<TextView>(R.id.appNameTextView).startAnimation(R.anim.zoom_in)
+        findViewById<TextView>(R.id.appNameTextView).startAnimation(UiR.anim.zoom_in)
         Handler(Looper.getMainLooper()).postDelayed({
-            navigateTo(QuadrantConstants.DISCOVER_ACTIVITY)
+            navigateTo(NavigationDestinations.DISCOVER_ACTIVITY)
             finish()
         }, 3000)
     }

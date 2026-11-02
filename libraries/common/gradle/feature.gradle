@@ -1,131 +1,65 @@
 android {
-
     defaultConfig {
-        testInstrumentationRunner "com.dhorowitz.openmovie.test.dagger.CustomTestRunner"
+        testInstrumentationRunner = 'com.dhorowitz.openmovie.test.dagger.CustomTestRunner'
     }
-
     buildFeatures {
-        compose true
-    }
-
-    composeOptions {
-        kotlinCompilerExtensionVersion '1.5.12'
+        compose = true
     }
 }
 
+// Lint resolves Hilt test factories from KSP's output. Wait for regeneration
+// before reading those files, including during a combined build/test-APK build.
+tasks.matching { it.name == 'lintAnalyzeDebugAndroidTest' }.configureEach {
+    dependsOn 'kspDebugAndroidTestKotlin'
+}
+
 dependencies {
-    // Compose
-    implementation 'androidx.compose.ui:ui:1.7.6'
-    // Tooling support (Previews, etc.)
-    implementation 'androidx.compose.ui:ui-tooling:1.7.6'
-    // Foundation (Border, Background, Box, Image, Scroll, shapes, animations, etc.)
-    implementation 'androidx.compose.foundation:foundation:1.7.6'
-    // Material Design
-    implementation 'androidx.compose.material:material:1.7.6'
-    implementation "androidx.compose.material3:material3-window-size-class:1.3.1"
-    implementation "androidx.compose.material3:material3-adaptive-navigation-suite:1.4.0-alpha05"
-    // Material design icons
-    implementation 'androidx.compose.material:material-icons-core:1.7.6'
-    implementation 'androidx.compose.material:material-icons-extended:1.7.6'
-    // Integration with activities
-    implementation 'androidx.activity:activity-compose:1.9.3'
-    // Integration with ViewModels
-    implementation 'androidx.lifecycle:lifecycle-viewmodel-compose:2.8.7'
-    // Integration with observables
-    implementation 'androidx.compose.runtime:runtime-livedata:1.7.6'
-    // Test rules and transitive dependencies:
-    androidTestImplementation("androidx.compose.ui:ui-test-junit4:1.7.6")
-    // Needed for createComposeRule, but not createAndroidComposeRule:
-    debugImplementation("androidx.compose.ui:ui-test-manifest:1.7.6")
-    //Navigation
-    implementation "androidx.navigation:navigation-compose:2.8.5"
-    //Accompanist
-    implementation "com.google.accompanist:accompanist-systemuicontroller:0.24.1-alpha"
-    implementation "com.google.accompanist:accompanist-insets:0.24.1-alpha"
-    // UI Tests
-    androidTestImplementation 'androidx.compose.ui:ui-test-junit4:1.7.6'
+    implementation platform(libs.compose.bom)
+    androidTestImplementation platform(libs.compose.bom)
+    implementation platform(libs.okhttp.bom)
 
-    // Basic
-    implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
-    implementation 'androidx.core:core-ktx:1.15.0'
-    implementation 'androidx.appcompat:appcompat:1.7.0'
-    implementation 'com.google.android.material:material:1.12.0'
-    implementation 'androidx.constraintlayout:constraintlayout:2.2.0'
+    implementation libs.compose.ui
+    implementation libs.compose.tooling.preview
+    debugImplementation libs.compose.tooling
+    implementation libs.compose.foundation
+    implementation libs.compose.material
+    implementation libs.compose.material3
+    implementation libs.compose.icons
+    implementation libs.activity.compose
+    implementation libs.lifecycle.viewmodel.compose
+    implementation libs.lifecycle.runtime.compose
+    implementation libs.lifecycle.viewmodel
+    implementation libs.lifecycle.livedata
 
-    // Dagger Hilt
-    implementation 'com.google.dagger:hilt-android:2.51.1'
-    ksp 'com.google.dagger:hilt-compiler:2.51.1'
+    implementation libs.androidx.core
+    implementation libs.androidx.appcompat
+    implementation libs.androidx.constraintlayout
+    implementation libs.material
+    implementation libs.coroutines.core
+    implementation libs.coroutines.android
+    implementation libs.retrofit
+    implementation libs.okhttp
+    implementation libs.serialization.json
+    implementation libs.coil.compose
+    implementation libs.coil.network
+    implementation libs.timber
 
-    // For instrumentation tests
-    androidTestImplementation  'com.google.dagger:hilt-android-testing:2.51.1'
-    kspAndroidTest 'com.google.dagger:hilt-compiler:2.51.1'
+    implementation libs.hilt.android
+    ksp libs.hilt.compiler
+    androidTestImplementation libs.hilt.testing
+    kspAndroidTest libs.hilt.compiler
 
-    // For local unit tests
-    testImplementation 'com.google.dagger:hilt-android-testing:2.51.1'
-    kspTest 'com.google.dagger:hilt-compiler:2.51.1'
+    testImplementation libs.junit
+    testImplementation libs.arch.testing
+    testImplementation libs.mockito.core
+    testImplementation libs.mockito.kotlin
+    testImplementation libs.okhttp.mockwebserver
+    testImplementation libs.coroutines.test
 
-    // ktx
-    implementation "androidx.core:core-ktx:1.15.0"
-    implementation "androidx.fragment:fragment-ktx:1.8.5"
-
-    // Coroutines
-    implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-core:1.9.0'
-    implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-android:1.9.0'
-
-    // Network
-    implementation "com.squareup.retrofit2:retrofit:2.9.0"
-    implementation "com.squareup.okhttp3:okhttp:4.12.0"
-    implementation "com.squareup.okhttp3:logging-interceptor:4.10.0"
-    implementation "org.jetbrains.kotlinx:kotlinx-serialization-json:1.7.3"
-    implementation "com.jakewharton.retrofit:retrofit2-kotlinx-serialization-converter:0.8.0"
-
-    // Lifecycle
-    implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:2.8.7"
-    implementation "androidx.lifecycle:lifecycle-livedata-ktx:2.8.7"
-    implementation "androidx.lifecycle:lifecycle-viewmodel-savedstate:2.8.7"
-    implementation "androidx.lifecycle:lifecycle-common-java8:2.8.7"
-    implementation "androidx.lifecycle:lifecycle-runtime-ktx:2.8.7"
-    implementation "androidx.lifecycle:lifecycle-runtime-compose:2.8.7"
-
-    // Picasso
-    implementation 'com.squareup.picasso:picasso:2.71828'
-    implementation 'io.coil-kt:coil-compose:1.4.0'
-
-    //Logs
-    implementation 'com.jakewharton.timber:timber:5.0.1'
-
-    //Lottie
-    implementation 'com.airbnb.android:lottie:5.2.0'
-    implementation "com.airbnb.android:lottie-compose:4.2.2"
-
-    // Unit tests
-    testImplementation 'junit:junit:4.13.2'
-    testImplementation 'android.arch.core:core-testing:1.1.1'
-
-    // Mockito
-    testImplementation 'org.mockito:mockito-core:4.6.1'
-    testImplementation 'com.nhaarman.mockitokotlin2:mockito-kotlin:2.2.0'
-    testImplementation 'org.mockito:mockito-android:4.6.1'
-
-    // MockWebServer
-    implementation "com.squareup.okhttp3:mockwebserver:4.10.0"
-
-    // Coroutines testing
-    testImplementation 'org.jetbrains.kotlinx:kotlinx-coroutines-test:1.9.0'
-
-    // Instrumentation tests
-    testImplementation "com.squareup.okhttp3:mockwebserver:4.10.0"
-    androidTestImplementation 'androidx.test.ext:junit:1.2.1'
-    androidTestImplementation 'androidx.test.espresso:espresso-core:3.6.1'
-    androidTestImplementation "com.android.support.test.espresso:espresso-intents:3.4.0"
-    androidTestImplementation "com.jakewharton.espresso:okhttp3-idling-resource:1.0.0"
-
-    androidTestImplementation('com.adevinta.android:barista:4.2.0') {
-        exclude group: 'org.jetbrains.kotlin' // Only if you already use Kotlin in your project
-    }
-
-    testImplementation 'com.google.dagger:hilt-android-testing:2.51.1'
-    kspTest 'com.google.dagger:hilt-android-compiler:2.51.1'
-    androidTestImplementation 'com.google.dagger:hilt-android-testing:2.51.1'
-    kspAndroidTest 'com.google.dagger:hilt-android-compiler:2.51.1'
+    androidTestImplementation libs.compose.ui.test
+    debugImplementation libs.compose.test.manifest
+    androidTestImplementation libs.androidx.test.junit
+    androidTestImplementation libs.espresso.core
+    androidTestImplementation libs.espresso.intents
+    androidTestImplementation libs.barista
 }

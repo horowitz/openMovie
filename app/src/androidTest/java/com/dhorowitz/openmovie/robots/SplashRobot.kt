@@ -6,7 +6,7 @@ import androidx.test.espresso.intent.Intents.intended
 import androidx.test.espresso.intent.Intents.intending
 import androidx.test.espresso.intent.matcher.IntentMatchers.hasComponent
 import com.adevinta.android.barista.interaction.BaristaSleepInteractions
-import com.gaelmarhic.quadrant.QuadrantConstants
+import com.dhorowitz.openmovie.navigation.NavigationDestinations
 import org.hamcrest.Matcher
 import org.hamcrest.core.AllOf
 import java.util.concurrent.TimeUnit
@@ -20,7 +20,7 @@ class SplashRobot {
     fun didNavigateToDiscover() {
         val expectedIntent: Matcher<Intent> =
             AllOf.allOf(
-                hasComponent(QuadrantConstants.DISCOVER_ACTIVITY)
+                hasComponent(NavigationDestinations.DISCOVER_ACTIVITY)
             )
         intending(expectedIntent).respondWith(Instrumentation.ActivityResult(0, null))
         BaristaSleepInteractions.sleep(3, TimeUnit.SECONDS)

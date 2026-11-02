@@ -13,9 +13,9 @@ import com.dhorowitz.openmovie.moviedetails.presentation.model.MovieDetailsState
 import com.dhorowitz.openmovie.moviedetails.presentation.model.MovieDetailsState.Loading
 import com.dhorowitz.openmovie.test.MainDispatcherRule
 import com.dhorowitz.openmovie.test.coroutines.test
-import com.nhaarman.mockitokotlin2.doAnswer
-import com.nhaarman.mockitokotlin2.mock
-import com.nhaarman.mockitokotlin2.whenever
+import org.mockito.kotlin.doAnswer
+import org.mockito.kotlin.mock
+import org.mockito.kotlin.whenever
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.test.runTest
 import org.junit.Assert.assertEquals

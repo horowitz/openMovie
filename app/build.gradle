@@ -1,18 +1,20 @@
 plugins {
-    id 'com.android.application'
-    id 'kotlin-android'
-    id 'org.jetbrains.kotlin.plugin.serialization' version "$kotlin_version"
+    alias(libs.plugins.android.application)
+    alias(libs.plugins.kotlin.serialization)
     id 'jacoco'
-    id 'org.jetbrains.kotlin.plugin.compose' version "$kotlin_version"
-    id 'com.google.devtools.ksp' version '2.0.21-1.0.27' apply false
+    alias(libs.plugins.hilt)
+    alias(libs.plugins.kotlin.compose)
+    alias(libs.plugins.ksp)
 }
 
-apply plugin: 'dagger.hilt.android.plugin'
-apply plugin: 'com.google.devtools.ksp'
+apply from: "$rootDir/libraries/common/gradle/android.gradle"
 apply from: "$rootDir/libraries/common/gradle/feature.gradle"
 apply from: "$rootDir/libraries/common/gradle/jacoco.gradle"
 
 android {
+    buildFeatures {
+        buildConfig = true
+    }
     testOptions {
         unitTests.all {
             jacoco {
@@ -23,53 +25,43 @@ android {
     }
 
     defaultConfig {
-        multiDexEnabled true
-        applicationId "com.dhorowitz.openmovie"
-        compileSdk 35
-        minSdkVersion 27
-        targetSdkVersion 35
-        versionCode 1
-        versionName "1.0"
+        targetSdk = 37
+        applicationId = "com.dhorowitz.openmovie"
+        versionCode = 1
+        versionName = "1.0"
 
-        testInstrumentationRunner "com.dhorowitz.openmovie.test.dagger.CustomTestRunner"
+        testInstrumentationRunner = "com.dhorowitz.openmovie.test.dagger.CustomTestRunner"
 
-        buildConfigField "String", "MOVIE_DB_KEY", "\"${System.getenv("MOVIE_DB_KEY")}\""
     }
 
     buildTypes {
         release {
-            minifyEnabled false
+            minifyEnabled = false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
         debug {
-            enableUnitTestCoverage true
-            enableAndroidTestCoverage true
+            enableUnitTestCoverage = true
+            enableAndroidTestCoverage = true
         }
     }
-    compileOptions {
-        sourceCompatibility JavaVersion.VERSION_21
-        targetCompatibility JavaVersion.VERSION_21
-    }
-    kotlinOptions {
-        jvmTarget = '21'
-    }
-    namespace 'com.dhorowitz.openmovie'
+    namespace = 'com.dhorowitz.openmovie'
 
-    composeCompiler {
-        reportsDestination = layout.buildDirectory.dir("compose_compiler")
-        stabilityConfigurationFile = rootProject.layout.projectDirectory.file("stability_config.conf")
-    }
+}
+
+composeCompiler {
+    reportsDestination = layout.buildDirectory.dir('compose_compiler')
+    stabilityConfigurationFile = rootProject.layout.projectDirectory.file('stability_config.conf')
 }
 
 dependencies {
+    implementation libs.lottie
     implementation project(path: ":libraries:ui")
     implementation project(path: ':libraries:network')
     implementation project(path: ':libraries:common')
-    implementation project(path: ':libraries:test')
+    debugImplementation project(path: ':libraries:test')
+    testImplementation project(path: ':libraries:test')
     implementation project(path: ':libraries:navigation')
     implementation project(path: ':features:discover')
     implementation project(path: ':features:moviedetails')
 
-    //Logs
-    implementation 'com.jakewharton.timber:timber:5.0.1'
 }

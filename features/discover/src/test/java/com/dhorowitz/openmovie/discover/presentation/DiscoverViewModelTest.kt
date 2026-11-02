@@ -9,12 +9,13 @@ import com.dhorowitz.openmovie.discover.presentation.model.DiscoverAction.ItemCl
 import com.dhorowitz.openmovie.discover.presentation.model.DiscoverAction.Load
 import com.dhorowitz.openmovie.discover.presentation.model.DiscoverEvent
 import com.dhorowitz.openmovie.discover.presentation.model.DiscoverState.Content
+import com.dhorowitz.openmovie.discover.presentation.model.DiscoverState.Error
 import com.dhorowitz.openmovie.discover.presentation.model.DiscoverState.Loading
 import com.dhorowitz.openmovie.test.MainDispatcherRule
 import com.dhorowitz.openmovie.test.coroutines.test
-import com.nhaarman.mockitokotlin2.doAnswer
-import com.nhaarman.mockitokotlin2.mock
-import com.nhaarman.mockitokotlin2.whenever
+import org.mockito.kotlin.doAnswer
+import org.mockito.kotlin.mock
+import org.mockito.kotlin.whenever
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.test.runTest
 import org.junit.Assert.assertEquals
@@ -63,9 +64,9 @@ class DiscoverViewModelTest {
 
                 viewModel.handle(Load)
 
-                val expected = listOf(Loading, Error())
+                val expected = listOf(Loading, Error(exception))
 
-                assertEquals(observer.values, expected)
+                assertEquals(expected, observer.values)
             }
         }
     }

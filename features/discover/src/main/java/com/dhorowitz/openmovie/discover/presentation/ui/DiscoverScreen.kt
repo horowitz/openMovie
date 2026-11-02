@@ -1,9 +1,11 @@
 package com.dhorowitz.openmovie.discover.presentation.ui
 
+import com.dhorowitz.openmovie.ui.R as UiR
 import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.navigationBarsPadding
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material.Scaffold
 import androidx.compose.material.TopAppBar
@@ -44,15 +46,15 @@ fun DiscoverScreen(
         topBar = {
             MediumTopAppBar(
                 title = { TitleText(text = stringResource(id = R.string.app_name)) },
-                colors = TopAppBarDefaults.mediumTopAppBarColors().copy(
-                    containerColor = colorResource(id = R.color.purple_bg),
-                    scrolledContainerColor = colorResource(id = R.color.purple_bg),
+                colors = TopAppBarDefaults.topAppBarColors().copy(
+                    containerColor = colorResource(id = UiR.color.purple_bg),
+                    scrolledContainerColor = colorResource(id = UiR.color.purple_bg),
                 )
                     .copy(),
                 scrollBehavior = scrollBehavior
             )
         },
-        modifier = Modifier.nestedScroll(scrollBehavior.nestedScrollConnection),
+        modifier = Modifier.navigationBarsPadding().nestedScroll(scrollBehavior.nestedScrollConnection),
         content = {
             Box(
                 modifier = Modifier

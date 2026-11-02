@@ -9,5 +9,5 @@ import com.airbnb.lottie.compose.*
 fun LoadingLottie() {
     val composition by rememberLottieComposition(LottieCompositionSpec.RawRes(R.raw.loading))
     val progress by animateLottieCompositionAsState(composition, iterations = LottieConstants.IterateForever)
-    LottieAnimation(composition, progress)
+    LottieAnimation(composition, progress = { progress })
 }

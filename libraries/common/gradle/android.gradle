@@ -1,0 +1,16 @@
+// Shared SDK/JVM settings for every Android module. Kotlin is built into AGP 9.
+android {
+    compileSdk = 37
+    defaultConfig {
+        minSdk = 27
+        testInstrumentationRunner = 'androidx.test.runner.AndroidJUnitRunner'
+    }
+    compileOptions {
+        sourceCompatibility = JavaVersion.VERSION_21
+        targetCompatibility = JavaVersion.VERSION_21
+    }
+}
+
+kotlin {
+    jvmToolchain(21)
+}

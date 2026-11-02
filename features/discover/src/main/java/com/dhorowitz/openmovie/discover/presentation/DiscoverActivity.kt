@@ -1,6 +1,7 @@
 package com.dhorowitz.openmovie.discover.presentation
 
 import android.os.Bundle
+import androidx.activity.enableEdgeToEdge
 import androidx.activity.compose.setContent
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
@@ -25,6 +26,7 @@ class DiscoverActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        enableEdgeToEdge()
         setContent {
             val state = viewModel.state.collectAsStateWithLifecycle(initialValue = Loading).value
             DiscoverScreen(state = state, onAction = { viewModel.handle(it) })

@@ -74,7 +74,7 @@ class MovieDetailsIntegrationActivityTest {
             areItemsDisplayedCorrectly(
                 "THE SUICIDE SQUAD",
                 "Supervillains Harley Quinn, Bloodsport, Peacemaker and a collection of nutty cons at Belle Reve prison join the super-secret, super-shady Task Force X as they are dropped off at the remote, enemy-infused island of Corto Maltese.",
-                "⭐️ 8.1",
+                "⭐️⭐️⭐️⭐️",
                 "🕒 132 min"
             )
         }

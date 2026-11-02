@@ -11,7 +11,7 @@ Show case Android practices using [the Movie db](https://www.themoviedb.org/)
 - 100% testable Kotlin code
 - Clean Multimodular Architecture
 - Presentation layer built based on Unidirectional data flow (UDF) and single entry points
-- Latest AGP 7+
+- AGP 9 with built-in Kotlin, JVM 21, and a central Gradle version catalog
 - Dagger Hilt
 - CI with Github actions
 - High test coverage using Unit, Instrumentation and Integration tests
@@ -51,8 +51,49 @@ We can take the following as an example of UDF:
 * The UI re-renders based on the new state
 
 
+## Building locally
+
+Use an Android Studio version that supports **AGP 9.4.1**, the version pinned in
+this project. A successful command-line build does not check IDE compatibility.
+
+Install Android SDK Platform **37**. The build uses a **JDK 21** compiler;
+Gradle downloads it automatically if no matching local JDK is available. The
+checked-in daemon criteria also select JDK 21 for Gradle itself, so Android
+Studio can keep its bundled launcher JDK. Set `sdk.dir` in your
+untracked `local.properties`, or set `ANDROID_HOME` to your SDK installation.
+Always use the checked-in Gradle wrapper.
+
+```bash
+export MOVIE_DB_KEY=your_tmdb_api_key
+./gradlew assembleDebug
+```
+
+`MOVIE_DB_KEY` is optional for compilation and tests using fake responses; it is
+required to load live movies. The app supports Android 8.1 (API 27) and later,
+and compiles and targets API 37.
+
+Plugin and library versions live in `gradle/libs.versions.toml`. Compose and
+OkHttp dependencies are aligned through their BOMs. Android SDK and JVM settings
+are shared in `libraries/common/gradle/android.gradle`.
+
+```bash
+./gradlew testDebugUnitTest       # Local unit and network integration tests
+./gradlew lintDebug              # Android lint
+./gradlew assembleDebugAndroidTest # Compile instrumentation APKs
+./gradlew connectedDebugAndroidTest --no-parallel # Run on a connected device/emulator
+./gradlew jacocoTestReport       # Unit coverage plus any existing device coverage
+```
+
+Coverage reports are written under each app/feature module's
+`build/reports/coverage/jacocoTestReport/`. To include device coverage, run
+`connectedDebugAndroidTest` before generating the report.
+
 ## CI
-In addition to static analysis and unit tests we are using a test matrix for each commit on master. and triggering all instrumentation tests for different API lvls 
+
+GitHub Actions uses JDK 21 to build, run unit tests and lint, and compile
+instrumentation APKs. A separate emulator matrix runs instrumentation tests on
+API 27 and API 37 and uploads coverage and test reports. Codecov uploads use the
+repository's `CODECOV_TOKEN` secret.
 
 ## Testing strategy
 

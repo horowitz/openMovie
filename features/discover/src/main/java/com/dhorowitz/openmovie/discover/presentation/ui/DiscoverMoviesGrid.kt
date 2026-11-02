@@ -18,7 +18,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.unit.dp
-import coil.compose.rememberImagePainter
+import coil3.compose.rememberAsyncImagePainter
 import com.dhorowitz.openmovie.discover.presentation.model.DiscoverAction
 import com.dhorowitz.openmovie.discover.presentation.model.DiscoverAction.*
 import com.dhorowitz.openmovie.discover.presentation.model.DiscoverViewEntity
@@ -46,7 +46,7 @@ fun DiscoverMoviesGrid(
             }
             Image(
                 contentScale = ContentScale.Crop,
-                painter = rememberImagePainter(viewEntity.imageUrl),
+                painter = rememberAsyncImagePainter(viewEntity.imageUrl),
                 contentDescription = null,
                 modifier = Modifier
                     .height(200.dp)

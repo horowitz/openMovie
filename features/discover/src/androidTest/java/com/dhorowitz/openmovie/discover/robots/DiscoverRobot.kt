@@ -18,7 +18,7 @@ import androidx.test.ext.junit.rules.ActivityScenarioRule
 import com.dhorowitz.openmovie.discover.presentation.DiscoverActivity
 import com.dhorowitz.openmovie.discover.presentation.ui.DISCOVER_MOVIE_GRID_CELL_TAG
 import com.dhorowitz.openmovie.discover.presentation.ui.DISCOVER_MOVIE_GRID_TAG
-import com.gaelmarhic.quadrant.QuadrantConstants
+import com.dhorowitz.openmovie.navigation.NavigationDestinations
 import org.hamcrest.Matcher
 import org.hamcrest.core.AllOf
 
@@ -45,7 +45,7 @@ class DiscoverRobot(
     fun didNavigateToDetails() {
         val expectedIntent: Matcher<Intent> =
             AllOf.allOf(
-                hasComponent(QuadrantConstants.MOVIE_DETAILS_ACTIVITY)
+                hasComponent(NavigationDestinations.MOVIE_DETAILS_ACTIVITY)
             )
         intended(expectedIntent)
     }
@@ -53,7 +53,7 @@ class DiscoverRobot(
     fun clickOnFirstItem() {
         val expectedIntent: Matcher<Intent> =
             AllOf.allOf(
-                hasComponent(QuadrantConstants.MOVIE_DETAILS_ACTIVITY)
+                hasComponent(NavigationDestinations.MOVIE_DETAILS_ACTIVITY)
             )
         intending(expectedIntent).respondWith(Instrumentation.ActivityResult(0, null))
 

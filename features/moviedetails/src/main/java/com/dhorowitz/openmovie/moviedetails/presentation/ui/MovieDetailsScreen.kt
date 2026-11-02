@@ -1,6 +1,7 @@
 package com.dhorowitz.openmovie.moviedetails.presentation.ui
 
-import android.app.Activity
+import com.dhorowitz.openmovie.ui.R as UiR
+import androidx.activity.compose.LocalOnBackPressedDispatcherOwner
 import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Box
@@ -11,6 +12,7 @@ import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.navigationBarsPadding
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
 import androidx.compose.material.Button
@@ -20,13 +22,12 @@ import androidx.compose.material.IconButton
 import androidx.compose.material.Text
 import androidx.compose.material.TopAppBar
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.ArrowBack
+import androidx.compose.material.icons.automirrored.filled.ArrowBack
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
-import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.TextStyle
@@ -36,7 +37,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.ExperimentalUnitApi
 import androidx.compose.ui.unit.dp
-import coil.compose.rememberImagePainter
+import coil3.compose.rememberAsyncImagePainter
 import com.dhorowitz.openmovie.moviedetails.R
 import com.dhorowitz.openmovie.moviedetails.presentation.model.MovieDetailsAction
 import com.dhorowitz.openmovie.moviedetails.presentation.model.MovieDetailsAction.HomepageButtonClicked
@@ -50,7 +51,9 @@ import com.dhorowitz.openmovie.moviedetails.presentation.model.MovieDetailsViewE
 import com.dhorowitz.openmovie.ui.ErrorView
 import com.dhorowitz.openmovie.ui.LoadingLottie
 import com.dhorowitz.openmovie.ui.TitleText
-import com.google.accompanist.insets.statusBarsHeight
+import androidx.compose.foundation.layout.WindowInsets
+import androidx.compose.foundation.layout.statusBars
+import androidx.compose.foundation.layout.windowInsetsTopHeight
 
 @ExperimentalUnitApi
 @ExperimentalFoundationApi
@@ -60,7 +63,7 @@ fun MovieDetailsScreen(
     state: MovieDetailsState,
     onAction: (MovieDetailsAction) -> Unit
 ) {
-    Box {
+    Box(modifier = Modifier.navigationBarsPadding()) {
         Box(modifier = Modifier.fillMaxSize()) {
             when (state) {
                 is Content -> MovieDetailsContent(state.viewEntity, onAction)
@@ -77,7 +80,7 @@ fun MovieDetailsScreen(
         Column {
             Spacer(
                 modifier = Modifier
-                    .statusBarsHeight()
+                    .windowInsetsTopHeight(WindowInsets.statusBars)
                     .fillMaxWidth()
             )
             MovieDetailsTopAppBar()
@@ -93,13 +96,13 @@ private fun MovieDetailsTopAppBar() {
         backgroundColor = Color.Black.copy(alpha = 0.4f),
         elevation = 0.dp,
         navigationIcon = {
-            val activity = LocalContext.current as? Activity
-            IconButton(onClick = { activity?.onBackPressed() }) {
+            val backDispatcher = LocalOnBackPressedDispatcherOwner.current?.onBackPressedDispatcher
+            IconButton(onClick = { backDispatcher?.onBackPressed() }) {
                 Icon(
-                    imageVector = Icons.Filled.ArrowBack,
+                    imageVector = Icons.AutoMirrored.Filled.ArrowBack,
                     contentDescription = "Back",
                     tint = colorResource(
-                        id = R.color.yellow_bg_2
+                        id = UiR.color.yellow_bg_2
                     )
                 )
             }
@@ -114,7 +117,7 @@ fun MovieDetailsContent(
 ) = with(viewEntity) {
     Column {
         Image(
-            painter = rememberImagePainter(viewEntity.backdropPath),
+            painter = rememberAsyncImagePainter(viewEntity.backdropPath),
             contentScale = ContentScale.Crop,
             contentDescription = null,
             modifier = Modifier
@@ -128,14 +131,14 @@ fun MovieDetailsContent(
             Text(
                 text = stars,
                 style = TextStyle(
-                    fontFamily = FontFamily(Font(R.font.open_sans_bold, FontWeight.Normal))
+                    fontFamily = FontFamily(Font(UiR.font.open_sans_bold, FontWeight.Normal))
                 )
             )
             Spacer(modifier = Modifier.width(16.dp))
             Text(
                 text = runtime,
                 style = TextStyle(
-                    fontFamily = FontFamily(Font(R.font.open_sans_bold, FontWeight.Normal))
+                    fontFamily = FontFamily(Font(UiR.font.open_sans_bold, FontWeight.Normal))
                 )
             )
         }
@@ -143,20 +146,20 @@ fun MovieDetailsContent(
         MovieDetailsButton(
             onClick = { onAction(HomepageButtonClicked(homepage)) },
             text = stringResource(id = R.string.homepage_button),
-            backgroundColor = colorResource(id = R.color.purple_bg)
+            backgroundColor = colorResource(id = UiR.color.purple_bg)
         )
 
         MovieDetailsButton(
             onClick = { onAction(ImdbButtonClicked(imdbUrl)) },
             text = stringResource(id = R.string.imdb_button),
-            backgroundColor = colorResource(id = R.color.purple_bg_dark)
+            backgroundColor = colorResource(id = UiR.color.purple_bg_dark)
         )
 
         Text(
             text = overview,
             modifier = Modifier.padding(PaddingValues(start = 8.dp, top = 16.dp)),
             style = TextStyle(
-                fontFamily = FontFamily(Font(R.font.open_sans_regular, FontWeight.Normal))
+                fontFamily = FontFamily(Font(UiR.font.open_sans_regular, FontWeight.Normal))
             )
         )
     }

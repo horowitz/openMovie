@@ -3,6 +3,7 @@ package com.dhorowitz.openmovie.moviedetails.presentation
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
+import androidx.activity.enableEdgeToEdge
 import androidx.activity.compose.setContent
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
@@ -15,7 +16,6 @@ import com.dhorowitz.openmovie.moviedetails.presentation.model.MovieDetailsEvent
 import com.dhorowitz.openmovie.moviedetails.presentation.model.MovieDetailsEvent.NavigateToBrowser
 import com.dhorowitz.openmovie.moviedetails.presentation.model.MovieDetailsState.Loading
 import com.dhorowitz.openmovie.moviedetails.presentation.ui.MovieDetailsScreen
-import com.google.accompanist.insets.ProvideWindowInsets
 import dagger.hilt.android.AndroidEntryPoint
 import timber.log.Timber
 
@@ -31,11 +31,10 @@ class MovieDetailsActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        enableEdgeToEdge()
         setContent {
             val state = viewModel.state.collectAsStateWithLifecycle(Loading).value
-            ProvideWindowInsets {
-                MovieDetailsScreen(id = id, state = state, onAction = { viewModel.handle(it) })
-            }
+            MovieDetailsScreen(id = id, state = state, onAction = { viewModel.handle(it) })
         }
 
         viewModel.event.observeOnLifecycle(this, action = ::handleEvent)

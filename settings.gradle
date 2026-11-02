@@ -1,17 +1,25 @@
 pluginManagement {
     repositories {
-        gradlePluginPortal()
         google()
+        mavenCentral()
+        gradlePluginPortal()
     }
 }
+
+plugins {
+    // Settings plugins load before the project's version catalog is available.
+    id 'org.gradle.toolchains.foojay-resolver-convention' version '1.0.0'
+}
+
+dependencyResolutionManagement {
+    repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
+    repositories {
+        google()
+        mavenCentral()
+    }
+}
+
+rootProject.name = 'Open Movie'
 include ':app'
-rootProject.name = "Open Movie"
-
-include ':libraries:navigation'
-include ':libraries:common'
-include ':libraries:network'
-include ':libraries:test'
-
-include ':features:moviedetails'
-include ':features:discover'
-include ':libraries:ui'
+include ':libraries:navigation', ':libraries:common', ':libraries:network', ':libraries:test', ':libraries:ui'
+include ':features:discover', ':features:moviedetails'

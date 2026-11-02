@@ -52,13 +52,13 @@ class MovieDetailsScreenKtTest {
         val title = "THE SUICIDE SQUAD"
         val overview =
             "Supervillains Harley Quinn, Bloodsport, Peacemaker and a collection of nutty cons at Belle Reve prison join the super-secret, super-shady Task Force X as they are dropped off at the remote, enemy-infused island of Corto Maltese."
-        val voteAverage = "⭐️ 8.1"
+        val stars = "⭐️⭐️⭐️⭐️"
         val duration = "🕒 132 min"
         val state = Content(
             movieDetailsViewEntity(
                 title = title,
                 overview = overview,
-                voteAverage = voteAverage,
+                stars = stars,
                 runtime = duration
             )
         )
@@ -66,7 +66,7 @@ class MovieDetailsScreenKtTest {
         initScreenWithState(state)
 
         composeTestRule.movieDetailsRobot {
-            areItemsDisplayedCorrectly(title, overview, voteAverage, duration)
+            areItemsDisplayedCorrectly(title, overview, stars, duration)
         }
     }
 

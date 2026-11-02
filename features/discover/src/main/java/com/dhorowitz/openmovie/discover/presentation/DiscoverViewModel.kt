@@ -15,7 +15,7 @@ import com.dhorowitz.openmovie.discover.presentation.model.DiscoverState.Content
 import com.dhorowitz.openmovie.discover.presentation.model.DiscoverState.Error
 import com.dhorowitz.openmovie.discover.presentation.model.DiscoverState.Loading
 import com.dhorowitz.openmovie.discover.presentation.model.DiscoverViewEntity
-import com.gaelmarhic.quadrant.QuadrantConstants.MOVIE_DETAILS_ACTIVITY
+import com.dhorowitz.openmovie.navigation.NavigationDestinations.MOVIE_DETAILS_ACTIVITY
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
 import javax.inject.Inject
