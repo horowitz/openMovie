@@ -20,7 +20,7 @@ jobs:
           distribution: temurin
       - uses: android-actions/setup-android@v4
       - name: Install Android SDK
-        run: sdkmanager 'platforms;android-37' 'build-tools;36.0.0'
+        run: sdkmanager 'platforms;android-37.0' 'build-tools;36.0.0'
       - uses: gradle/actions/setup-gradle@v6
       - name: Build, test and lint
         run: ./gradlew build assembleDebugAndroidTest jacocoTestReport --console=plain

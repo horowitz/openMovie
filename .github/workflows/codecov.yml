@@ -15,7 +15,11 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        api-level: [27, 37]
+        include:
+          - api-level: 27
+            arch: x86
+          - api-level: '37.0'
+            arch: x86_64
     steps:
       - uses: actions/checkout@v7
       - uses: actions/setup-java@v6
@@ -24,7 +28,7 @@ jobs:
           distribution: temurin
       - uses: android-actions/setup-android@v4
       - name: Install Android SDK
-        run: sdkmanager 'platforms;android-37' 'build-tools;36.0.0'
+        run: sdkmanager 'platforms;android-37.0' 'build-tools;36.0.0'
       - uses: gradle/actions/setup-gradle@v6
       - name: Enable KVM
         run: |
@@ -35,7 +39,7 @@ jobs:
         uses: reactivecircus/android-emulator-runner@v2
         with:
           api-level: ${{ matrix.api-level }}
-          arch: x86_64
+          arch: ${{ matrix.arch }}
           target: google_apis
           disable-animations: true
           script: ./gradlew connectedDebugAndroidTest jacocoTestReport --no-parallel --console=plain
